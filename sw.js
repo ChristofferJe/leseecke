@@ -1,8 +1,16 @@
-// Offline support for the deployed (https) app. Every file is served from the cache
-// first and refreshed in the background, so the app works without a connection and
-// picks up new books and updates on the next visit.
+// Offline support for the deployed (https) app.
+//
+// - App files (HTML, CSS, JS, icons) come from the cache first and are refreshed in the
+//   background, so the app always opens, even without a connection.
+// - The book list (books/index.json) is fetched from the network first, so new books show
+//   up on the first open. The saved copy is used only when offline.
+// - Book files are kept offline only for books the reader downloaded (one cache per book,
+//   "leseecke-book-<id>", managed from the page). Other books are read from the network
+//   and never stored.
 
-const CACHE = 'leseecke-v3';
+const CACHE = 'leseecke-v4';
+const BOOK_PREFIX = 'leseecke-book-';
+const NETWORK_TIMEOUT = 4000;
 const SHELL = [
   './',
   'index.html',
@@ -19,51 +27,110 @@ const SHELL = [
   'books/index.json',
 ];
 
-// The app shell plus every book, so everything is readable offline right after installing.
-async function precache() {
-  const cache = await caches.open(CACHE);
-  await cache.addAll(SHELL);
-  try {
-    const books = await (await fetch('books/index.json', { cache: 'no-cache' })).json();
-    const files = books.flatMap((b) => [`books/${b.id}/glossary.txt`, ...b.chapters.map((c) => `books/${b.id}/${c}`)]);
-    await cache.addAll(files);
-  } catch (err) {
-    // Not fatal: books are also cached the first time they are opened.
-    console.warn('Could not pre-cache books', err);
+const scopePath = new URL(self.registration.scope).pathname;
+const relPath = (url) => (url.pathname.startsWith(scopePath) ? url.pathname.slice(scopePath.length) : url.pathname);
+const bookOf = (rel) => rel.match(/^books\/([^/]+)\/[^/]+$/)?.[1];
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches
+      .open(CACHE)
+      .then((cache) => cache.addAll(SHELL))
+      .then(() => self.skipWaiting()),
+  );
+});
+
+// Older versions stored every book in the app cache. Move those files into per-book
+// caches, so books that were already offline stay downloaded.
+async function migrateBooks(oldCacheName) {
+  const old = await caches.open(oldCacheName);
+  for (const req of await old.keys()) {
+    const id = bookOf(relPath(new URL(req.url)));
+    if (!id) continue;
+    const res = await old.match(req);
+    if (res) await (await caches.open(BOOK_PREFIX + decodeURIComponent(id))).put(req, res);
   }
 }
 
-self.addEventListener('install', (event) => {
-  event.waitUntil(precache().then(() => self.skipWaiting()));
-});
-
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches
-      .keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
-      .then(() => self.clients.claim()),
+    (async () => {
+      for (const key of await caches.keys()) {
+        if (key === CACHE || key.startsWith(BOOK_PREFIX)) continue;
+        if (key.startsWith('leseecke-v')) await migrateBooks(key).catch(() => {});
+        await caches.delete(key);
+      }
+      await self.clients.claim();
+    })(),
   );
 });
 
 self.addEventListener('fetch', (event) => {
   const req = event.request;
-  if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
+  const url = new URL(req.url);
+  if (req.method !== 'GET' || url.origin !== self.location.origin) return;
 
-  event.respondWith(
-    caches.open(CACHE).then(async (cache) => {
-      const cached = await cache.match(req, { ignoreSearch: true });
-      const network = fetch(req)
-        .then((res) => {
-          if (res.ok) cache.put(req, res.clone());
-          return res;
-        })
-        .catch(() => cached);
-      if (cached) {
-        event.waitUntil(network);
-        return cached;
-      }
-      return network;
-    }),
-  );
+  const rel = relPath(url);
+  if (rel === 'books/index.json') {
+    event.respondWith(networkFirst(req, event));
+    return;
+  }
+  const bookId = bookOf(rel);
+  if (bookId) {
+    event.respondWith(bookFile(req, BOOK_PREFIX + decodeURIComponent(bookId), event));
+    return;
+  }
+  event.respondWith(staleWhileRevalidate(req, event));
 });
+
+async function staleWhileRevalidate(req, event) {
+  const cache = await caches.open(CACHE);
+  const cached = await cache.match(req, { ignoreSearch: true });
+  const network = fetch(req)
+    .then((res) => {
+      if (res.ok) cache.put(req, res.clone());
+      return res;
+    })
+    .catch(() => cached);
+  if (cached) {
+    event.waitUntil(network);
+    return cached;
+  }
+  return network;
+}
+
+async function networkFirst(req, event) {
+  const cache = await caches.open(CACHE);
+  const network = fetch(req).then((res) => {
+    if (res.ok) cache.put(req, res.clone());
+    return res;
+  });
+  event.waitUntil(network.catch(() => {}));
+  const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), NETWORK_TIMEOUT));
+  try {
+    return await Promise.race([network, timeout]);
+  } catch {
+    // Offline or a very slow connection: use the saved list if there is one.
+    const cached = await cache.match(req, { ignoreSearch: true });
+    return cached || network;
+  }
+}
+
+async function bookFile(req, cacheName, event) {
+  if (await caches.has(cacheName)) {
+    const cache = await caches.open(cacheName);
+    const cached = await cache.match(req, { ignoreSearch: true });
+    if (cached) {
+      // Downloaded: answer instantly, and quietly pick up corrections to the text.
+      event.waitUntil(
+        fetch(req)
+          .then(async (res) => {
+            if (res.ok && (await caches.has(cacheName))) await cache.put(req, res);
+          })
+          .catch(() => {}),
+      );
+      return cached;
+    }
+  }
+  return fetch(req); // not downloaded: always read from the network, never stored
+}

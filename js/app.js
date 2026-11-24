@@ -18,7 +18,14 @@ const ICON = {
   close: svg('<path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>'),
   back: svg('<path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'),
   trash: svg('<path d="M5 7h14M10 7V4.5h4V7M7 7l1 13h8l1-13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'),
+  download: svg('<path d="M12 4v11M7 10.5l5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>'),
+  check: svg('<path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>'),
 };
+
+// Offline support runs on the deployed https site. On localhost add "?sw=1" to test it.
+const useServiceWorker =
+  'serviceWorker' in navigator &&
+  (location.protocol === 'https:' || (location.hostname === 'localhost' && /[?&]sw\b/.test(location.search)));
 
 const app = $('#app');
 const sheet = $('#sheet');
@@ -63,6 +70,107 @@ async function loadBook(id) {
   const book = { meta, chapters };
   bookCache.set(id, book);
   return book;
+}
+
+// ---------- offline downloads (one cache per book; served by sw.js) ----------
+
+const bookCacheName = (id) => `leseecke-book-${id}`;
+const canDownload = () => useServiceWorker && 'caches' in window;
+const bookFiles = (meta) => [`books/${meta.id}/glossary.txt`, ...meta.chapters.map((f) => `books/${meta.id}/${f}`)];
+const downloading = new Map(); // book id -> { done, total }
+
+async function downloadStatus(meta) {
+  if (!canDownload()) return 'unsupported';
+  if (downloading.has(meta.id)) return 'downloading';
+  if (!(await caches.has(bookCacheName(meta.id)))) return 'none';
+  const cache = await caches.open(bookCacheName(meta.id));
+  const found = await Promise.all(bookFiles(meta).map((f) => cache.match(f)));
+  return found.every(Boolean) ? 'downloaded' : 'partial';
+}
+
+async function downloadBook(meta) {
+  if (!meta || downloading.has(meta.id)) return;
+  const files = bookFiles(meta);
+  const progress = { done: 0, total: files.length };
+  downloading.set(meta.id, progress);
+  refreshDownloadUi();
+  try {
+    // Fetch everything first, then store it all, so a dropped connection never leaves half a book.
+    const fetched = [];
+    for (const f of files) {
+      const res = await fetch(f, { cache: 'no-cache' });
+      if (!res.ok) throw new Error(`${f} (${res.status})`);
+      fetched.push([f, res]);
+      progress.done++;
+      refreshDownloadUi();
+    }
+    const cache = await caches.open(bookCacheName(meta.id));
+    await Promise.all(fetched.map(([f, res]) => cache.put(f, res)));
+    navigator.storage?.persist?.().catch(() => {});
+  } catch (err) {
+    alert(`Could not download "${meta.title}". Check your internet connection and try again.\n\n${err.message}`);
+  } finally {
+    downloading.delete(meta.id);
+    refreshDownloadUi();
+  }
+}
+
+async function removeDownload(meta) {
+  if (!meta) return;
+  const ok = confirm(
+    `Remove the downloaded copy of "${meta.title}" from this device?\n\nYou can still read it when you are online and download it again at any time. Your saved words and reading position are kept.`,
+  );
+  if (!ok) return;
+  await caches.delete(bookCacheName(meta.id));
+  refreshDownloadUi();
+}
+
+function downloadControl(meta, status) {
+  const id = esc(meta.id);
+  switch (status) {
+    case 'unsupported':
+      return '';
+    case 'downloading': {
+      const p = downloading.get(meta.id);
+      return `<span class="dl-state">${ICON.download} Downloading… ${p ? `${p.done}/${p.total}` : ''}</span>`;
+    }
+    case 'downloaded':
+      return `<span class="dl-state ok">${ICON.check} Downloaded</span>
+        <button class="btn small" data-act="remove-download" data-book="${id}" aria-label="Remove the download of ${esc(meta.title)}">Remove</button>`;
+    case 'partial':
+      return `<button class="btn small" data-act="download" data-book="${id}">${ICON.download} Finish download</button>`;
+    default:
+      return navigator.onLine
+        ? `<button class="btn small" data-act="download" data-book="${id}">${ICON.download} Download</button>`
+        : '<span class="dl-state warn">Not downloaded: needs internet</span>';
+  }
+}
+
+// Fills every download slot on the current page with the book's current status.
+let dlRefresh = 0;
+async function refreshDownloadUi() {
+  const run = ++dlRefresh;
+  for (const el of $$('[data-dl]', app)) {
+    const meta = books.find((b) => b.id === el.dataset.dl);
+    if (!meta) continue;
+    const status = await downloadStatus(meta);
+    if (run !== dlRefresh) return; // a newer refresh has started
+    el.dataset.status = status;
+    el.innerHTML = downloadControl(meta, status);
+  }
+}
+
+const downloadSlot = (meta) => `<div class="dl" data-dl="${esc(meta.id)}"></div>`;
+
+const findBook = (id) => books.find((b) => b.id === id);
+
+function bookLoadError(err) {
+  if (!navigator.onLine || err instanceof TypeError) {
+    return new Error(
+      'You are offline, and this book is not downloaded on this device. Connect to the internet to read it, and tap “Download” on the book to keep it available offline.',
+    );
+  }
+  return err;
 }
 
 // ---------- flashcard queue ----------
@@ -158,19 +266,24 @@ function showLibrary() {
         .map((b) => {
           const p = store.state.progress[b.id];
           const where = p ? `Continue at chapter ${p.chapter + 1}` : `${b.chapters.length} chapters`;
-          return `<a class="book-card" href="#/book/${encodeURIComponent(b.id)}">
-            ${cover(b)}
-            <span class="book-info">
-              <strong>${esc(b.title)}</strong>
-              <span class="muted">${esc(b.titleEn || '')}</span>
-              <span class="muted small">${esc(where)}</span>
-            </span>
-          </a>`;
+          return `<div class="book-card">
+            <a class="book-link" href="#/book/${encodeURIComponent(b.id)}">
+              ${cover(b)}
+              <span class="book-info">
+                <strong>${esc(b.title)}</strong>
+                <span class="muted">${esc(b.titleEn || '')}</span>
+                <span class="muted small">${esc(where)}</span>
+              </span>
+            </a>
+            ${downloadSlot(b)}
+          </div>`;
         })
         .join('')}
     </div>
+    ${canDownload() ? '<p class="hint small">Download a book to read it without internet. Only downloaded books take up space on this device.</p>' : ''}
     <p class="hint">Want another book? Open this folder in Claude Code and ask, for example:
       <em>“Add Kafka's Die Verwandlung at A2.”</em> The steps are in <code>CLAUDE.md</code>.</p>`;
+  refreshDownloadUi();
 }
 
 async function showBook(id) {
@@ -180,7 +293,7 @@ async function showBook(id) {
   try {
     book = await loadBook(id);
   } catch (e) {
-    return showError(e);
+    return showError(bookLoadError(e));
   }
   if (t !== renderId) return;
   const { meta, chapters } = book;
@@ -194,7 +307,10 @@ async function showBook(id) {
         <h1>${esc(meta.title)}</h1>
         <p class="muted">${esc(meta.author)} · Level ${esc(meta.level)}</p>
         <p>${esc(meta.description || '')}</p>
-        <a class="btn primary" href="#/read/${encodeURIComponent(id)}/${start}">${p ? 'Continue reading' : 'Start reading'}</a>
+        <div class="book-actions">
+          <a class="btn primary" href="#/read/${encodeURIComponent(id)}/${start}">${p ? 'Continue reading' : 'Start reading'}</a>
+          ${downloadSlot(meta)}
+        </div>
       </div>
     </section>
     <h2 class="section-title">Chapters</h2>
@@ -210,6 +326,7 @@ async function showBook(id) {
         .join('')}
     </ol>
     <p class="hint small">${esc(meta.source || '')}</p>`;
+  refreshDownloadUi();
 }
 
 // ---------- reader ----------
@@ -235,7 +352,7 @@ async function showReader(bookId, ci) {
   try {
     book = await loadBook(bookId);
   } catch (e) {
-    return showError(e);
+    return showError(bookLoadError(e));
   }
   if (t !== renderId) return;
   const ch = book.chapters[ci];
@@ -690,8 +807,15 @@ function handleAction(act, el) {
       return download(`leseecke-backup-${today()}.json`, store.exportData(), 'application/json');
     case 'export-anki':
       return download(`leseecke-anki-${today()}.csv`, ankiCsv(), 'text/csv');
+    case 'download':
+      return downloadBook(findBook(el.dataset.book));
+    case 'remove-download':
+      return removeDownload(findBook(el.dataset.book));
   }
 }
+
+window.addEventListener('online', refreshDownloadUi);
+window.addEventListener('offline', refreshDownloadUi);
 
 app.addEventListener('click', (e) => {
   const actEl = e.target.closest('[data-act]');
@@ -777,7 +901,7 @@ async function init() {
   route();
   updateBadge();
   // Offline support only over https (a deployed copy); during local development it just gets in the way.
-  if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  if (useServiceWorker) {
     navigator.serviceWorker.register('sw.js').catch((err) => console.warn('Service worker not registered', err));
   }
 }

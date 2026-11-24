@@ -352,6 +352,12 @@ main {
 }
 
 .book-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.book-link {
   text-decoration: none;
   color: var(--text);
   display: flex;
@@ -359,8 +365,43 @@ main {
   gap: 0.6rem;
 }
 
-.book-card:hover .cover {
+.book-link:hover .cover {
   transform: translateY(-3px);
+}
+
+.book-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.dl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.6rem;
+}
+
+.dl:empty {
+  display: none;
+}
+
+.dl-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.dl-state.ok {
+  color: var(--good);
+}
+
+.dl-state.warn {
+  color: var(--hard);
 }
 
 .book-info {

@@ -10,7 +10,11 @@ wants this to cost nothing beyond their existing Claude plan.
 - `js/srs.js`: the FSRS-5 flashcard scheduler · `js/store.js`: localStorage · `js/speech.js`: browser text-to-speech
 - `books/index.json`: the list of books · `books/<id>/`: chapter files plus `glossary.txt`
 - `tools/check.mjs`: the book validator · `tools/make-icons.mjs`: regenerates the icons
-- `sw.js`: offline cache, only active over https. Bump `CACHE` when the app shell changes.
+- `sw.js`: offline support, active only over https (on localhost add `?sw=1` to test it).
+  App files are cache-first, `books/index.json` is network-first (new books show up on
+  the first open), and book files are stored only for books the reader downloads. Each
+  downloaded book has its own cache, `leseecke-book-<id>`, managed by the download buttons
+  in `app.js`. Bump `CACHE` when app files change. Adding a book needs no change to `sw.js`.
 
 Run locally with `python -m http.server 8765` (the preview config is `.claude/launch.json`).
 
