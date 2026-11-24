@@ -28,8 +28,12 @@ voices on Windows.
 - **GitHub Pages**: push the folder to a GitHub repository and turn on Pages
 
 Then open the https address on your phone and choose *Add to Home screen* (Android: Chrome
-menu; iPhone: Safari share button). The app then works offline, and every book you have
-opened once stays available.
+menu; iPhone: Safari share button). The app then works offline, with all its books.
+
+This copy lives at **https://christofferje.github.io/leseecke/** (repository:
+https://github.com/ChristofferJe/leseecke). To publish changes, such as a new book, commit
+and push to `main`. GitHub Pages updates within a minute or two, and the installed app picks
+up the change the next time it is opened with a connection.
 
 ## How to use it
 

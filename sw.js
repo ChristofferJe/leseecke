@@ -2,7 +2,7 @@
 // first and refreshed in the background, so the app works without a connection and
 // picks up new books and updates on the next visit.
 
-const CACHE = 'leseecke-v1';
+const CACHE = 'leseecke-v2';
 const SHELL = [
   './',
   'index.html',
@@ -19,13 +19,22 @@ const SHELL = [
   'books/index.json',
 ];
 
+// The app shell plus every book, so everything is readable offline right after installing.
+async function precache() {
+  const cache = await caches.open(CACHE);
+  await cache.addAll(SHELL);
+  try {
+    const books = await (await fetch('books/index.json', { cache: 'no-cache' })).json();
+    const files = books.flatMap((b) => [`books/${b.id}/glossary.txt`, ...b.chapters.map((c) => `books/${b.id}/${c}`)]);
+    await cache.addAll(files);
+  } catch (err) {
+    // Not fatal: books are also cached the first time they are opened.
+    console.warn('Could not pre-cache books', err);
+  }
+}
+
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches
-      .open(CACHE)
-      .then((cache) => cache.addAll(SHELL))
-      .then(() => self.skipWaiting()),
-  );
+  event.waitUntil(precache().then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (event) => {
