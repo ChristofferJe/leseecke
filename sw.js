@@ -2,7 +2,7 @@
 // first and refreshed in the background, so the app works without a connection and
 // picks up new books and updates on the next visit.
 
-const CACHE = 'leseecke-v2';
+const CACHE = 'leseecke-v3';
 const SHELL = [
   './',
   'index.html',

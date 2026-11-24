@@ -2,25 +2,25 @@
 // with most system voices). Quality depends on the voices installed on the device.
 
 const synth = typeof window !== 'undefined' ? window.speechSynthesis : undefined;
-let voices = [];
 const listeners = new Set();
 
-function refresh() {
-  if (!synth) return;
-  voices = synth.getVoices().filter((v) => /^de([-_]|$)/i.test(v.lang));
-  listeners.forEach((fn) => fn(voices));
-}
+// The list is read fresh every time: some phones fill it in late, or never fire "voiceschanged".
+export const allVoices = () => (synth ? synth.getVoices() : []);
+// Phones report German as "de-DE", "de_DE" or "deu-DEU"; some only say so in the voice name.
+const isGerman = (v) => /^(de|deu|ger)([-_]|$)/i.test(v.lang || '') || /german|deutsch/i.test(v.name || '');
+export const germanVoices = () => allVoices().filter(isGerman);
+
 if (synth) {
-  refresh();
-  synth.addEventListener?.('voiceschanged', refresh);
+  synth.getVoices(); // asks the browser to start loading its voice list
+  synth.addEventListener?.('voiceschanged', () => listeners.forEach((fn) => fn()));
 }
 
 export const supported = () => !!synth;
-export const germanVoices = () => voices;
 export const onVoicesChanged = (fn) => listeners.add(fn);
 
 // Natural/online voices sound much better than the old robotic ones, so prefer them.
 function pickVoice(voiceURI) {
+  const voices = germanVoices();
   if (voiceURI) {
     const chosen = voices.find((v) => v.voiceURI === voiceURI);
     if (chosen) return chosen;

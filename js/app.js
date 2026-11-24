@@ -570,10 +570,18 @@ function showWords() {
       <label class="field">Voice
         <select data-role="voice" id="voice-select">${voiceOptions()}</select>
       </label>
-      <p class="hint small" id="voice-help" ${noVoice ? '' : 'hidden'}>
-        This browser has no German voice. On Windows: Settings → Time &amp; language → Speech → Add voices → German.
-        Microsoft Edge and Chrome on Android usually include good German voices.
-      </p>
+      <div class="hint small" id="voice-help" ${noVoice ? '' : 'hidden'}>
+        <p>This browser doesn't list a German voice. Tap <em>Test voice</em> anyway, because some phones still speak German.
+          If you hear nothing, or an English accent, install a German voice. Then close the app completely and open it again
+          (or restart the phone):</p>
+        <ul>
+          <li><strong>Android:</strong> Settings → search “Text-to-speech” → Preferred engine: <em>Speech Services by Google</em>
+            → ⚙ → Install voice data → Deutsch (Deutschland). Adding German under “Languages” is not enough.</li>
+          <li><strong>iPhone:</strong> Settings → Accessibility → Spoken Content → Voices → German.</li>
+          <li><strong>Windows:</strong> Settings → Time &amp; language → Speech → Add voices → German, or use Microsoft Edge.</li>
+        </ul>
+      </div>
+      <p class="hint small" id="voice-diag">${esc(voiceDiagnostics())}</p>
       <label class="field">Speed <span class="muted" id="rate-value">${settings.rate.toFixed(2)}×</span>
         <input type="range" min="0.5" max="1.2" step="0.05" value="${settings.rate}" data-role="rate">
       </label>
@@ -600,13 +608,26 @@ function showWords() {
     </section>`;
 }
 
-speech.onVoicesChanged(() => {
+// Shows what the device reports, which makes voice problems easy to diagnose.
+function voiceDiagnostics() {
+  if (!speech.supported()) return 'This browser does not support text-to-speech.';
+  const all = speech.allVoices();
+  if (!all.length) return 'This browser reports no voices at all (yet).';
+  const langs = [...new Set(all.map((v) => v.lang))].sort();
+  const shown = langs.slice(0, 24).join(', ') + (langs.length > 24 ? ', …' : '');
+  return `This browser reports ${all.length} voice${all.length === 1 ? '' : 's'}, ${speech.germanVoices().length} of them German. Languages: ${shown}.`;
+}
+
+function updateVoiceUi() {
   if (view !== 'words') return;
   const sel = $('#voice-select');
   if (sel) sel.innerHTML = voiceOptions();
   const help = $('#voice-help');
   if (help) help.hidden = speech.germanVoices().length > 0;
-});
+  const diag = $('#voice-diag');
+  if (diag) diag.textContent = voiceDiagnostics();
+}
+speech.onVoicesChanged(updateVoiceUi);
 
 function download(filename, text, type) {
   const url = URL.createObjectURL(new Blob([text], { type }));
@@ -662,7 +683,9 @@ function handleAction(act, el) {
       return showWords();
     }
     case 'test-voice':
-      return say('Guten Tag! Ich lese gern Märchen auf Deutsch.');
+      say('Guten Tag! Ich lese gern Märchen auf Deutsch.');
+      setTimeout(updateVoiceUi, 1000); // some phones only load their voice list after the first use
+      return;
     case 'export':
       return download(`leseecke-backup-${today()}.json`, store.exportData(), 'application/json');
     case 'export-anki':
