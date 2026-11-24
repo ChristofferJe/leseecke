@@ -8,31 +8,44 @@ wants this to cost nothing beyond their existing Claude plan.
 - `index.html`, `css/style.css`, `js/app.js`: the user interface (library, reader, review, words)
 - `js/format.js`: the parser for the book format, shared by the app and the checker
 - `js/srs.js`: the FSRS-5 flashcard scheduler · `js/store.js`: localStorage · `js/speech.js`: browser text-to-speech
-- `books/index.json`: the list of books · `books/<id>/`: chapter files plus `glossary.txt`
+- `books/library.json`: the list of books. Each book has one or more **editions**, one per
+  level, and the reader switches between levels inside the book.
+- `books/<edition id>/`: an edition's chapter files plus its own `glossary.txt`
+- `books/glossary.txt`: the **shared glossary** used by every book. An edition's own
+  glossary is checked first, so it can override a shared entry for that edition.
+- `books/index.json`: the old single-level list, kept only so that installed copies of
+  older app versions keep working during an update. Don't add books to it.
 - `tools/check.mjs`: the book validator · `tools/make-icons.mjs`: regenerates the icons
 - `sw.js`: offline support, active only over https (on localhost add `?sw=1` to test it).
-  App files are cache-first, `books/index.json` is network-first (new books show up on
-  the first open), and book files are stored only for books the reader downloads. Each
-  downloaded book has its own cache, `leseecke-book-<id>`, managed by the download buttons
-  in `app.js`. Bump `CACHE` when app files change. Adding a book needs no change to `sw.js`.
+  App files are cache-first, `books/library.json` is network-first (new books and levels
+  show up on the first open), and book files are stored only for books the reader
+  downloads. A download covers **all levels** of a book: each edition has its own cache,
+  `leseecke-book-<edition id>`, managed by the download buttons in `app.js`. A downloaded
+  book that gains a level or chapter is topped up automatically. Bump `CACHE` when app files
+  change. Adding a book or level needs no change to `sw.js`.
 
 Run locally with `python -m http.server 8765` (the preview config is `.claude/launch.json`).
 
-## Adding a book (the usual request)
+## Adding a book or a level (the usual request)
 
 1. **Source.** Use only public-domain originals (Project Gutenberg, Projekt Gutenberg-DE,
    Wikisource). Never copy text from commercial graded readers or apps such as Eppika.
    The source can be German or another language: retell it in German at the target level.
-2. **Folder.** Create `books/<id>/`, with an id in kebab-case that ends in the level,
-   e.g. `verwandlung-a2`.
-3. **Chapters.** Write one file per chapter, `NN-slug.txt`, about 500–1500 words each.
-   Split long chapters. Write them one at a time and run the checker after each.
-4. **Glossary.** Run `node tools/check.mjs <id> --missing` to list every word form that has
-   no gloss yet, with an example sentence, then add the entries to `books/<id>/glossary.txt`.
-   Repeat until the checker prints "All good."
-5. **Register.** Add the book to `books/index.json`. Fields: `id`, `title`, `titleEn`,
-   `author`, `level`, `color` (a dark cover colour), `description`, `source` and `chapters`
-   (file names in reading order).
+   Novels become abridged graded readers (about 6–10 chapters of 600–1000 words) unless
+   the owner asks for something longer.
+2. **Folder.** Create `books/<edition id>/`, where the id is the book id plus the level,
+   e.g. `verwandlung-a2`. Give it a `glossary.txt`, even if it only holds a comment line.
+3. **Chapters.** Write one file per chapter, `NN-slug.txt`. Write them one at a time and run
+   the checker after each. **All levels of a book use the same chapters in the same order**,
+   because the level switcher keeps the reader in the same chapter.
+4. **Register.** In `books/library.json`, add a new book (`id`, `title`, `titleEn`, `author`,
+   `color` (a dark cover colour), `description`, `source`, `editions`) or add an edition to an
+   existing one (`{ "id": "<edition id>", "level": "B1", "chapters": [file names in order] }`).
+   Never create a second book entry for a new level of the same book.
+5. **Glossary.** Run `node tools/check.mjs <edition id> --missing` to list every word form
+   that has no gloss yet, with an example sentence. Add general words to the shared
+   `books/glossary.txt`, and meanings that only fit this book to the edition's
+   `glossary.txt`. Repeat until the checker prints "All good."
 6. **Check the result.** Run `node tools/check.mjs` once more. Also read a chapter in the app
    and tap a few words, including separable verbs.
 
@@ -75,7 +88,7 @@ is a group id, and the other fields count in order from lemma.
 - When the parts of a separable verb stay together (after `als`, `dass`, `wenn`, `weil` …,
   e.g. `als er aufwachte`), a normal glossary entry is enough.
 
-## Glossary format (`glossary.txt`)
+## Glossary format (`books/glossary.txt` and `books/<edition>/glossary.txt`)
 
 ```
 form | lemma | english | note

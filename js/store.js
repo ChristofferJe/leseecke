@@ -11,6 +11,7 @@ const DEFAULT_SETTINGS = {
   voice: '', // voiceURI of the chosen German voice ('' = automatic)
   newPerDay: 20, // new flashcards introduced per day
   fontSize: 21, // reader text size in px
+  level: '', // the level the reader picked most recently (used as the default for other books)
 };
 
 export const state = load();
@@ -25,6 +26,7 @@ function load() {
   return {
     cards: saved?.cards ?? {},
     progress: saved?.progress ?? {},
+    choices: saved?.choices ?? {}, // book id -> edition id (the level chosen for that book)
     settings: { ...DEFAULT_SETTINGS, ...(saved?.settings ?? {}) },
   };
 }

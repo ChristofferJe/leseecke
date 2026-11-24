@@ -2,13 +2,13 @@
 //
 // - App files (HTML, CSS, JS, icons) come from the cache first and are refreshed in the
 //   background, so the app always opens, even without a connection.
-// - The book list (books/index.json) is fetched from the network first, so new books show
+// - The book list (books/library.json) is fetched from the network first, so new books show
 //   up on the first open. The saved copy is used only when offline.
-// - Book files are kept offline only for books the reader downloaded (one cache per book,
-//   "leseecke-book-<id>", managed from the page). Other books are read from the network
-//   and never stored.
+// - Book files are kept offline only for books the reader downloaded (one cache per level,
+//   "leseecke-book-<edition id>", managed from the page). Other books are read from the
+//   network and never stored.
 
-const CACHE = 'leseecke-v4';
+const CACHE = 'leseecke-v5';
 const BOOK_PREFIX = 'leseecke-book-';
 const NETWORK_TIMEOUT = 4000;
 const SHELL = [
@@ -24,8 +24,12 @@ const SHELL = [
   'icons/icon.svg',
   'icons/icon-192.png',
   'icons/icon-512.png',
-  'books/index.json',
+  'books/library.json',
+  'books/glossary.txt',
 ];
+// The book lists are fetched network-first so new books and levels show up on the first open.
+// (books/index.json is the list format used by versions before multi-level books.)
+const BOOK_LISTS = new Set(['books/library.json', 'books/index.json']);
 
 const scopePath = new URL(self.registration.scope).pathname;
 const relPath = (url) => (url.pathname.startsWith(scopePath) ? url.pathname.slice(scopePath.length) : url.pathname);
@@ -71,7 +75,7 @@ self.addEventListener('fetch', (event) => {
   if (req.method !== 'GET' || url.origin !== self.location.origin) return;
 
   const rel = relPath(url);
-  if (rel === 'books/index.json') {
+  if (BOOK_LISTS.has(rel)) {
     event.respondWith(networkFirst(req, event));
     return;
   }

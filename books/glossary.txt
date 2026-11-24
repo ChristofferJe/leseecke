@@ -1,0 +1,1123 @@
+// Shared glossary for all books.  form | lemma (empty = same as form) | English | note
+// Every edition also has its own books/<edition>/glossary.txt, whose entries win over these.
+// Put general meanings here and book-specific meanings in the edition's glossary.
+// Capitalised words at the start of a sentence fall back to the lower-case entry.
+// Nouns keep their capital letter and give the lemma with its article.
+
+// --- articles, pronouns, small words ---
+der | | the | article: masculine (subject), or feminine after a preposition
+die | | the | article: feminine or plural
+das | | the; that | article (neuter), or "that" as a pronoun
+den | der | the | article: masculine object, or plural after a preposition
+dem | der | (to) the | article: masculine/neuter after a preposition or as indirect object
+ein | | a, an; one | indefinite article
+eine | ein | a, an | feminine
+einen | ein | a, an | masculine object
+einem | ein | a, an | masculine/neuter after a preposition
+kein | | no, not a | "kein Licht" = no light
+keine | kein | no, not any | "keine Angst" = no fear
+ich | | I
+mich | ich | me | object form of "ich"
+mir | ich | (to) me | "mir" = to me, for me
+du | | you | informal, one person
+dich | du | you | object form of "du"
+dir | du | (to) you | "dir" = to you, for you
+er | | he; it | also "it" for der-words: der Wolf → er
+ihn | er | him; it | object form of "er"
+ihm | er | (to) him; (to) it | "ihm" = to him
+sie | | she; they; her; them | a capital "Sie" in mid-sentence would mean formal "you"
+ihr | | you (plural); her; their | "ihr Kinder" = you children; "ihr Haus" = her/their house; "zu ihr" = to her
+ihnen | sie | (to) them | "ihnen" = to them
+es | | it | also a dummy subject: "es gibt" = there is; "es kommen Gäste" = guests are coming
+wir | | we
+uns | wir | us; (to) us; ourselves
+euch | ihr | you (plural) | object form of "ihr"
+mein | | my
+meine | mein | my
+meinem | mein | my | after a preposition
+deine | dein | your | informal
+deinen | dein | your | masculine object
+seine | sein | his; its
+seinem | sein | his | after a preposition
+seinen | sein | his | masculine object, or plural after a preposition
+seiner | sein | his | feminine after a preposition
+ihre | ihr | her; their
+ihren | ihr | her; their | plural after a preposition
+diesen | dieser | this | masculine object
+diese | dieser | this
+alle | | all; everyone
+alles | | everything
+jeder | | everyone, each one
+jeden | jeder | every, each | "jeden Tag" = every day
+beide | | both
+viel | | much, a lot (of)
+viele | viel | many
+vielen | viel | many
+wenig | | little, not much
+etwas | | something; some, a little
+nichts | | nothing
+niemand | | nobody, no one
+selbst | | -self (myself, ourselves …); even | "für uns selbst" = for ourselves; "ich passe selbst hinein" = even I fit in
+solche | solch | such | "solche Angst" = such fear
+wer | | who
+was | | what; something | "Weißt du was?" = You know what?
+wo | | where
+wohin | | where (to)
+warum | | why
+wie | | how; like; as | "wie ein Vogel" = like a bird; "so viele … wie" = as many … as
+und | | and
+oder | | or
+aber | | but
+dass | | that | the verb goes to the end of the clause
+als | | when; than | "als" + past = when (once); "besser als" = better than
+wenn | | if; when, whenever
+ob | | whether, if
+bis | | until
+damit | | so that; with it | "damit ich … kann" = so that I can
+solange | | as long as; while
+darum | | that's why, therefore
+sonst | | otherwise, or else
+denn | | then | in questions it adds curiosity and is often not translated
+doch | | after all; but | particle
+ja | | yes | as a particle it adds emphasis or surprise
+nein | | no
+nicht | | not
+nie | | never | "nie wieder" = never again
+nur | | only, just | in a question it adds despair: "Was sollen wir nur machen?" = whatever shall we do?
+mal | | just; once | particle that softens a request: "sieh mal" = have a look
+so | | so; like that; such | "so ein großes Maul" = such a big mouth
+auch | | also, too; either | "auch nicht" = not … either
+noch | | still; yet
+schon | | already | "schon lange" = for a long time (and still)
+sehr | | very; very much
+ganz | | quite; completely; right | "ganz nach oben" = right up to the top
+gar | | at all | "gar nicht" = not at all
+mehr | | more | "nicht mehr" / "kein … mehr" = no longer, no more
+genug | | enough
+bitte | | please
+oh | | oh
+ach | | oh, ah
+kikeriki | | cock-a-doodle-doo
+
+// --- prepositions and contractions ---
+in | | in; into
+im | in dem | in the | short for "in dem"
+ins | in das | into the | short for "in das"
+an | | at; on; to | "an die Tür klopfen" = to knock on the door
+am | an dem | at the; on the; by the | short for "an dem"; "am Abend" = in the evening
+auf | | on; onto | also part of separable verbs (aufstehen, aufmachen)
+aus | | out of; from; made of | "aus Zucker" = made of sugar
+zu | | to; too | "zu schwach" = too weak; "leicht zu finden" = easy to find
+zum | zu dem | to the | short for "zu dem"
+zur | zu der | to the | short for "zu der"
+von | | from; of; by | "von weitem" = from far away
+vom | von dem | from the; of the | short for "von dem"; "der Bauch vom Wolf" = the wolf's belly
+mit | | with
+für | | for
+über | | over; above; about; across | "sich freuen über" = to be pleased about
+unter | | under, below
+neben | | next to, beside
+hinter | | behind
+vor | | in front of; before; because of | "vor Hunger" = because of hunger
+durch | | through
+nach | | to (places); after | "nach Bremen" = to Bremen; "nach Hause" = home
+bei | | with; at (someone's place) | "bei mir" = with me, at my place
+ohne | | without
+
+// --- adverbs ---
+hier | | here
+da | | there; then | at the start of a sentence "da" often means "then" or "just then"
+dort | | there
+dann | | then
+jetzt | | now
+bald | | soon
+endlich | | finally, at last
+plötzlich | | suddenly
+sofort | | immediately, at once
+immer | | always | "immer wieder" = again and again
+wieder | | again
+einmal | | once; one day | "nicht einmal" = not even
+diesmal | | this time
+zuletzt | | finally, last of all
+heute | | today
+früh | | early
+lange | | (for) a long time
+vielleicht | | maybe, perhaps
+bestimmt | | certainly, surely
+kaum | | hardly, barely
+zusammen | | together
+allein | | alone, on one's own
+nacheinander | | one after the other
+überall | | everywhere
+unterwegs | | on the way
+draußen | | outside, out
+oben | | up, above, at the top
+hinein | | in, inside | direction: going in
+hinauf | | up | direction: going up
+hinüber | | across, over | direction: to the other side
+zurück | | back
+daran | | at it, on it
+direkt | | directly, straight
+gern | | gladly | "etwas gern tun" = to like doing something
+lieber | gern | rather | "ich sitze lieber am Ofen" = I'd rather sit by the stove
+entfernt | | away, distant | "eine halbe Stunde entfernt" = half an hour away
+los | | going on | "Was ist los?" = What's the matter?
+egal | | no matter; all the same | "egal, ob" = no matter whether
+
+// --- numbers ---
+zwei | | two
+drei | | three
+vier | | four
+dritten | dritt- | third
+paar | | a few | "ein paar" = a few
+
+// --- adjectives ---
+klein | | small, little
+kleine | klein | small, little
+kleines | klein | small, little
+kleinen | klein | small, little
+groß | | big, large; tall
+große | groß | big, large
+großes | groß | big, large
+großen | groß | big, large
+gut | | good; well
+gute | gut | good
+guter | gut | good
+gutem | gut | good
+guten | gut | good | "Guten Tag" = good day, hello
+besser | gut | better | comparative of "gut"
+alt | | old
+alte | alt | old
+alter | alt | old
+jung | | young
+junge | jung | young
+schön | | beautiful; beautifully
+schöne | schön | beautiful, lovely
+schönen | schön | beautiful, lovely
+arm | | poor
+arme | arm | poor
+armer | arm | poor
+lieb | | dear; kind
+liebe | lieb | dear
+lieben | lieb | dear
+rote | rot | red
+weiße | weiß | white
+weißen | weiß | white
+schwarzes | schwarz | black
+bunten | bunt | colourful
+böse | | angry; evil, wicked
+böses | böse | evil, wicked
+krank | | ill, sick
+gesund | | healthy; well
+schwach | | weak
+schwächer | schwach | weaker | comparative of "schwach"
+schnell | | quick; quickly
+leicht | | easy; light
+schwer | | heavy; difficult
+schwere | schwer | heavy
+halbe | halb | half
+freundlich | | friendly, kind; kindly
+feine | fein | fine; thin, delicate
+feiner | fein | fine; soft, delicate
+offen | | open
+seltsam | | strange, odd
+dunkel | | dark
+still | | quiet, silent
+tief | | deep; low
+laut | | loud; loudly
+lautem | laut | loud
+leise | | quiet; quietly
+schrecklich | | terrible; terribly
+schreckliche | schrecklich | terrible
+satt | | full (not hungry)
+tot | | dead
+froh | | glad, happy
+traurig | | sad; sadly
+trauriges | traurig | sad
+glücklich | | happy; happily
+müde | | tired
+stumpf | | blunt, dull
+warmen | warm | warm
+heiß | | hot
+lang | | long | "viele Jahre lang" = for many years
+langen | lang | long
+weit | | far; wide
+weitem | weit | far | "von weitem" = from far away
+gemütlich | | cosy, comfortable
+wilden | wild | wild
+ganze | ganz | whole, entire
+ganzen | ganz | whole, entire
+neues | neu | new
+hell | | bright; brightly
+dick | | fat; thick
+dünn | | thin
+schlecht | | bad; badly | "sie sah schlecht" = she couldn't see well
+dumme | dumm | stupid, silly
+frei | | free
+nächsten | nächst- | next | "am nächsten Morgen" = the next morning
+anderen | ander- | other | "eine nach der anderen" = one after the other
+himmlische | himmlisch | heavenly
+kräftigen | kräftig | strong, powerful; hard
+glühende | glühend | glowing
+erschrocken | | frightened, startled
+voller | voll | full of | "voller Angst" = full of fear
+einverstanden | | agreed | "einverstanden sein" = to agree
+
+// --- nouns ---
+Mädchen | das Mädchen | girl | -chen words are always "das"
+Leute | die Leute | people | plural only
+Großmutter | die Großmutter | grandmother
+Mutter | die Mutter | mother
+Mama | die Mama | mum, mom
+Vater | der Vater | father
+Stiefmutter | die Stiefmutter | stepmother
+Bruder | der Bruder | brother
+Familie | die Familie | family
+Kind | das Kind | child
+Kinder | das Kind | child | plural
+Kindern | das Kind | child | plural after a preposition
+Junge | der Junge | boy
+Mann | der Mann | man; husband
+Frau | die Frau | woman; wife; Mrs
+Alte | die Alte | the old woman | an adjective used as a noun
+Rotkäppchen | das Rotkäppchen | Little Red Cap | name; lit. "little red cap"
+Hänsel | | Hansel | name (short for Johannes)
+Hänsels | Hänsel | Hansel's | name + s = possessive
+Gretel | | Gretel | name (short for Margarete)
+Bremen | | Bremen | a city in northern Germany
+Kappe | die Kappe | cap
+Samt | der Samt | velvet
+Haube | die Haube | bonnet, nightcap
+Kleider | das Kleid | clothes; dresses | plural "die Kleider" = clothes
+Schürze | die Schürze | apron
+Tag | der Tag | day
+Tage | der Tag | day | plural
+Morgen | der Morgen | morning | lower-case "morgen" = tomorrow
+Mittag | der Mittag | noon, midday
+Abend | der Abend | evening
+Nacht | die Nacht | night
+Mitternacht | die Mitternacht | midnight
+Sonntag | der Sonntag | Sunday
+Stunde | die Stunde | hour
+Stunden | die Stunde | hour | plural
+Weile | die Weile | while | "eine Weile" = for a while
+Jahre | das Jahr | year | plural
+Wochen | die Woche | week | plural
+Kuchen | der Kuchen | cake
+Flasche | die Flasche | bottle
+Wein | der Wein | wine
+Brot | das Brot | bread
+Brotkrumen | die Brotkrume | breadcrumb | plural
+Essen | das Essen | food; meal | lower-case "essen" = to eat
+Fleisch | das Fleisch | meat
+Suppe | die Suppe | soup
+Milch | die Milch | milk
+Pfannkuchen | der Pfannkuchen | pancake | same form in the plural
+Zucker | der Zucker | sugar
+Äpfeln | der Apfel | apple | plural after a preposition
+Nüssen | die Nuss | nut | plural after a preposition
+Bissen | der Bissen | bite, mouthful
+Weg | der Weg | path, way
+Wald | der Wald | forest, woods
+Dorf | das Dorf | village
+Land | das Land | country; land
+Haus | das Haus | house
+Hause | das Haus | home | "nach Hause" = home(wards); old form used after "nach"
+Häuschen | das Häuschen | little house | -chen = little
+Räuberhaus | das Räuberhaus | robbers' house
+Hof | der Hof | farm; yard
+Tor | das Tor | gate
+Tür | die Tür | door
+Hintertür | die Hintertür | back door
+Eisentür | die Eisentür | iron door
+Riegel | der Riegel | bolt
+Fenster | das Fenster | window | same form in the plural
+Dach | das Dach | roof
+Zimmer | das Zimmer | room
+Küche | die Küche | kitchen
+Bett | das Bett | bed
+Betten | das Bett | bed | plural
+Tisch | der Tisch | table
+Ofen | der Ofen | stove; oven
+Backofen | der Backofen | oven
+Herd | der Herd | hearth; stove
+Asche | die Asche | ash, ashes
+Feuer | das Feuer | fire
+Kohlen | die Kohle | coal | plural
+Licht | das Licht | light
+Dunkeln | das Dunkel | the dark | "im Dunkeln" = in the dark
+Holz | das Holz | wood
+Glas | das Glas | glass
+Klirren | das Klirren | clatter, clinking (of glass)
+Lärm | der Lärm | noise
+Stall | der Stall | stable, shed
+Mühle | die Mühle | mill
+Säcke | der Sack | sack | plural
+Mist | der Mist | dung; dung heap
+Schlafplatz | der Schlafplatz | place to sleep
+Boden | der Boden | floor; ground
+Brücke | die Brücke | bridge
+Wasser | das Wasser | water
+Baum | der Baum | tree
+Ast | der Ast | branch
+Eichen | die Eiche | oak tree | plural
+Blumen | die Blume | flower | plural
+Blumenstrauß | der Blumenstrauß | bunch of flowers, bouquet
+Stein | der Stein | stone
+Steine | der Stein | stone | plural
+Steinen | der Stein | stone | plural after a preposition or as an object of "folgen"
+Kieselsteine | der Kieselstein | pebble | plural
+Mond | der Mond | moon
+Wind | der Wind | wind
+Geld | das Geld | money; coins
+Kisten | die Kiste | box, chest | plural
+Perlen | die Perle | pearl | plural
+Edelsteine | der Edelstein | precious stone, gem | plural
+Handvoll | die Handvoll | handful
+Taschen | die Tasche | pocket; bag | plural
+Schere | die Schere | scissors
+Messer | das Messer | knife
+Holzknüppel | der Holzknüppel | wooden club
+Laute | die Laute | lute
+Pauke | die Pauke | kettledrum
+Musik | die Musik | music
+Nachtmusik | die Nachtmusik | night music, serenade
+Falle | die Falle | trap
+Käfig | der Käfig | cage
+Öffnung | die Öffnung | opening
+Tier | das Tier | animal
+Tiere | das Tier | animal | plural
+Wolf | der Wolf | wolf
+Esel | der Esel | donkey
+Grauschimmel | der Grauschimmel | grey horse | here a nickname for the donkey
+Hund | der Hund | dog
+Katze | die Katze | cat
+Hahn | der Hahn | rooster
+Mäuse | die Maus | mouse | plural
+Vogel | der Vogel | bird
+Vögel | der Vogel | bird | plural
+Ente | die Ente | duck
+Gans | die Gans | goose | "dumme Gans" = silly goose (an insult)
+Fell | das Fell | fur, coat (of an animal)
+Maul | das Maul | mouth (of an animal)
+Gesicht | das Gesicht | face
+Ohren | das Ohr | ear | plural
+Augen | das Auge | eye | plural
+Hände | die Hand | hand | plural
+Finger | der Finger | finger
+Fingern | der Finger | finger | plural after a preposition
+Kopf | der Kopf | head
+Zähne | der Zahn | tooth | plural
+Bauch | der Bauch | belly, stomach
+Rücken | der Rücken | back
+Bein | das Bein | leg
+Vorderfüße | der Vorderfuß | front foot | plural
+Knochen | der Knochen | bone | same form in the plural
+Stimme | die Stimme | voice
+Jäger | der Jäger | hunter
+Sünder | der Sünder | sinner
+Herr | der Herr | master; gentleman; Mr
+Herrin | die Herrin | mistress (female owner)
+Köchin | die Köchin | cook (female)
+Gäste | der Gast | guest | plural
+Räuber | der Räuber | robber | same form in the plural
+Hauptmann | der Hauptmann | captain, chief
+Dieb | der Dieb | thief
+Richter | der Richter | judge
+Hexe | die Hexe | witch
+Hexen | die Hexe | witch | plural
+Gespenst | das Gespenst | ghost
+Monster | das Monster | monster
+Holzfäller | der Holzfäller | woodcutter
+Stadtmusikant | der Stadtmusikant | town musician
+Musikanten | der Musikant | musician | plural
+Freunde | der Freund | friend | plural
+Faulpelz | der Faulpelz | lazybones
+Angst | die Angst | fear | "Angst haben" = to be afraid
+Hilfe | die Hilfe | help
+Idee | die Idee | idea
+Plan | der Plan | plan
+Tod | der Tod | death
+Hunger | der Hunger | hunger | "Hunger haben" = to be hungry
+Müdigkeit | die Müdigkeit | tiredness
+Geduld | die Geduld | patience
+Sorgen | die Sorge | worry | plural
+Wirklichkeit | die Wirklichkeit | reality | "in Wirklichkeit" = in reality
+Sprung | der Sprung | jump, leap
+Tritt | der Tritt | kick
+Stoß | der Stoß | push, shove
+Stück | das Stück | piece
+Besseres | das Bessere | something better | "etwas Besseres" = something better
+Gutes | das Gute | something good | "etwas Gutes" = something good
+
+// --- verbs ---
+sein | | to be
+bin | sein | to be | "ich bin" = I am
+bist | sein | to be | "du bist" = you are
+ist | sein | to be | "er/sie/es ist" = he/she/it is
+sind | sein | to be | "wir/sie sind" = we/they are
+sei | sein | to be | command: "Sei still!" = Be quiet!
+war | sein | to be | past: was
+waren | sein | to be | past: were
+wäre | sein | to be | "das wäre" = that would be
+haben | | to have
+habe | haben | to have | "ich habe" = I have
+hast | haben | to have | "du hast" = you have
+hat | haben | to have | "er hat" = he has; also builds the perfect tense: "hat gefressen" = has eaten
+hab | haben | to have | command: "Hab keine Angst!" = Don't be afraid!
+hatte | haben | to have | past: had
+hatten | haben | to have | past: (they) had
+werden | | to become, to get
+werde | werden | to become, to get | "ich werde" = I become
+wurde | werden | to become, to get | past: became, got
+können | | can, to be able to
+kann | können | can | "ich/er kann" = I/he can
+kannst | können | can | "du kannst" = you can
+konnte | können | can | past: could
+konnten | können | can | past: (they) could
+wollen | | to want
+will | wollen | to want | "ich/er will" = I/he want(s)
+wollte | wollen | to want | past: wanted
+wollten | wollen | to want | past: (they) wanted
+sollen | | should; to be supposed to
+soll | sollen | should; to be supposed to | "Was soll ich tun?" = What should I do?
+musste | müssen | must, to have to | past: had to
+durften | dürfen | may, to be allowed to | past: (they) were allowed to
+mochten | mögen | to like | past: (they) liked
+wissen | | to know (a fact)
+weiß | wissen | to know (a fact) | "ich/er weiß" = I/he know(s)
+weißt | wissen | to know (a fact) | "Weißt du was?" = You know what?
+wusste | wissen | to know (a fact) | past: knew
+kannten | kennen | to know (be familiar with); to recognise | past: (they) knew
+gehen | | to go; to walk
+gehe | gehen | to go | "ich gehe" = I go
+gehst | gehen | to go | "du gehst" = you go
+geh | gehen | to go | command: "Geh schnell!" = Go quickly!
+ging | gehen | to go | past: went
+gingen | gehen | to go | past: (they) went
+kommen | | to come
+komme | kommen | to come; to get (somewhere) | "ich komme" = I come
+komm | kommen | to come | command: "Komm!" = Come!
+kam | kommen | to come | past: came
+kamen | kommen | to come | past: (they) came
+laufen | | to run; to walk
+laufe | laufen | to run | "ich laufe" = I run
+lauf | laufen | to run | command: "Lauf nicht!" = Don't run!
+lief | laufen | to run | past: ran
+liefen | laufen | to run | past: (they) ran
+bleiben | | to stay, to remain
+bleib | bleiben | to stay | command (to one person): stay!
+bleibt | bleiben | to stay | command (to several people): stay!
+blieben | bleiben | to stay | past: (they) stayed
+bringen | | to bring; to take
+bringe | bringen | to bring | "ich bringe" = I bring
+bring | bringen | to bring | command (to one person): bring!
+bringt | bringen | to bring | command (to several people): bring!
+sehen | | to see
+sehe | sehen | to see | "ich sehe" = I see
+siehst | sehen | to see | "du siehst" = you see
+sieh | sehen | to see; to look | command: "Sieh mal!" = Look!
+sah | sehen | to see | past: saw
+sahen | sehen | to see | past: (they) saw
+finden | | to find
+findest | finden | to find | "du findest" = you find
+fand | finden | to find; to think (an opinion) | past: found; "das fand sie seltsam" = she thought that was strange
+fanden | finden | to find | past: (they) found
+essen | | to eat
+esse | essen | to eat | "ich esse" = I eat
+aß | essen | to eat | past: ate
+aßen | essen | to eat | past: (they) ate
+fressen | | to eat (of animals), to devour | people "essen", animals "fressen"
+fraß | fressen | to eat (of animals), to devour | past: ate, gobbled up
+gefressen | fressen | to eat (of animals), to devour | past participle: "hat gefressen" = has eaten
+trinken | | to drink
+trank | trinken | to drink | past: drank
+machen | | to make; to do
+machte | machen | to make; to do | past: made, did; "ein trauriges Gesicht machen" = to look sad
+machten | machen | to make; to do | past: (they) made
+tun | | to do
+tue | tun | to do | "ich tue" = I do
+sagte | sagen | to say | past: said
+fragte | fragen | to ask | past: asked
+antwortete | antworten | to answer | past: answered
+antworteten | antworten | to answer | past: (they) answered
+rief | rufen | to call, to shout | past: called
+gerufen | rufen | to call, to shout | past participle
+dachte | denken | to think | past: thought
+dachten | denken | to think | past: (they) thought
+liebte | lieben | to love | past: loved
+schenkte | schenken | to give (as a present) | past: gave
+trug | tragen | to carry; to wear | past: carried, wore
+nannten | nennen | to call, to name | past: (they) called
+wohnt | wohnen | to live (somewhere)
+wohnte | wohnen | to live (somewhere) | past: lived
+traf | treffen | to meet | past: met
+pflückst | pflücken | to pick (flowers, fruit) | "du pflückst" = you pick
+pflückte | pflücken | to pick (flowers, fruit) | past: picked
+klopfte | klopfen | to knock | past: knocked
+aufstehen | | to get up, to stand up | separable: "ich stehe auf"
+lag | liegen | to lie (be lying) | past: lay, was lying
+lagen | liegen | to lie (be lying) | past: (they) lay
+liegt | liegen | to lie (be lying) | "er liegt" = he is lying
+hing | hängen | to hang | past: hung
+hören | | to hear
+hörten | hören | to hear | past: (they) heard
+packen | | to grab, to seize
+packte | packen | to grab, to seize | past: grabbed
+schnarcht | schnarchen | to snore | "sie schnarcht" = she snores
+schnarchte | schnarchen | to snore | past: snored
+braucht | brauchen | to need | "sie braucht" = she needs
+suche | suchen | to look for | "ich suche" = I'm looking for
+suchte | suchen | to look for | past: looked for
+suchten | suchen | to look for | past: (they) looked for
+schießen | | to shoot
+retten | | to save, to rescue
+nahm | nehmen | to take | past: took
+lebte | leben | to live, to be alive | past: lived, was alive
+lebten | leben | to live | past: (they) lived
+atmen | | to breathe
+holte | holen | to fetch, to get | past: fetched
+hol | holen | to fetch, to get | command: "Hol Wasser!" = Fetch water!
+füllten | füllen | to fill | past: (they) filled
+füllte | füllen | to fill | past: filled
+aufwachte | aufwachen | to wake up | past; the verb stays in one piece after "als"
+aufwachten | aufwachen | to wake up | past (plural); one piece after "als"
+weglaufen | | to run away | separable: "er läuft weg"
+weggelaufen | weglaufen | to run away | past participle: "ich bin weggelaufen" = I ran away
+hinfiel | hinfallen | to fall down | past; one piece after "dass"
+verboten | verbieten | to forbid | past participle: "hat es verboten" = has forbidden it
+arbeiten | | to work
+füttern | | to feed (animals)
+merkte | merken | to notice | past: noticed
+jagen | | to hunt
+töten | | to kill
+spiele | spielen | to play | "ich spiele" = I play
+schlägst | schlagen | to hit, to beat | "du schlägst die Pauke" = you beat the drum
+geschlagen | schlagen | to hit, to beat | past participle
+saß | sitzen | to sit | past: sat, was sitting
+sitze | sitzen | to sit | "ich sitze" = I sit
+sitzen | | to sit
+sitzt | sitzen | to sit | "er sitzt" = he sits
+fangen | | to catch
+fing | fangen | to catch | past: caught
+werfen | | to throw
+warf | werfen | to throw | past: threw
+schrie | schreien | to scream, to shout; to crow (rooster) | past: screamed
+schreist | schreien | to scream, to shout; to crow (rooster) | "du schreist" = you scream
+schreie | schreien | to scream, to shout; to crow (rooster) | "ich schreie" = I scream
+kochen | | to cook
+kochte | kochen | to cook | past: cooked
+koch | kochen | to cook | command: "Koch etwas!" = Cook something!
+schlafen | | to sleep
+kletterte | klettern | to climb | past: climbed
+flog | fliegen | to fly | past: flew
+gibt | geben | to give | "es gibt" = there is, there are
+gab | geben | to give | past: gave; "es gab" = there was
+standen | stehen | to stand | past: (they) stood
+steht | stehen | to stand | "er steht" = he stands
+überlegten | überlegen | to think about, to consider | past: (they) thought about
+vertreiben | | to drive away, to chase off
+stellte | stellen | to put, to place (upright) | past: put
+sprang | springen | to jump | past: jumped
+bellte | bellen | to bark | past: barked
+miaute | miauen | to meow | past: meowed
+krähte | krähen | to crow | past: crowed
+fiel | fallen | to fall | past: fell
+fielen | fallen | to fall | past: (they) fell
+zerbrach | zerbrechen | to break, to shatter | past: broke
+brannte | brennen | to burn | past: burned, was burning
+schickte | schicken | to send | past: sent
+leuchteten | leuchten | to shine, to glow | past: (they) glowed
+kratzte | kratzen | to scratch | past: scratched
+zerkratzt | zerkratzen | to scratch (all over) | past participle
+erschrak | erschrecken | to get a fright | past: got a fright
+erschraken | erschrecken | to get a fright | past: (they) got a fright
+hinauslaufen | | to run out | separable: "er läuft hinaus"
+gestochen | stechen | to stab; to sting | past participle
+hieß | heißen | to be called | past: was called
+lassen | | to leave; to let
+redete | reden | to talk | past: talked
+weinte | weinen | to cry | past: cried
+schien | scheinen | to shine; to seem | past: shone
+steckte | stecken | to put (into), to stick | past: put
+hacken | | to chop
+warteten | warten | to wait | past: (they) waited
+warte | warten | to wait | command: "Warte!" = Wait!
+aufgeht | aufgehen | to rise (sun, moon); to open | one piece after "bis"
+aufging | aufgehen | to rise (sun, moon) | past; one piece after "als"
+glänzten | glänzen | to shine, to glitter | past: (they) glittered
+folgten | folgen | to follow | past: (they) followed
+sammeln | | to collect, to gather
+bekamen | bekommen | to get, to receive | past: (they) got — careful, not "to become"!
+sang | singen | to sing | past: sang
+knusper | knuspern | nibble | from "knuspern" = to nibble, to munch (in the witch's rhyme)
+Knäuschen | das Knäuschen | little nibbler | a made-up word for the rhyme, usually translated as "little mouse"
+knuspert | knuspern | to nibble, to munch | "wer knuspert?" = who is nibbling?
+passiert | passieren | to happen | "hier passiert euch nichts" = nothing will happen to you here
+riechen | | to smell
+sperrte | sperren | to lock (in), to shut (in) | past: locked
+weckte | wecken | to wake (someone) up | past: woke
+fühlen | | to feel
+kriech | kriechen | to crawl | command: "Kriech hinein!" = Crawl in!
+verstand | verstehen | to understand | past: understood
+braten | | to roast, to fry
+verbrannte | verbrennen | to burn (up) | past: burned up
+öffnete | öffnen | to open | past: opened
+umarmten | umarmen | to hug | past: (they) hugged
+tanzten | tanzen | to dance | past: (they) danced
+hilf | helfen | to help | command: "Hilf uns!" = Help us!
+rollten | rollen | to roll | past: (they) rolled
+
+// --- added with Grimm A1 and B1 ---
+sich | | oneself; himself, herself, itself, themselves | reflexive pronoun
+man | | one, you, people | "man konnte sie retten" = she could be saved
+des | der | of the | genitive: "der Bauch des Wolfes" = the wolf's belly
+eines | ein | a, one | genitive: "eines Nachts" = one night
+einer | ein | a, an | feminine after a preposition
+keinen | kein | no, not a | masculine object
+allen | alle | all; everyone | after a preposition: "von allen" = by everyone
+jedem | jeder | each one, everyone | "jedem" = to each one
+beides | beide | both (things) | "beides" = both of them (things)
+beiden | beide | both | "die beiden Kinder" = the two children
+dieses | dieser | this
+anderes | ander- | other; something else | "nichts anderes" = nothing else
+unsere | unser | our
+deinem | dein | your | after a preposition
+ihres | ihr | their; her | genitive: "das Haus ihres Vaters" = their father's house
+ihrem | ihr | their; her | after a preposition: "in ihrem Leben" = in their lives
+ihrer | ihr | her; their | after a preposition (feminine)
+ans | an das | to the; at the | short for "an das"
+beim | bei dem | at the; with the | short for "bei dem": "beim letzten Mal" = last time
+um | | around; at; in order to | "um … zu" = in order to
+sondern | | but (rather) | after a negative: "nicht …, sondern …" = not …, but …
+bevor | | before | conjunction: the verb goes to the end
+weil | | because | the verb goes to the end
+sodass | | so that
+seit | | since
+zwar | | admittedly, it's true | "zwar …, aber …" = it's true …, but …
+womit | | with what; how | "womit soll ich …?" = how am I to …?
+hallo | | hello
+na | | well | casual
+he | | hey
+I-A | | hee-haw | the sound a donkey makes
+wau | | woof | "wau, wau" = the sound a dog makes
+miau | | meow | the sound a cat makes
+deshalb | | that's why, therefore
+danach | | afterwards, after that
+zuerst | | first, at first
+nun | | now; well
+gerade | | just; just now | "gerade ging ein Jäger vorbei" = just then a hunter was walking past
+gestern | | yesterday
+morgen | | tomorrow | "der Morgen" = morning
+abends | | in the evening(s)
+inzwischen | | in the meantime, meanwhile
+vorher | | before, beforehand
+trotzdem | | anyway, nevertheless
+rechtzeitig | | in time, on time
+besonders | | especially, particularly
+einfach | | simply, just; easy
+heimlich | | secretly
+umsonst | | in vain; for free
+weiter | | further; on | "weiter im Wald" = further into the forest
+hinten | | at the back | "weiter hinten" = further on
+mitten | | in the middle | "mitten im Wald" = in the middle of the forest
+dabei | | and yet; at the same time; with it
+darauf | | on it; on that
+darin | | in it, inside
+dazu | | in addition, to it/them
+dorthin | | there, to that place
+hierher | | here, to this place
+drüben | | over there, on the other side
+hin | | there (away from the speaker) | "wo soll ich hin?" = where should I go?
+her | | here (towards the speaker) | "hin und her" = back and forth
+herein | | in | direction: coming in (towards the speaker)
+heraus | | out | direction: coming out (towards the speaker)
+hinaus | | out | direction: going out
+herab | | down | direction: coming down
+herum | | around, about
+weg | | away, gone | "jetzt wollen wir weg" = now let's go
+fort | | away, gone | "die Kinder müssen fort" = the children must go
+weniger | wenig | less | "immer weniger" = less and less
+länger | lang | longer | "nicht länger" = no longer
+
+// adjectives
+komisch | | strange, odd; funny
+reich | | rich
+gutes | gut | good
+dummes | dumm | stupid, silly
+liebes | lieb | dear
+armen | arm | poor
+rotem | rot | red
+zarte | zart | tender, delicate
+kranke | krank | ill, sick
+gefährliches | gefährlich | dangerous
+bunte | bunt | colourful
+frischen | frisch | fresh
+schönere | schön | more beautiful, prettier | comparative of "schön"
+tiefer | tief | deeper | comparative: "immer tiefer" = deeper and deeper
+heller | hell | brighter | comparative of "hell"
+hellem | hell | light, clear
+größer | groß | bigger | comparative of "groß"
+größte | groß | biggest | superlative: "der größte" = the biggest
+kleiner | klein | smaller | comparative of "klein"
+näher | nah | nearer, closer | comparative of "nah"
+hungriger | hungrig | hungrier | comparative: "immer hungriger" = hungrier and hungrier
+bekannter | bekannt | more familiar | comparative: "immer bekannter" = more and more familiar
+ängstlich | | anxious, fearful
+entsetzlich | | terrible; terribly
+furchtbar | | terrible; terribly
+schrecklichen | schrecklich | terrible
+schweren | schwer | heavy
+klug | | clever, smart
+ernst | | serious; seriously
+richtig | | right, correct; properly
+lustig | | cheerful, merry; funny
+herrlich | | wonderful, splendid
+ungemütlich | | uncomfortable, unpleasant
+ruhig | | quiet, calm; quietly
+fertig | | finished, ready
+lebendig | | alive
+wütend | | angry, furious
+wach | | awake
+fett | | fat
+mager | | thin, skinny
+süß | | sweet
+bitterlich | | bitterly
+bittere | bitter | bitter
+fest | | firm; fast | "fest einschlafen" = to fall fast asleep
+dunkle | dunkel | dark
+volle | voll | full
+vollem | voll | full | "aus vollem Hals" = at the top of one's voice
+neue | neu | new
+frohe | froh | happy, glad
+schlechte | schlecht | bad
+halben | halb | half
+letzten | letzt- | last
+zweites | zweit- | second | "ein zweites Mal" = a second time
+weiteren | weiter- | further, more | "nach ein paar weiteren Schnitten" = after a few more cuts
+einziges | einzig | single, only | "kein einziges" = not a single one
+tägliche | täglich | daily
+leibliche | leiblich | biological, real (parent) | "die leibliche Mutter" = the real mother
+eiserne | eisern | iron, made of iron
+dürren | dürr | bony, skinny
+steinalte | steinalt | ancient, very old | lit. "stone-old"
+schneeweißen | schneeweiß | snow-white
+glühenden | glühend | glowing
+schlafenden | schlafend | sleeping
+erleuchteten | erleuchtet | lit (up), illuminated
+gedeckten | gedeckt | laid (table) | "ein gedeckter Tisch" = a table laid for a meal
+Bremer | | from Bremen | "die Bremer Musikanten" = the musicians of Bremen
+
+// nouns
+Mund | der Mund | mouth
+Bäume | der Baum | tree | plural
+Bäumen | der Baum | tree | plural after a preposition
+Bauernhof | der Bauernhof | farm
+Schwester | die Schwester | sister
+Schwesterchen | das Schwesterchen | little sister | -chen = little
+Stücke | das Stück | piece | plural
+Stückchen | das Stückchen | little piece
+Leuten | die Leute | people | after a preposition
+Käppchen | das Käppchen | little cap | -chen = little
+Stube | die Stube | (living) room | old-fashioned word for room
+Hand | die Hand | hand | "die Hand darauf geben" = to shake hands on it
+Händen | die Hand | hand | plural after a preposition
+Korb | der Korb | basket
+Viertelstunde | die Viertelstunde | quarter of an hour
+Weilchen | das Weilchen | little while | "ein Weilchen" = for a little while
+Schule | die Schule | school
+Sonnenstrahlen | der Sonnenstrahl | sunbeam | plural
+Strauß | der Strauß | bunch (of flowers), bouquet
+Klinke | die Klinke | door handle
+Wort | das Wort | word
+Vorhänge | der Vorhang | curtain | plural
+Antwort | die Antwort | answer
+Gedanke | der Gedanke | thought, idea
+Schnitten | der Schnitt | cut | plural after a preposition
+Wolfes | der Wolf | wolf | genitive: "des Wolfes" = of the wolf
+Leben | das Leben | life
+Pause | die Pause | break, pause | "ohne Pause" = without a break
+Arbeit | die Arbeit | work
+Jagdhund | der Jagdhund | hunting dog
+Jagd | die Jagd | hunt | "auf der Jagd" = on the hunt
+Bartputzer | der Bartputzer | whisker-cleaner | a playful name for a cat
+Hausfrau | die Hausfrau | lady of the house; housewife
+Mitleid | das Mitleid | pity, sympathy
+Rotkopf | der Rotkopf | redhead | a playful name for the rooster
+Vorschlag | der Vorschlag | suggestion
+Stadt | die Stadt | town, city
+Seiten | die Seite | side | plural: "nach allen Seiten" = in all directions
+Ferne | die Ferne | distance | "in der Ferne" = in the distance
+Freunden | der Freund | friend | plural after a preposition or as indirect object
+Nähe | die Nähe | nearness | "in der Nähe" = nearby
+Vorderfüßen | der Vorderfuß | front foot | plural after a preposition
+Esels | der Esel | donkey | genitive: "des Esels" = of the donkey
+Zeichen | das Zeichen | sign, signal
+Scheiben | die Scheibe | (window) pane; slice | plural
+Dachbalken | der Dachbalken | roof beam
+Streichholz | das Streichholz | match
+Hinterfuß | der Hinterfuß | hind foot, hind leg
+Ungeheuer | das Ungeheuer | monster
+Hungersnot | die Hungersnot | famine
+Dummkopf | der Dummkopf | fool, idiot
+Tränen | die Träne | tear | plural
+Eltern | die Eltern | parents | plural only
+Jacke | die Jacke | jacket
+Silbermünzen | die Silbermünze | silver coin | plural
+Gott | der Gott | God
+Sonne | die Sonne | sun
+Faulpelze | der Faulpelz | lazybones | plural
+Kieselstein | der Kieselstein | pebble
+Kieselsteinen | der Kieselstein | pebble | plural after a preposition or as an object of "folgen"
+Reisig | das Reisig | brushwood, twigs
+Schläge | der Schlag | blow, stroke | plural
+Axt | die Axt | axe
+Himmel | der Himmel | sky; heaven
+Sonnenaufgang | der Sonnenaufgang | sunrise
+Vaters | der Vater | father | genitive: "des Vaters" = of the father
+Herz | das Herz | heart | "das Herz wurde ihm schwer" = his heart grew heavy
+Herzen | das Herz | heart | "von Herzen" = with all one's heart
+Nachts | die Nacht | night | "eines Nachts" = one night (genitive)
+Laib | der Laib | loaf
+Lied | das Lied | song | "dann ist das Lied aus" = then that's the end
+Tasche | die Tasche | pocket; bag
+Krümelchen | das Krümelchen | little crumb
+Erde | die Erde | earth, ground
+Krücke | die Krücke | crutch
+Äpfel | der Apfel | apple | plural
+Nüsse | die Nuss | nut | plural
+Brothäuschen | das Brothäuschen | little house of bread
+Gewalt | die Gewalt | power; force, violence | "in ihre Gewalt kommen" = to fall into her power
+Festtag | der Festtag | feast day, holiday
+Nase | die Nase | nose | "eine feine Nase haben" = to have a keen sense of smell
+Menschen | der Mensch | person, human being | plural: people
+Gittertür | die Gittertür | barred door
+Ställchen | das Ställchen | little shed
+Knöchelchen | das Knöchelchen | little bone
+Wangen | die Wange | cheek | plural
+Teig | der Teig | dough
+Flammen | die Flamme | flame | plural
+Ecken | die Ecke | corner | plural
+Hexenwald | der Hexenwald | witch's forest
+Steg | der Steg | footbridge
+Boot | das Boot | boat
+Ende | das Ende | end | "ein Ende haben" = to come to an end
+
+// verbs
+sagen | | to say
+sagt | sagen | to say | "er/sie sagt" = he/she says
+trägt | tragen | to carry; to wear | "sie trägt" = she wears
+trägst | tragen | to carry; to wear | "du trägst" = you carry
+tragen | | to carry; to wear
+getragen | tragen | to carry | past participle
+geht | gehen | to go; to walk | "er geht" = he goes; "wie geht das?" = how does that work?
+gegangen | gehen | to go; to walk | past participle: "er war gegangen" = he had walked
+kommt | kommen | to come | "er kommt" = he comes; to several people: "kommt!" = come!
+kommst | kommen | to come | "du kommst" = you come
+fragt | fragen | to ask | "er fragt" = he asks
+denkt | denken | to think | "er denkt" = he thinks
+mag | mögen | to like; may | "sie mag" = she likes
+pflückt | pflücken | to pick (flowers, fruit) | "sie pflückt" = she picks
+gepflückt | pflücken | to pick (flowers, fruit) | past participle
+vergisst | vergessen | to forget | "sie vergisst" = she forgets
+vergiss | vergessen | to forget | command: "Vergiss nicht!" = Don't forget!
+läuft | laufen | to run; to walk | "er läuft" = he runs
+klopft | klopfen | to knock | "er klopft" = he knocks
+frisst | fressen | to eat (of animals) | "er frisst" = he eats
+schläft | schlafen | to sleep | "er schläft" = he sleeps
+schlaf | schlafen | to sleep | command: "Schlaf ruhig!" = Sleep peacefully!
+hört | hören | to hear | "er hört" = he hears
+hörst | hören | to hear | "du hörst" = you hear
+gehört | hören | to hear | past participle
+sieht | sehen | to see; to look | "er sieht" = he sees
+nimmt | nehmen | to take | "er nimmt" = he takes
+öffnet | öffnen | to open | "er öffnet" = he opens
+leben | | to live, to be alive
+holt | holen | to fetch, to get | "sie holt" = she fetches
+holen | | to fetch, to get
+legen | | to lay, to put (down flat) | "sich legen" = to lie down
+isst | essen | to eat | "sie isst" = she eats
+trinkt | trinken | to drink | "sie trinkt" = she drinks
+bleibe | bleiben | to stay | "ich bleibe" = I stay
+mache | machen | to make; to do | "ich mache" = I make
+macht | machen | to make; to do | "er macht" = he makes
+mach | machen | to make; to do | command: "Mach dir keine Sorgen!" = Don't worry!
+gemacht | machen | to make; to do | past participle
+schreit | schreien | to scream, to shout; to crow (rooster) | "er schreit" = he shouts
+fliegt | fliegen | to fly | "er fliegt" = he flies
+ruft | rufen | to call, to shout | "er ruft" = he calls
+kratzt | kratzen | to scratch | "sie kratzt" = she scratches
+beißt | beißen | to bite | "er beißt" = he bites
+biss | beißen | to bite | past: bit
+tritt | treten | to kick; to step | "er tritt" = he kicks
+trat | treten | to step; to kick | past: stepped
+wohnen | | to live (somewhere)
+sammelt | sammeln | to collect, to gather | "er sammelt" = he collects
+sammelten | sammeln | to collect, to gather | past: (they) gathered
+wirft | werfen | to throw | "er wirft" = he throws
+wartet | warten | to wait | to several people: "wartet!" = wait!
+warten | | to wait
+scheint | scheinen | to shine; to seem | "der Mond scheint" = the moon is shining
+bekommen | | to get, to receive | careful: not "to become"!
+bekommt | bekommen | to get, to receive | "ihr bekommt" = you (all) get
+bekam | bekommen | to get, to receive | past: got
+sperrt | sperren | to lock (in), to shut (in) | "sie sperrt" = she locks
+weint | weinen | to cry | "sie weint" = she cries
+weinen | | to cry
+muss | müssen | must, to have to | "ich/er muss" = I/he must
+müssen | | must, to have to
+mussten | müssen | must, to have to | past: (they) had to
+müssten | müssen | would have to | "als ob sie hungern müssten" = as if they would have to go hungry
+zeig | zeigen | to show | command: "Zeig mir!" = Show me!
+zeigt | zeigen | to show | "er zeigt" = he shows
+zeigten | zeigen | to show | past: (they) showed
+verstehe | verstehen | to understand | "ich verstehe" = I understand
+steckt | stecken | to put (into), to stick | "sie steckt" = she puts
+fällt | fallen | to fall | "sie fällt" = she falls
+geliebt | lieben | to love | past participle: "geliebt werden" = to be loved
+genannt | nennen | to call, to name | past participle
+aufsetzen | | to put on (a hat or cap) | separable: "ich setze auf"
+wird | werden | to become; will | "es wird ihr guttun" = it will do her good
+wurden | werden | to become, to get | past: (they) became, got
+würdest | werden | would | "als ob du … gehen würdest" = as if you were going
+würden | werden | would | "die Tiere würden kommen" = the animals would come
+guttun | | to do (someone) good | separable: "es tut gut"
+versprach | versprechen | to promise | past: promised
+begegnete | begegnen | to meet (by chance) | past: "ihr begegnete der Wolf" = she met the wolf
+gebacken | backen | to bake | past participle
+backen | | to bake
+schmecken | | to taste
+schmeckt | schmecken | to taste | "das schmeckt süß" = that tastes sweet
+fange | fangen | to catch | "ich fange" = I catch
+wachsen | | to grow
+singen | | to sing
+blühten | blühen | to bloom, to flower | past: (they) bloomed
+mitbringe | mitbringen | to bring (along) | stays in one piece after "wenn"
+ankomme | ankommen | to arrive | stays in one piece after "dass"
+glaubte | glauben | to believe, to think | past: believed
+glaubten | glauben | to believe, to think | past: (they) thought
+stand | stehen | to stand | past: stood; "die Tür stand offen" = the door was open
+drück | drücken | to press | command: "Drück auf die Klinke!" = Press the handle!
+drückte | drücken | to press | past: pressed
+verschluckte | verschlucken | to swallow | past: swallowed
+gezogen | ziehen | to pull, to draw | past participle
+gesagt | sagen | to say | past participle
+verschlang | verschlingen | to devour, to gobble up | past: gobbled up
+schnarchen | | to snore
+nachsehen | | to check, to have a look | separable: "ich sehe nach"
+liegen | | to lie (be lying)
+finde | finden | to find | "ich finde" = I find
+gesucht | suchen | to look for, to search | past participle
+schoss | schießen | to shoot | past: shot
+leuchten | | to shine, to glow
+wegspringen | | to jump away, to leap away | separable
+gebracht | bringen | to bring | past participle
+taugte | taugen | to be fit for, to be good for | past: "er taugte für die Arbeit" = he was fit for work
+wehte | wehen | to blow (wind) | past: blew
+keuchte | keuchen | to pant | past: panted
+keuchst | keuchen | to pant | "du keuchst" = you are panting
+mithalten | | to keep up | separable
+totschlagen | | to beat to death, to kill | separable
+mitmachen | | to join in, to take part | separable
+dauerte | dauern | to last, to take (time) | past: "es dauerte nicht lange" = it wasn't long
+ertränken | | to drown (someone)
+abgeschnitten | abschneiden | to cut off | past participle
+klingen | | to sound
+gefiel | gefallen | to please | past: "dem Hahn gefiel der Vorschlag" = the rooster liked the suggestion
+erreichen | | to reach
+übernachten | | to spend the night
+einschlief | einschlafen | to fall asleep | past; stays in one piece after "bevor"
+einschlafen | | to fall asleep | separable: "ich schlafe ein"
+eingeschlafen | einschlafen | to fall asleep | past participle
+hingehen | | to go there | separable
+meinte | meinen | to think; to say | past: thought, said
+meinten | meinen | to think; to mean | past: (they) thought
+schaute | schauen | to look | past: looked
+verjagen | | to chase away
+könnten | können | could | "wie sie … verjagen könnten" = how they could chase … away
+könnte | können | could | "wie könnte ich …?" = how could I …?
+stürzten | stürzen | to rush; to crash, to fall | past: (they) crashed
+klirrten | klirren | to rattle, to clink | past: (they) rattled
+flohen | fliehen | to flee | past: (they) fled
+hungern | | to go hungry, to starve
+löschten | löschen | to put out (a light, a fire) | past: (they) put out
+hätten | haben | would have | "wir hätten nicht … sollen" = we shouldn't have …
+davonlaufen | | to run away | separable
+untersuchen | | to examine, to search
+sollte | sollen | should; was supposed to | past: "der das Haus untersuchen sollte" = who was to search the house
+anzuzünden | anzünden | to light | "um ein Licht anzuzünden" = to light a lamp
+hielt | halten | to hold; to stop | past: held
+hielten | halten | to hold | past: (they) held
+fauchte | fauchen | to hiss | past: hissed
+rannte | rennen | to run | past: ran
+aufgewacht | aufwachen | to wake up | past participle
+angefaucht | anfauchen | to hiss at | past participle
+eingeschlagen | einschlagen | to hit, to beat | past participle: "auf jemanden einschlagen" = to beat someone
+zugesehen | zusehen | to watch; to make sure | past participle: "ich habe zugesehen, dass …" = I made sure that …
+wegkomme | wegkommen | to get away | "dass ich wegkomme" = that I get away
+fortgehen | | to go away, to leave | separable
+kaufen | | to buy
+seufzend | seufzen | sighing | "seufzend sagte er" = he said with a sigh
+ernähren | | to feed, to support
+führen | | to lead, to take
+führte | führen | to lead | past: led
+geben | | to give
+zerreißen | | to tear apart, to tear to pieces
+sterben | | to die
+gestorben | sterben | to die | past participle: "sie war gestorben" = she had died
+helfen | | to help
+hilft | helfen | to help | "sie hilft uns" = she helps us
+hineinpassten | hineinpassen | to fit in | past: "so viele, wie hineinpassten" = as many as would fit
+hineinpasste | hineinpassen | to fit in | past: "so viel hineinpasste" = as much as would fit
+verlassen | | to leave, to abandon
+anbrach | anbrechen | to begin, to dawn (day) | past: "als der Tag anbrach" = when day broke
+aufgegangen | aufgehen | to rise (sun, moon) | past participle
+gebunden | binden | to tie | past participle
+schlug | schlagen | to hit, to beat | past: beat, knocked
+gesessen | sitzen | to sit | past participle
+saßen | sitzen | to sit | past: (they) sat
+tröstete | trösten | to comfort | past: comforted
+schimmerten | schimmern | to shimmer | past: (they) shimmered
+aufgegessen | aufessen | to eat up | past participle
+aufessen | | to eat up | separable
+nachgegeben | nachgeben | to give in | past participle
+abgeschlossen | abschließen | to lock | past participle
+zerbröckelte | zerbröckeln | to crumble | past: crumbled
+gewesen | sein | to be | past participle: "sie waren nie gewesen" = they had never been
+aufgepickt | aufpicken | to peck up | past participle
+zuhörten | zuhören | to listen (to) | past; one piece after "dass"
+gebaut | bauen | to build | past participle
+gedeckt | decken | to cover; to roof; to lay (a table) | past participle: "mit Kuchen gedeckt" = roofed with cake
+schüttelte | schütteln | to shake | past: shook
+geschieht | geschehen | to happen | "hier geschieht euch nichts" = nothing will happen to you here
+wären | sein | would be | "sie meinten, sie wären im Himmel" = they thought they were in heaven
+auflauerte | auflauern | to lie in wait for | past; one piece after "die"
+anzulocken | anlocken | to lure (in) | "um sie anzulocken" = to lure them in
+tötete | töten | to kill | past: killed
+merken | | to notice
+rüttelte | rütteln | to shake | past: "sie rüttelte sie wach" = she shook her awake
+verlangte | verlangen | to demand | past: demanded
+fühle | fühlen | to feel | "damit ich fühle" = so that I can feel
+vergangen | vergehen | to pass (time) | past participle: "vier Wochen waren vergangen" = four weeks had passed
+verlor | verlieren | to lose | past: lost
+schlachten | | to slaughter
+geheizt | heizen | to heat | past participle
+geknetet | kneten | to knead | past participle
+stieß | stoßen | to push | past: pushed
+herausschlugen | herausschlagen | to leap out (flames) | past; one piece after "aus dem"
+hineinschieben | | to push in, to put in | separable
+zumachen | | to close, to shut | separable
+hineinfiel | hineinfallen | to fall in | past; one piece after "sodass"
+heulen | | to howl
+gerettet | retten | to save, to rescue | past participle: "wir sind gerettet" = we're saved
+aufmacht | aufmachen | to open | one piece after "wenn"
+küssten | küssen | to kiss | past: (they) kissed
+herauskommen | | to come out, to get out | separable
+fährt | fahren | to go (by vehicle), to sail, to drive | "hier fährt kein Boot" = there's no boat here
+schwimmt | schwimmen | to swim | "da schwimmt eine Ente" = a duck is swimming there
+bat | bitten | to ask (for) | past: asked
+hinüberzutragen | hinübertragen | to carry across | "sie bat sie, sie hinüberzutragen" = she asked her to carry them across
+weitergingen | weitergehen | to walk on, to continue | past; one piece after "als"
+gehabt | haben | to have | past participle
+gelassen | lassen | to leave; to let | past participle
+sprangen | springen | to jump; to bounce | past: (they) jumped

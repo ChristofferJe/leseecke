@@ -32,8 +32,16 @@ const sheet = $('#sheet');
 const sheetInner = $('#sheet-inner');
 const settings = store.state.settings;
 
-let books = [];
+// A "work" is a book (e.g. Grimms Märchen). It has one or more "editions", one per level,
+// each in its own folder books/<edition id>/. Most of the app works with an edition's
+// metadata: the work's fields plus the edition's id, level and chapters.
+let works = [];
+const editions = new Map(); // edition id -> { ...work, ...edition, work, workId }
+const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+const levelRank = (level) => LEVELS.indexOf(level);
+
 const bookCache = new Map();
+let sharedGlossary = null;
 let renderId = 0; // guards against an older async render overwriting a newer view
 let view = '';
 let reader = null; // { book, bookId, ci, tokens, selected, enOpenFor }
@@ -49,19 +57,38 @@ async function fetchText(url) {
   return res.text();
 }
 
-async function loadBooks() {
-  books = JSON.parse(await fetchText('books/index.json'));
+async function loadLibrary() {
+  works = JSON.parse(await fetchText('books/library.json'));
+  editions.clear();
+  for (const work of works) {
+    work.editions.sort((a, b) => levelRank(a.level) - levelRank(b.level));
+    for (const ed of work.editions) editions.set(ed.id, { ...work, ...ed, work, workId: work.id });
+  }
+}
+
+const findWork = (id) => works.find((w) => w.id === id);
+
+// The glossary shared by all books (common words); each edition can add or override entries.
+function loadSharedGlossary() {
+  sharedGlossary ??= fetchText('books/glossary.txt')
+    .then((text) => parseGlossary(text).glossary)
+    .catch((err) => {
+      sharedGlossary = null;
+      throw err;
+    });
+  return sharedGlossary;
 }
 
 async function loadBook(id) {
   if (bookCache.has(id)) return bookCache.get(id);
-  const meta = books.find((b) => b.id === id);
+  const meta = editions.get(id);
   if (!meta) throw new Error(`There is no book called "${id}".`);
-  const [glossText, ...texts] = await Promise.all([
+  const [shared, glossText, ...texts] = await Promise.all([
+    loadSharedGlossary(),
     fetchText(`books/${id}/glossary.txt`),
     ...meta.chapters.map((f) => fetchText(`books/${id}/${f}`)),
   ]);
-  const { glossary } = parseGlossary(glossText);
+  const glossary = new Map([...shared, ...parseGlossary(glossText).glossary]);
   const chapters = texts.map((t) => {
     const { chapter } = parseChapter(t);
     annotateChapter(chapter, glossary);
@@ -74,95 +101,150 @@ async function loadBook(id) {
 
 // ---------- offline downloads (one cache per book; served by sw.js) ----------
 
-const bookCacheName = (id) => `leseecke-book-${id}`;
+// A downloaded book keeps every level on the device. Each level is stored in its own cache
+// ("leseecke-book-<edition id>"), which sw.js serves from when the device is offline.
+const bookCacheName = (editionId) => `leseecke-book-${editionId}`;
 const canDownload = () => useServiceWorker && 'caches' in window;
-const bookFiles = (meta) => [`books/${meta.id}/glossary.txt`, ...meta.chapters.map((f) => `books/${meta.id}/${f}`)];
-const downloading = new Map(); // book id -> { done, total }
+const editionFiles = (ed) => [`books/${ed.id}/glossary.txt`, ...ed.chapters.map((f) => `books/${ed.id}/${f}`)];
+const downloading = new Map(); // work id -> { done, total }
+const autoCompleted = new Set(); // works topped up automatically this session
 
-async function downloadStatus(meta) {
+async function downloadStatus(work) {
   if (!canDownload()) return 'unsupported';
-  if (downloading.has(meta.id)) return 'downloading';
-  if (!(await caches.has(bookCacheName(meta.id)))) return 'none';
-  const cache = await caches.open(bookCacheName(meta.id));
-  const found = await Promise.all(bookFiles(meta).map((f) => cache.match(f)));
-  return found.every(Boolean) ? 'downloaded' : 'partial';
+  if (downloading.has(work.id)) return 'downloading';
+  let have = 0;
+  let total = 0;
+  for (const ed of work.editions) {
+    const files = editionFiles(ed);
+    total += files.length;
+    if (!(await caches.has(bookCacheName(ed.id)))) continue;
+    const cache = await caches.open(bookCacheName(ed.id));
+    for (const f of files) if (await cache.match(f)) have++;
+  }
+  return have === 0 ? 'none' : have === total ? 'downloaded' : 'partial';
 }
 
-async function downloadBook(meta) {
-  if (!meta || downloading.has(meta.id)) return;
-  const files = bookFiles(meta);
-  const progress = { done: 0, total: files.length };
-  downloading.set(meta.id, progress);
+async function downloadWork(work, { quiet = false } = {}) {
+  if (!work || downloading.has(work.id)) return;
+  const jobs = work.editions.flatMap((ed) => editionFiles(ed).map((f) => [ed.id, f]));
+  const progress = { done: 0, total: jobs.length };
+  downloading.set(work.id, progress);
   refreshDownloadUi();
   try {
     // Fetch everything first, then store it all, so a dropped connection never leaves half a book.
     const fetched = [];
-    for (const f of files) {
+    for (const [edId, f] of jobs) {
       const res = await fetch(f, { cache: 'no-cache' });
       if (!res.ok) throw new Error(`${f} (${res.status})`);
-      fetched.push([f, res]);
+      fetched.push([edId, f, res]);
       progress.done++;
       refreshDownloadUi();
     }
-    const cache = await caches.open(bookCacheName(meta.id));
-    await Promise.all(fetched.map(([f, res]) => cache.put(f, res)));
+    for (const [edId, f, res] of fetched) await (await caches.open(bookCacheName(edId))).put(f, res);
     navigator.storage?.persist?.().catch(() => {});
   } catch (err) {
-    alert(`Could not download "${meta.title}". Check your internet connection and try again.\n\n${err.message}`);
+    if (!quiet) alert(`Could not download "${work.title}". Check your internet connection and try again.\n\n${err.message}`);
   } finally {
-    downloading.delete(meta.id);
+    downloading.delete(work.id);
     refreshDownloadUi();
   }
 }
 
-async function removeDownload(meta) {
-  if (!meta) return;
+async function removeDownload(work) {
+  if (!work) return;
+  const levels = work.editions.length > 1 ? ' (all levels)' : '';
   const ok = confirm(
-    `Remove the downloaded copy of "${meta.title}" from this device?\n\nYou can still read it when you are online and download it again at any time. Your saved words and reading position are kept.`,
+    `Remove the downloaded copy of "${work.title}"${levels} from this device?\n\nYou can still read it when you are online and download it again at any time. Your saved words and reading position are kept.`,
   );
   if (!ok) return;
-  await caches.delete(bookCacheName(meta.id));
+  for (const ed of work.editions) await caches.delete(bookCacheName(ed.id));
+  autoCompleted.add(work.id);
   refreshDownloadUi();
 }
 
-function downloadControl(meta, status) {
-  const id = esc(meta.id);
+function downloadControl(work, status) {
+  const id = esc(work.id);
+  const all = work.editions.length > 1 ? ` (${work.editions.map((e) => e.level).join(', ')})` : '';
   switch (status) {
     case 'unsupported':
       return '';
     case 'downloading': {
-      const p = downloading.get(meta.id);
+      const p = downloading.get(work.id);
       return `<span class="dl-state">${ICON.download} Downloading… ${p ? `${p.done}/${p.total}` : ''}</span>`;
     }
     case 'downloaded':
-      return `<span class="dl-state ok">${ICON.check} Downloaded</span>
-        <button class="btn small" data-act="remove-download" data-book="${id}" aria-label="Remove the download of ${esc(meta.title)}">Remove</button>`;
+      return `<span class="dl-state ok">${ICON.check} Downloaded${esc(all)}</span>
+        <button class="btn small" data-act="remove-download" data-book="${id}" aria-label="Remove the download of ${esc(work.title)}">Remove</button>`;
     case 'partial':
       return `<button class="btn small" data-act="download" data-book="${id}">${ICON.download} Finish download</button>`;
     default:
       return navigator.onLine
-        ? `<button class="btn small" data-act="download" data-book="${id}">${ICON.download} Download</button>`
+        ? `<button class="btn small" data-act="download" data-book="${id}">${ICON.download} Download${esc(all)}</button>`
         : '<span class="dl-state warn">Not downloaded: needs internet</span>';
   }
 }
 
 // Fills every download slot on the current page with the book's current status.
+// A downloaded book that has gained a level or chapter since is topped up automatically.
 let dlRefresh = 0;
 async function refreshDownloadUi() {
   const run = ++dlRefresh;
   for (const el of $$('[data-dl]', app)) {
-    const meta = books.find((b) => b.id === el.dataset.dl);
-    if (!meta) continue;
-    const status = await downloadStatus(meta);
+    const work = findWork(el.dataset.dl);
+    if (!work) continue;
+    const status = await downloadStatus(work);
     if (run !== dlRefresh) return; // a newer refresh has started
     el.dataset.status = status;
-    el.innerHTML = downloadControl(meta, status);
+    el.innerHTML = downloadControl(work, status);
+    if (status === 'partial' && navigator.onLine && !autoCompleted.has(work.id)) {
+      autoCompleted.add(work.id);
+      downloadWork(work, { quiet: true });
+    }
   }
 }
 
-const downloadSlot = (meta) => `<div class="dl" data-dl="${esc(meta.id)}"></div>`;
+const downloadSlot = (work) => `<div class="dl" data-dl="${esc(work.id)}"></div>`;
 
-const findBook = (id) => books.find((b) => b.id === id);
+// ---------- levels ----------
+
+// The level last chosen for this book, or else the one closest to the level the reader last used.
+function chosenEdition(work) {
+  const saved = store.state.choices[work.id];
+  if (saved && work.editions.some((e) => e.id === saved)) return editions.get(saved);
+  const want = levelRank(settings.level || 'A2');
+  const best = [...work.editions].sort(
+    (a, b) => Math.abs(levelRank(a.level) - want) - Math.abs(levelRank(b.level) - want) || levelRank(a.level) - levelRank(b.level),
+  )[0];
+  return editions.get(best.id);
+}
+
+function chooseEdition(meta) {
+  store.state.choices[meta.workId] = meta.id;
+  settings.level = meta.level;
+  store.save();
+}
+
+// The most recent reading position in any level of this book.
+function latestProgress(work) {
+  let best = null;
+  for (const ed of work.editions) {
+    const p = store.state.progress[ed.id];
+    if (p && (!best || (p.at || 0) > (best.at || 0))) best = { ...p, edition: editions.get(ed.id) };
+  }
+  return best;
+}
+
+function levelSwitch(meta, act) {
+  if (meta.work.editions.length < 2) return '';
+  return `<div class="levels" role="group" aria-label="Level">
+    ${meta.work.editions
+      .map(
+        (e) => `<button class="level-btn${e.id === meta.id ? ' active' : ''}" data-act="${act}" data-edition="${esc(e.id)}"
+          aria-pressed="${e.id === meta.id}" title="Read at level ${esc(e.level)}">${esc(e.level)}</button>`,
+      )
+      .join('')}
+  </div>`;
+}
 
 function bookLoadError(err) {
   if (!navigator.onLine || err instanceof TypeError) {
@@ -246,11 +328,11 @@ function showError(err) {
 
 // ---------- library ----------
 
-function cover(b) {
-  return `<div class="cover" style="--cover:${esc(b.color || '#2f6f73')}">
-    <span class="cover-title">${esc(b.title)}</span>
-    <span class="cover-author">${esc(b.author)}</span>
-    <span class="level">${esc(b.level)}</span>
+function cover(work) {
+  return `<div class="cover" style="--cover:${esc(work.color || '#2f6f73')}">
+    <span class="cover-title">${esc(work.title)}</span>
+    <span class="cover-author">${esc(work.author)}</span>
+    <span class="cover-levels">${work.editions.map((e) => `<span class="level">${esc(e.level)}</span>`).join('')}</span>
   </div>`;
 }
 
@@ -262,20 +344,23 @@ function showLibrary() {
     <h1 class="page-title">Library</h1>
     ${due ? `<a class="panel due-teaser" href="#/review"><strong>${due} flashcard${due === 1 ? '' : 's'} ready</strong><span>Review now →</span></a>` : ''}
     <div class="books">
-      ${books
-        .map((b) => {
-          const p = store.state.progress[b.id];
-          const where = p ? `Continue at chapter ${p.chapter + 1}` : `${b.chapters.length} chapters`;
+      ${works
+        .map((w) => {
+          const p = latestProgress(w);
+          const ed = chosenEdition(w);
+          const where = p
+            ? `Continue at chapter ${p.chapter + 1} (${p.edition.level})`
+            : `${ed.chapters.length} chapters`;
           return `<div class="book-card">
-            <a class="book-link" href="#/book/${encodeURIComponent(b.id)}">
-              ${cover(b)}
+            <a class="book-link" href="#/book/${encodeURIComponent(w.id)}">
+              ${cover(w)}
               <span class="book-info">
-                <strong>${esc(b.title)}</strong>
-                <span class="muted">${esc(b.titleEn || '')}</span>
+                <strong>${esc(w.title)}</strong>
+                <span class="muted">${esc(w.titleEn || '')}</span>
                 <span class="muted small">${esc(where)}</span>
               </span>
             </a>
-            ${downloadSlot(b)}
+            ${downloadSlot(w)}
           </div>`;
         })
         .join('')}
@@ -288,36 +373,50 @@ function showLibrary() {
 
 async function showBook(id) {
   const t = ++renderId;
+  // Links from older versions point at an edition ("grimm-a2"): open its book at that level.
+  if (!findWork(id) && editions.has(id)) {
+    chooseEdition(editions.get(id));
+    id = editions.get(id).workId;
+  }
+  const work = findWork(id);
+  if (!work) return showError(new Error(`There is no book called "${id}".`));
+  const meta = chosenEdition(work);
   app.innerHTML = loading();
   let book;
   try {
-    book = await loadBook(id);
+    book = await loadBook(meta.id);
   } catch (e) {
     return showError(bookLoadError(e));
   }
   if (t !== renderId) return;
-  const { meta, chapters } = book;
-  const p = store.state.progress[id];
+  const { chapters } = book;
+  const edId = encodeURIComponent(meta.id);
+  const p = store.state.progress[meta.id];
   const start = p ? p.chapter : 0;
+  const multi = work.editions.length > 1;
   app.innerHTML = `
     <a class="link-back" href="#/">${ICON.back} Library</a>
     <section class="book-head">
-      ${cover(meta)}
+      ${cover(work)}
       <div>
-        <h1>${esc(meta.title)}</h1>
-        <p class="muted">${esc(meta.author)} · Level ${esc(meta.level)}</p>
-        <p>${esc(meta.description || '')}</p>
+        <h1>${esc(work.title)}</h1>
+        <p class="muted">${esc(work.author)}${work.titleEn && work.titleEn !== work.title ? ` · ${esc(work.titleEn)}` : ''}</p>
+        <p>${esc(work.description || '')}</p>
+        <div class="level-row">
+          <span class="level-label">${multi ? 'Level:' : `Level ${esc(meta.level)}`}</span>
+          ${levelSwitch(meta, 'choose-level')}
+        </div>
         <div class="book-actions">
-          <a class="btn primary" href="#/read/${encodeURIComponent(id)}/${start}">${p ? 'Continue reading' : 'Start reading'}</a>
-          ${downloadSlot(meta)}
+          <a class="btn primary" href="#/read/${edId}/${start}">${p ? 'Continue reading' : 'Start reading'} (${esc(meta.level)})</a>
+          ${downloadSlot(work)}
         </div>
       </div>
     </section>
-    <h2 class="section-title">Chapters</h2>
+    <h2 class="section-title">Chapters <span class="muted small">· ${esc(meta.level)}</span></h2>
     <ol class="toc">
       ${chapters
         .map(
-          (c, i) => `<li><a href="#/read/${encodeURIComponent(id)}/${i}">
+          (c, i) => `<li><a href="#/read/${edId}/${i}">
             <span class="toc-num">${i + 1}</span>
             <span class="toc-title"><span lang="de">${esc(c.title)}</span><span class="muted">${esc(c.titleEn)}</span></span>
             <span class="muted small">${c.wordCount} words</span>
@@ -325,7 +424,7 @@ async function showBook(id) {
         )
         .join('')}
     </ol>
-    <p class="hint small">${esc(meta.source || '')}</p>`;
+    <p class="hint small">${esc(meta.source || work.source || '')}</p>`;
   refreshDownloadUi();
 }
 
@@ -365,17 +464,20 @@ async function showReader(bookId, ci) {
   const body = ch.paragraphs.map((p) => `<p>${p.sentences.map((s) => sentenceHtml(s, tokens)).join(' ')}</p>`).join('');
   reader = { book, bookId, ci, tokens, selected: -1, enOpenFor: null };
 
+  chooseEdition(book.meta);
   const enc = encodeURIComponent(bookId);
+  const workLink = `#/book/${encodeURIComponent(book.meta.workId)}`;
   const last = book.chapters.length - 1;
   const prev = ci > 0 ? `<a class="btn" href="#/read/${enc}/${ci - 1}">← Previous</a>` : '<span></span>';
   const next =
     ci < last
       ? `<a class="btn primary" href="#/read/${enc}/${ci + 1}">Next: ${esc(book.chapters[ci + 1].title)} →</a>`
-      : `<a class="btn primary" href="#/book/${enc}">Finished! Back to the book</a>`;
+      : `<a class="btn primary" href="${workLink}">Finished! Back to the book</a>`;
 
   app.innerHTML = `
     <div class="reader-bar">
-      <a class="link-back" href="#/book/${enc}">${ICON.back} ${esc(book.meta.title)}</a>
+      <a class="link-back" href="${workLink}">${ICON.back} ${esc(book.meta.title)}</a>
+      ${levelSwitch(book.meta, 'switch-level')}
       <div class="font-ctl" role="group" aria-label="Text size">
         <button class="icon-btn" data-act="font-down" aria-label="Smaller text">A−</button>
         <button class="icon-btn" data-act="font-up" aria-label="Larger text">A+</button>
@@ -808,9 +910,23 @@ function handleAction(act, el) {
     case 'export-anki':
       return download(`leseecke-anki-${today()}.csv`, ankiCsv(), 'text/csv');
     case 'download':
-      return downloadBook(findBook(el.dataset.book));
+      return downloadWork(findWork(el.dataset.book));
     case 'remove-download':
-      return removeDownload(findBook(el.dataset.book));
+      return removeDownload(findWork(el.dataset.book));
+    case 'choose-level': {
+      const meta = editions.get(el.dataset.edition);
+      if (!meta) return;
+      chooseEdition(meta);
+      return showBook(meta.workId);
+    }
+    case 'switch-level': {
+      // Same chapter at the other level (the levels of a book share their chapter order).
+      const meta = editions.get(el.dataset.edition);
+      if (!meta || !reader) return;
+      chooseEdition(meta);
+      location.hash = `#/read/${encodeURIComponent(meta.id)}/${Math.min(reader.ci, meta.chapters.length - 1)}`;
+      return;
+    }
   }
 }
 
@@ -889,7 +1005,7 @@ window.addEventListener('hashchange', route);
 
 async function init() {
   try {
-    await loadBooks();
+    await loadLibrary();
   } catch (e) {
     const fileHint =
       location.protocol === 'file:'

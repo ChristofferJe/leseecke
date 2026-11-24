@@ -40,6 +40,9 @@ Changes to the app itself take effect on the second open.
 
 ## How to use it
 
+- **Levels.** Some books come in several levels (e.g. A1, A2, B1). Choose one on the
+  book's page, or switch while reading with the level buttons at the top: you stay in the
+  same chapter. Each book remembers your level, and new books start at your latest level.
 - **Library → book → chapter.** Tap a word to see its basic form, meaning and a grammar note.
   The word is spoken aloud. Words that belong together, like separable verbs (*zog … an*), are
   highlighted together.

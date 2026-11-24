@@ -1,9 +1,12 @@
 // Checks the books for format errors, missing translations and missing glosses.
 //
-//   node tools/check.mjs                 check every book
-//   node tools/check.mjs grimm-a2        check one book
-//   node tools/check.mjs grimm-a2 --missing   also print glossary stub lines for missing words
-//   node tools/check.mjs grimm-a2 --unused    also list glossary entries no chapter uses
+//   node tools/check.mjs                   check every book
+//   node tools/check.mjs grimm             check every level of one book
+//   node tools/check.mjs grimm-b1          check one level (edition)
+//   node tools/check.mjs grimm-b1 --missing   also print glossary stub lines for missing words
+//   node tools/check.mjs --unused          also list glossary entries that no chapter uses
+//
+// Words are looked up in the edition's own glossary first, then in books/glossary.txt.
 
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -18,30 +21,53 @@ const only = args.find((a) => !a.startsWith('--'));
 // Rough upper limits for the average number of words per sentence line.
 const MAX_AVG_WORDS = { A1: 8, A2: 11, B1: 15, B2: 20, C1: 26 };
 
-const books = JSON.parse(readFileSync(join(root, 'books', 'index.json'), 'utf8'));
 let problems = 0;
+const fail = (msg) => {
+  problems++;
+  console.log(`  ✗ ${msg}`);
+};
+const read = (...p) => readFileSync(join(root, ...p), 'utf8');
 
-const fail = (msg) => { problems++; console.log(`  ✗ ${msg}`); };
+const works = JSON.parse(read('books', 'library.json'));
+const shared = parseGlossary(read('books', 'glossary.txt'));
+if (shared.errors.length) {
+  console.log('\nbooks/glossary.txt (shared)');
+  shared.errors.forEach((e) => fail(`glossary.txt:${e.line} ${e.msg}`));
+}
+const usedShared = new Set();
+const editionIds = new Set();
 
-for (const book of books) {
-  if (only && book.id !== only) continue;
-  const dir = join(root, 'books', book.id);
-  console.log(`\n${book.title} — ${book.id} (${book.level})`);
+for (const work of works) {
+  for (const key of ['id', 'title', 'author', 'color', 'editions']) if (!work[key]) fail(`library.json: book "${work.id}" has no "${key}"`);
+  for (const ed of work.editions || []) {
+    if (editionIds.has(ed.id)) fail(`library.json: edition id "${ed.id}" is used twice`);
+    editionIds.add(ed.id);
+    if (only && only !== work.id && only !== ed.id) continue;
+    checkEdition(work, ed);
+  }
+}
 
-  const glossPath = join(dir, 'glossary.txt');
-  const { glossary, errors: gErrors } = existsSync(glossPath)
-    ? parseGlossary(readFileSync(glossPath, 'utf8'))
-    : { glossary: new Map(), errors: [{ line: 0, msg: 'glossary.txt not found' }] };
-  gErrors.forEach((e) => fail(`glossary.txt:${e.line} ${e.msg}`));
+function checkEdition(work, ed) {
+  const dir = join(root, 'books', ed.id);
+  console.log(`\n${work.title} — ${ed.id} (${ed.level})`);
 
-  const used = new Set();
+  const own = existsSync(join(dir, 'glossary.txt'))
+    ? parseGlossary(readFileSync(join(dir, 'glossary.txt'), 'utf8'))
+    : { glossary: new Map(), errors: [{ line: 0, msg: 'glossary.txt not found (create it, even if it only has a comment)' }] };
+  own.errors.forEach((e) => fail(`${ed.id}/glossary.txt:${e.line} ${e.msg}`));
+  const glossary = new Map([...shared.glossary, ...own.glossary]);
+
+  const usedOwn = new Set();
   const missing = new Map(); // form -> { count, example }
   let words = 0;
-  let sentences = 0;
+  let lines = 0;
 
-  for (const file of book.chapters) {
+  for (const file of ed.chapters) {
     const path = join(dir, file);
-    if (!existsSync(path)) { fail(`${file}: file not found`); continue; }
+    if (!existsSync(path)) {
+      fail(`${file}: file not found`);
+      continue;
+    }
     const { chapter, errors } = parseChapter(readFileSync(path, 'utf8'));
     errors.forEach((e) => fail(`${file}:${e.line} ${e.msg}`));
     if (!chapter.titleEn) fail(`${file}: title has no "= English title" line`);
@@ -54,41 +80,48 @@ for (const book of books) {
       entry.count++;
       missing.set(m.form, entry);
     }
-    for (const s of all) for (const p of s.parts) if (p.glossKey) used.add(p.glossKey);
+    for (const s of all) {
+      for (const p of s.parts) {
+        if (!p.glossKey) continue;
+        if (own.glossary.has(p.glossKey)) usedOwn.add(p.glossKey);
+        else usedShared.add(p.glossKey);
+      }
+    }
 
     const avg = chapter.wordCount / Math.max(1, chapter.sentenceCount);
-    const limit = MAX_AVG_WORDS[book.level] ?? 99;
+    const limit = MAX_AVG_WORDS[ed.level] ?? 99;
     const long = all
       .map((s) => ({ s, n: s.parts.filter((p) => p.w).length }))
       .filter((x) => x.n > limit * 1.8)
       .sort((a, b) => b.n - a.n)
       .slice(0, 3);
     console.log(`  ${file}: "${chapter.title}" — ${chapter.wordCount} words, ${chapter.sentenceCount} lines, ${avg.toFixed(1)} words/line`);
-    if (avg > limit) console.log(`    ! average line length is above the ${book.level} guideline (${limit})`);
+    if (avg > limit) console.log(`    ! average line length is above the ${ed.level} guideline (${limit})`);
     for (const x of long) console.log(`    ! long line (${x.n} words) ${file}:${x.s.line}`);
     words += chapter.wordCount;
-    sentences += chapter.sentenceCount;
+    lines += chapter.sentenceCount;
   }
 
-  console.log(`  Total: ${words} words, ${sentences} lines, ${glossary.size} glossary entries`);
+  console.log(`  Total: ${words} words, ${lines} lines; ${own.glossary.size} own glossary entries`);
 
   if (missing.size) {
-    fail(`${missing.size} word forms have no gloss (add them to glossary.txt or annotate inline)`);
+    fail(`${missing.size} word forms have no gloss (add them to a glossary or annotate them inline)`);
     const list = [...missing.entries()];
     if (flags.has('--missing')) {
-      console.log('\n// --- stub lines for glossary.txt ---');
+      console.log(`\n// --- stub lines (${ed.id}) ---`);
       for (const [form, info] of list) console.log(`${form} |  |  |    // ×${info.count}  ${info.example}`);
     } else {
       console.log(`    ${list.slice(0, 30).map(([f]) => f).join(', ')}${list.length > 30 ? ', …' : ''}`);
       console.log('    (run with --missing to print stub lines with example sentences)');
     }
   }
+  const unusedOwn = [...own.glossary.keys()].filter((k) => !usedOwn.has(k));
+  if (unusedOwn.length && flags.has('--unused')) console.log(`  unused own entries: ${unusedOwn.join(', ')}`);
+}
 
-  const unused = [...glossary.keys()].filter((k) => !used.has(k));
-  if (unused.length) {
-    console.log(`  ${unused.length} glossary entries are not used by any chapter${flags.has('--unused') ? ':' : ' (--unused lists them)'}`);
-    if (flags.has('--unused')) console.log(`    ${unused.join(', ')}`);
-  }
+if (!only) {
+  const unused = [...shared.glossary.keys()].filter((k) => !usedShared.has(k));
+  console.log(`\nShared glossary: ${shared.glossary.size} entries, ${unused.length} not used by any book${flags.has('--unused') ? `: ${unused.join(', ')}` : ''}`);
 }
 
 console.log(problems ? `\n${problems} problem(s) found.` : '\nAll good.');

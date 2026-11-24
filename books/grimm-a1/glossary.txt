@@ -1,0 +1,1 @@
+// Glossary for grimm-a1: entries that differ from books/glossary.txt for this edition.
