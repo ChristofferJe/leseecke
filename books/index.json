@@ -1,0 +1,17 @@
+[
+  {
+    "id": "grimm-a2",
+    "title": "Grimms Märchen",
+    "titleEn": "Grimm's Fairy Tales",
+    "author": "Jacob und Wilhelm Grimm",
+    "level": "A2",
+    "color": "#8c2f39",
+    "description": "Three classic fairy tales retold in simple German: a girl, a wolf and a hunter; four old animals on their way to Bremen; and two children lost in the forest.",
+    "source": "Kinder- und Hausmärchen (1812–1857), public domain. Retold at A2 level.",
+    "chapters": [
+      "01-rotkaeppchen.txt",
+      "02-bremer-stadtmusikanten.txt",
+      "03-haensel-und-gretel.txt"
+    ]
+  }
+]

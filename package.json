@@ -1,0 +1,11 @@
+{
+  "name": "leseecke",
+  "private": true,
+  "type": "module",
+  "description": "Personal German graded reader with tap-to-translate and flashcards. No build step, no dependencies.",
+  "scripts": {
+    "check": "node tools/check.mjs",
+    "icons": "node tools/make-icons.mjs",
+    "serve": "python -m http.server 8765"
+  }
+}
