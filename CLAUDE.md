@@ -107,8 +107,13 @@ und | | and
 - **note:** grammar for this form, in plain words for a learner: "plural", "past: went",
   "command", "after a preposition", "comparative of gut", and also false friends
   ("bekommen = to get, not to become").
-- Don't put a capitalised entry for "Sie" in the glossary, because it would capture "Sie"
-  meaning "she" at the start of sentences. Annotate formal "Sie" inline instead.
+- **Formal "you"** (`Sie`, `Ihnen`, `Ihr`, `Ihre` …) has its own capitalised entries in the
+  shared glossary. `js/format.js` uses them only in the middle of a sentence. At the start of a
+  sentence (first word, or after `. ! ? :` or an opening quote) the lower-case entry is used,
+  i.e. "she/they/her". So **annotate formal Sie only when it starts a sentence**:
+  `„Sie[Sie|you|formal "you" (always with a capital S)] kennen ihn besser als ich.“`
+- In the Austen books, Emma and Mr Knightley say `du` to each other. Everyone else uses `Sie`,
+  except within families.
 
 ## Level rules (CEFR)
 

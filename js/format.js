@@ -68,6 +68,17 @@ function parseSentence(line, lineNo, errors) {
   }
   if (pos < line.length) parts.push({ text: line.slice(pos) });
 
+  // Mark words that start a sentence (first on the line, or after . ! ? : or an opening quote).
+  let start = true;
+  for (const p of parts) {
+    if (p.w) {
+      p.start = start;
+      start = false;
+    } else if (/[.!?:„‚»(]/.test(p.text)) {
+      start = true;
+    }
+  }
+
   const sentence = { de: parts.map((p) => p.text).join(''), en: '', parts, line: lineNo };
   if (/[[\]]/.test(sentence.de)) {
     errors.push({ line: lineNo, msg: 'Stray "[" or "]": an annotation must follow a word directly, e.g. ging[gehen|to go]' });
@@ -143,10 +154,15 @@ export function parseGlossary(text) {
   return { glossary, errors };
 }
 
+// Formal "you" (Sie, Ihnen, Ihr …) is written with a capital letter. In the middle of a sentence
+// the capital form means formal "you"; at the start of a sentence it is usually "she/they/her".
+const FORMAL = new Set(['Sie', 'Ihnen', 'Ihr', 'Ihre', 'Ihrer', 'Ihrem', 'Ihren', 'Ihres']);
+
 // Exact form first, then lower-case (for capitalised words at the start of a sentence).
-export function lookupKey(glossary, form) {
-  if (glossary.has(form)) return form;
+export function lookupKey(glossary, form, sentenceStart = false) {
   const lower = form.toLowerCase();
+  if (sentenceStart && FORMAL.has(form) && glossary.has(lower)) return lower;
+  if (glossary.has(form)) return form;
   if (glossary.has(lower)) return lower;
   const lowerFirst = form[0].toLowerCase() + form.slice(1);
   if (glossary.has(lowerFirst)) return lowerFirst;
@@ -164,7 +180,7 @@ export function annotateChapter(chapter, glossary) {
         if (src) {
           p.gloss = { lemma: src.lemma || src.text, en: src.en, note: src.note || '' };
         } else {
-          const key = lookupKey(glossary, p.text);
+          const key = lookupKey(glossary, p.text, p.start);
           p.glossKey = key;
           p.gloss = key ? glossary.get(key) : null;
         }

@@ -1,0 +1,43 @@
+// Glossary for emma-b1: names and meanings that only fit this book.
+// General words are in books/glossary.txt.
+Emma | | Emma | name
+Emmas | Emma | Emma's | name + s = possessive
+Woodhouse | | Woodhouse | family name
+Hartfield | | Hartfield | name of the Woodhouses' house
+Highbury | | Highbury | name of the small town where the story takes place
+Isabella | | Isabella | name
+Isabellas | Isabella | Isabella's | name + s = possessive
+Taylor | | Taylor | family name
+Weston | | Weston | family name
+Westons | Weston | the Westons | the Weston family (Mr and Mrs Weston)
+Knightley | | Knightley | family name
+Donwell | | Donwell | part of the name "Donwell Abbey" (Mr Knightley's estate)
+Abbey | | Abbey | English "abbey"; part of the name "Donwell Abbey"
+Elton | | Elton | family name
+Eltons | Elton | the Eltons | the Elton family (Mr and Mrs Elton)
+Harriet | | Harriet | name
+Harriets | Harriet | Harriet's | name + s = possessive
+Smith | | Smith | family name
+Goddard | | Goddard | family name
+Martin | | Martin | family name
+Robert | | Robert | name
+John | | John | name
+Randalls | | Randalls | name of the Westons' house
+Bath | | Bath | an elegant spa town in the west of England
+Augusta | | Augusta | name
+Hawkins | | Hawkins | family name
+Frank | | Frank | name
+Churchill | | Churchill | family name
+Churchills | Churchill | Churchill's | name + s = possessive
+Franks | Frank | Frank's | name + s = possessive
+Jane | | Jane | name
+Fairfax | | Fairfax | family name
+Bates | | Bates | family name
+Campbell | | Campbell | family name
+Dixon | | Dixon | family name
+Henry | | Henry | name
+Box | | Box | part of the name "Box Hill"
+Hill | | Hill | English "hill"; part of the name "Box Hill"
+Weymouth | | Weymouth | a seaside town in the south of England
+George | | George | name (Mr Knightley's first name)
+Madam | | ma'am, madam | polite English form of address for a lady

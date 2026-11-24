@@ -1,0 +1,43 @@
+// Glossary for sense-and-sensibility-b1: names and meanings that only fit this book.
+// General words are in books/glossary.txt.
+Dashwood | | Dashwood | family name
+Dashwoods | Dashwood | the Dashwoods | the Dashwood family
+Norland | | Norland | name of the family's estate
+Park | der Park | park | here part of the name "Norland Park"
+Sussex | | Sussex | a county in the south of England
+Henry | | Henry | name
+John | | John | name
+Fanny | | Fanny | name
+Fannys | Fanny | Fanny's | name + s = possessive
+Elinor | | Elinor | name
+Marianne | | Marianne | name
+Mariannes | Marianne | Marianne's | name + s = possessive
+Margaret | | Margaret | name
+Edward | | Edward | name
+Edwards | Edward | Edward's | name + s = possessive
+Ferrars | | Ferrars | family name
+Middleton | | Middleton | family name
+Middletons | Middleton | Middleton's | name + s = possessive
+Devonshire | | Devonshire | a county in the south-west of England (today Devon)
+Barton | | Barton | name of a village and estate in Devonshire
+Cottage | das Cottage | cottage | English word: a small country house
+Jennings | | Jennings | family name
+Brandon | | Brandon | family name
+Delaford | | Delaford | name of Colonel Brandon's estate
+Willoughby | | Willoughby | family name
+Willoughbys | Willoughby | Willoughby's | name + s = possessive
+Anne | | Anne | name
+Lucy | | Lucy | name
+Steele | | Steele | family name
+Pratt | | Pratt | family name
+Grey | | Grey | family name
+Eliza | | Eliza | name
+Robert | | Robert | name
+Cleveland | | Cleveland | name of the Palmers' country house
+Charlotte | | Charlotte | name
+Palmer | | Palmer | family name
+Palmers | Palmer | the Palmers | the Palmer family
+Combe | | Combe | part of the name "Combe Magna" (Willoughby's house)
+Magna | | Magna | part of the name "Combe Magna" (Willoughby's house)
+Exeter | | Exeter | a town in Devonshire
+Thomas | | Thomas | name

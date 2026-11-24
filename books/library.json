@@ -24,5 +24,55 @@
         "chapters": ["01-rotkaeppchen.txt", "02-bremer-stadtmusikanten.txt", "03-haensel-und-gretel.txt"]
       }
     ]
+  },
+  {
+    "id": "sense-and-sensibility",
+    "title": "Verstand und Gefühl",
+    "titleEn": "Sense and Sensibility",
+    "author": "Jane Austen",
+    "color": "#2e4a6b",
+    "description": "Two sisters, two kinds of love: sensible Elinor hides a broken heart, while passionate Marianne falls headlong for the charming Willoughby. An abridged retelling of Jane Austen's first novel.",
+    "source": "Jane Austen, Sense and Sensibility (1811), public domain. Abridged and retold in German for learners.",
+    "editions": [
+      {
+        "id": "sense-and-sensibility-b1",
+        "level": "B1",
+        "chapters": [
+          "01-norland.txt",
+          "02-barton.txt",
+          "03-willoughby.txt",
+          "04-ein-geheimnis.txt",
+          "05-london.txt",
+          "06-edwards-versprechen.txt",
+          "07-cleveland.txt",
+          "08-verstand-und-gefuehl.txt"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "emma",
+    "title": "Emma",
+    "titleEn": "Emma",
+    "author": "Jane Austen",
+    "color": "#5a6b3a",
+    "description": "Clever, rich and sure of herself, Emma Woodhouse loves arranging other people's marriages, and gets almost everything wrong, including her own heart. An abridged retelling of Jane Austen's comedy.",
+    "source": "Jane Austen, Emma (1815), public domain. Abridged and retold in German for learners.",
+    "editions": [
+      {
+        "id": "emma-b1",
+        "level": "B1",
+        "chapters": [
+          "01-die-heiratsvermittlerin.txt",
+          "02-harriet-smith.txt",
+          "03-herr-elton.txt",
+          "04-frank-und-jane.txt",
+          "05-der-ball.txt",
+          "06-box-hill.txt",
+          "07-geheimnisse.txt",
+          "08-herr-knightley.txt"
+        ]
+      }
+    ]
   }
 ]

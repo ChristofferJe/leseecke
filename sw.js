@@ -8,7 +8,7 @@
 //   "leseecke-book-<edition id>", managed from the page). Other books are read from the
 //   network and never stored.
 
-const CACHE = 'leseecke-v5';
+const CACHE = 'leseecke-v6';
 const BOOK_PREFIX = 'leseecke-book-';
 const NETWORK_TIMEOUT = 4000;
 const SHELL = [

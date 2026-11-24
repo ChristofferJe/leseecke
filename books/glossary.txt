@@ -1121,3 +1121,832 @@ weitergingen | weitergehen | to walk on, to continue | past; one piece after "al
 gehabt | haben | to have | past participle
 gelassen | lassen | to leave; to let | past participle
 sprangen | springen | to jump; to bounce | past: (they) jumped
+
+// --- added with Sense and Sensibility B1 ---
+// formal "you": in mid-sentence a capital Sie/Ihnen/Ihr… means formal "you" (see js/format.js)
+Sie | Sie | you | formal "you" (always with a capital S); at the start of a sentence "Sie" can also mean "she" or "they"
+Ihnen | Sie | (to) you | formal: "ich kann Ihnen vertrauen" = I can trust you
+Ihr | Ihr | your | formal possessive (capital I)
+Ihre | Ihr | your | formal possessive (capital I)
+Ihrer | Ihr | your | formal possessive (capital I)
+Ihrem | Ihr | your | formal possessive (capital I)
+Ihren | Ihr | your | formal possessive (capital I)
+Ihres | Ihr | your | formal possessive (capital I)
+
+// small words
+außerdem | | besides, in addition, also
+jedoch | | however
+dagegen | | on the other hand; against it
+also | | so, therefore
+obwohl | | although
+deren | | whose | relative pronoun (feminine or plural)
+dieser | | this
+diesem | dieser | this | after a preposition
+jedes | jeder | every, each | "jedes Mal" = every time
+jemand | | someone, anyone
+jemanden | jemand | someone | object form
+niemandem | niemand | nobody | "mit niemandem" = with nobody
+anderem | ander- | other | "mit jemand anderem" = with anyone else
+andere | ander- | other | "alles andere" = everything else
+vieles | | a lot, many things
+allem | alles | everything | "vor allem" = above all
+derselbe | | the same
+dasselbe | derselbe | the same | neuter
+dieselbe | derselbe | the same | feminine
+dieselben | derselbe | the same | plural
+derselben | derselbe | the same | "derselben Meinung" = of the same opinion
+einigen | einige | some, a few | after a preposition: "nach einigen Wochen" = after a few weeks
+einiger | einige | some | "seit einiger Zeit" = for some time
+wenige | wenig | few
+meinen | mein | my | masculine object, or plural after a preposition
+meiner | mein | my | "meiner Mutter" = (to) my mother
+unseren | unser | our | masculine object, or plural after a preposition
+zwischen | | between
+namens | | named, called | "ein Mädchen namens Eliza" = a girl named Eliza
+miteinander | | with each other, together
+wann | | when (in questions)
+erst | | only; not until | "erst dreizehn" = only thirteen; "erst jetzt" = only now
+oft | | often
+manchmal | | sometimes
+selten | | rarely, seldom
+fast | | almost, nearly
+sogar | | even
+mindestens | | at least
+wenigstens | | at least
+etwa | | about, approximately
+genau | | exactly; closely
+wirklich | | really, truly
+kurz | | short; briefly | "kurz danach" = shortly afterwards
+gleich | | straight away; same | "gleich am ersten Tag" = on the very first day
+später | spät | later
+spät | | late
+früher | | earlier; in the past, before
+damals | | back then, at that time
+seitdem | | since then
+zugleich | | at the same time
+schließlich | | finally, in the end
+langsam | | slow; slowly
+stundenlang | | for hours
+ringsum | | all around
+darüber | | about it; over it
+davon | | of it, about it
+hinunter | | down | direction: going down
+herüber | | over (towards the speaker)
+unten | | down, downstairs | "nach unten" = downstairs
+vorbei | | over, past | "die Gefahr ist vorbei" = the danger is over
+außer | | except; out of | "außer Gefahr" = out of danger
+zufällig | | by chance
+gemeinsam | | in common; together
+bisschen | | bit | "ein bisschen" = a little
+danke | | thank you
+
+// numbers
+dreizehn | | thirteen
+siebzehn | | seventeen
+neunzehn | | nineteen
+dreißig | | thirty
+vierzig | | forty
+fünfunddreißig | | thirty-five
+dreitausend | | three thousand
+zehntausend | | ten thousand
+fünfzigtausend | | fifty thousand
+zweiten | zweit- | second
+ersten | erst- | first
+
+// adjectives
+kalt | | cold
+kalter | kalt | cold
+böser | böse | bad, wicked
+eigenes | eigen | own
+eigenen | eigen | own
+geiziger | geizig | meaner, stingier | comparative of "geizig"
+älteste | alt | eldest, oldest | superlative of "alt"
+ältesten | alt | eldest, oldest | superlative
+älteren | alt | older, elder | comparative: "sein älterer Bruder" = his elder brother
+jüngste | jung | youngest | superlative of "jung"
+jünger | jung | younger | comparative of "jung"
+jüngerer | jung | younger | comparative of "jung"
+jungen | jung | young
+junger | jung | young
+alten | alt | old
+erwachsen | | grown up, adult
+verheiratet | | married
+verlobt | | engaged (to be married)
+verliebt | | in love | "verliebt sein in" = to be in love with
+vernünftig | | sensible, reasonable
+vernünftiger | vernünftig | sensible, reasonable
+unvernünftig | | unreasonable, foolish
+starke | stark | strong
+begabt | | talented, gifted
+ehrlich | | honest
+gebildet | | educated
+reiche | reich | rich
+strenge | streng | strict
+berühmter | berühmt | famous
+ruhiges | ruhig | quiet, peaceful
+ruhiger | ruhig | quiet, calm
+vorsichtig | | careful; carefully
+sicher | | sure; safe | "ich bin mir … nicht sicher" = I'm not sure of …
+ganzem | ganz | whole, entire | "mit ganzem Herzen" = with all one's heart
+ganzes | ganz | whole, entire
+langweilig | | boring
+beleidigt | | offended
+willkommen | | welcome
+niedrige | niedrig | low
+grünen | grün | green
+hübsch | | pretty
+fröhlich | | cheerful, happy; cheerfully
+gastfreundlich | | hospitable
+elegant | | elegant
+eleganten | elegant | elegant
+kühl | | cool
+verwöhnten | verwöhnt | spoilt
+dicke | dick | fat, stout
+laute | laut | loud
+gutmütige | gutmütig | good-natured
+ernster | ernst | serious
+ernstes | ernst | serious | "ein ernstes Gesicht machen" = to look serious
+aufmerksam | | attentive; attentively
+echter | echt | real, true
+lächerlich | | ridiculous
+freundlicher | freundlich | kind, friendly
+romantisch | | romantic
+stürmischen | stürmisch | stormy
+heftig | | heavy, violent; heavily
+überrascht | | surprised
+angenehme | angenehm | pleasant
+verzaubert | | enchanted, spellbound
+vertraut | | close, familiar | "vertraut miteinander" = close to each other
+begeistert | | enthusiastic, thrilled; excitedly
+teures | teuer | expensive
+aufgeregt | | excited; excitedly
+überzeugt | | convinced
+blass | | pale
+blasser | blass | paler | comparative of "blass"
+stiller | still | quieter | comparative of "still"
+unhöflich | | rude, impolite
+unglücklich | | unhappy
+verlegen | | embarrassed
+enttäuscht | | disappointed
+unruhig | | restless
+rot | | red | "rot werden" = to blush
+genauer | genau | more closely | comparative of "genau"
+entfernte | entfernt | distant
+höflich | | polite
+verzweifelt | | in despair, desperate
+voll | | full
+falschen | falsch | wrong, false
+ohnmächtig | | unconscious | "ohnmächtig werden" = to faint
+entsetzt | | horrified
+überglücklich | | overjoyed
+eitler | eitel | vain
+stolz | | proud
+trauriger | traurig | sadder | comparative of "traurig"
+gebrochenen | gebrochen | broken
+selbstsüchtig | | selfish
+gerührt | | moved, touched (emotionally)
+sprachlos | | speechless
+nasse | nass | wet
+hohes | hoch | high
+gefährliche | gefährlich | dangerous
+dankbar | | grateful
+friedlich | | peaceful; peacefully
+wahr | | true
+grausame | grausam | cruel
+eifersüchtig | | jealous
+unfreundlich | | unkind, unfriendly
+herzlich | | warm, cordial; warmly
+frühere | früher | former
+dummer | dumm | foolish, stupid
+gütig | | kind, good-hearted
+treu | | loyal, faithful
+schwersten | schwer | hardest, heaviest | superlative
+
+// nouns
+Jahr | das Jahr | year
+Jahren | das Jahr | year | plural after a preposition
+Tages | der Tag | day | genitive: "eines Tages" = one day
+Tagen | der Tag | day | plural after a preposition
+Morgens | der Morgen | morning | genitive: "eines Morgens" = one morning
+Nachmittags | der Nachmittag | afternoon | genitive: "eines Nachmittags" = one afternoon
+Woche | die Woche | week
+Monaten | der Monat | month | plural after a preposition
+Januar | der Januar | January
+April | der April | April
+Winter | der Winter | winter
+Herbst | der Herbst | autumn
+Zeit | die Zeit | time
+Moment | der Moment | moment
+Landgut | das Landgut | country estate
+Landhaus | das Landhaus | country house
+Herrenhaus | das Herrenhaus | manor house
+Pfarrhaus | das Pfarrhaus | parsonage, vicarage
+Wohnzimmer | das Wohnzimmer | living room, sitting room
+Salon | der Salon | drawing room
+Saal | der Saal | hall, ballroom
+Treppe | die Treppe | stairs, staircase
+Garten | der Garten | garden
+Tochter | die Tochter | daughter
+Töchter | die Tochter | daughter | plural
+Töchtern | die Tochter | daughter | plural after a preposition
+Sohn | der Sohn | son
+Schwestern | die Schwester | sister | plural
+Frauen | die Frau | woman | plural
+Männer | der Mann | man | plural
+Dame | die Dame | lady
+Damen | die Dame | lady | plural
+Fräulein | das Fräulein | Miss; young lady | old-fashioned title for an unmarried woman
+Herrn | der Herr | Mr; gentleman | "Herrn" = after a preposition or as an object
+Lady | | Lady | English title
+Sir | | Sir | English title for a knight or baronet
+Lords | der Lord | lord | genitive: "die Tochter eines Lords" = a lord's daughter
+Gentleman | der Gentleman | gentleman | English word
+Oberst | der Oberst | colonel
+Obersts | der Oberst | colonel | genitive: "des Obersts" = of the Colonel
+Pfarrer | der Pfarrer | clergyman, vicar
+Pfarrers | der Pfarrer | clergyman | genitive: "die Stelle des Pfarrers" = the post of clergyman
+Politiker | der Politiker | politician
+Student | der Student | student
+Arzt | der Arzt | doctor
+Diener | der Diener | servant
+Reiter | der Reiter | rider
+Gast | der Gast | guest
+Freund | der Freund | friend
+Mensch | der Mensch | person, human being
+Fremde | der Fremde | stranger | an adjective used as a noun
+Held | der Held | hero
+Helden | der Held | hero | plural, or after a preposition
+Dichter | der Dichter | poet | same form in the plural
+Onkel | der Onkel | uncle
+Tante | die Tante | aunt
+Schwiegermutter | die Schwiegermutter | mother-in-law
+Verwandten | der/die Verwandte | relative | "von einem Verwandten" = from a relative
+Verwandte | der/die Verwandte | relative | here plural: relatives
+Ehepartner | der Ehepartner | spouse, husband or wife
+Verlobte | die Verlobte | fiancée
+Vernünftige | die Vernünftige | the sensible one | an adjective used as a noun
+Leidenschaftliche | die Leidenschaftliche | the passionate one | an adjective used as a noun
+Ehe | die Ehe | marriage
+Verlobung | die Verlobung | engagement
+Antrag | der Antrag | proposal | "einen Antrag machen" = to propose (marriage)
+Hochzeit | die Hochzeit | wedding
+Beerdigung | die Beerdigung | funeral
+Gesetz | das Gesetz | law
+Pfund | das Pfund | pound | British money (also a weight)
+Penny | der Penny | penny | a British coin
+Geschenk | das Geschenk | present, gift
+Fisch | der Fisch | fish
+Wild | das Wild | game (meat of wild animals)
+Gefühle | das Gefühl | feeling | plural
+Leidenschaft | die Leidenschaft | passion
+Gedichte | das Gedicht | poem | plural
+Natur | die Natur | nature
+Punkt | der Punkt | point | "in diesem Punkt" = in this respect
+Besuch | der Besuch | visit | "zu Besuch kommen" = to come for a visit
+Zeitung | die Zeitung | newspaper
+Freundschaft | die Freundschaft | friendship
+Ärger | der Ärger | annoyance, anger
+Glück | das Glück | luck; happiness | "zum Glück" = fortunately
+Glücks | das Glück | happiness; luck | genitive: "Tränen des Glücks" = tears of happiness
+Brief | der Brief | letter
+Briefe | der Brief | letter | plural
+Miete | die Miete | rent
+Angebot | das Angebot | offer
+Reise | die Reise | journey, trip
+Fahrt | die Fahrt | journey, ride
+Abreise | die Abreise | departure
+Ausflug | der Ausflug | outing, trip
+Tal | das Tal | valley
+Hügel | der Hügel | hill
+Hügeln | der Hügel | hill | plural after a preposition
+Wiesen | die Wiese | meadow | plural
+Wäldern | der Wald | forest, wood | plural after a preposition
+Vergleich | der Vergleich | comparison | "im Vergleich zu" = compared with
+Landschaft | die Landschaft | landscape, countryside
+Feste | das Fest | party, celebration | plural
+Festen | das Fest | party, celebration | plural after a preposition
+Ball | der Ball | ball (dance); ball
+Hobby | das Hobby | hobby
+Umgebung | die Umgebung | surroundings, area | "in ihrer Umgebung" = around her
+Abendessen | das Abendessen | dinner, supper
+Klavier | das Klavier | piano
+Partie | die Partie | match (for marriage); game | "eine gute Partie" = a good match
+Schmerz | der Schmerz | pain
+Schmerzen | der Schmerz | pain | plural
+Schulter | die Schulter | shoulder
+Flanellweste | die Flanellweste | flannel waistcoat | warm clothing worn by older men
+Problem | das Problem | problem
+Büchern | das Buch | book | plural after a preposition
+Bücher | das Buch | book | plural
+Roman | der Roman | novel
+Spaziergang | der Spaziergang | walk | "einen Spaziergang machen" = to go for a walk
+Fuß | der Fuß | foot
+Gewehr | das Gewehr | gun, rifle
+Jagdhunden | der Jagdhund | hunting dog | plural after a preposition
+Regen | der Regen | rain
+Meinung | die Meinung | opinion | "derselben Meinung sein" = to agree
+Pferd | das Pferd | horse
+Gespräch | das Gespräch | conversation
+Seltsames | das Seltsame | something strange | "etwas Seltsames" = something strange
+Wichtiges | das Wichtige | something important | "etwas Wichtiges" = something important
+Unverständliches | das Unverständliche | something unintelligible | "etwas Unverständliches" = something unintelligible
+Locke | die Locke | lock (of hair), curl
+Haar | das Haar | hair
+Haares | das Haar | hair | genitive: "die Locke ihres Haares" = the lock of her hair
+Haarlocke | die Haarlocke | lock of hair
+Haarfarbe | die Haarfarbe | hair colour
+Ring | der Ring | ring
+Geschäftssache | die Geschäftssache | business matter
+Lieder | das Lied | song | plural
+Freude | die Freude | joy
+Komplimente | das Kompliment | compliment | plural
+Geschichte | die Geschichte | story; history
+Bild | das Bild | picture, portrait
+Handschrift | die Handschrift | handwriting
+Traurigkeit | die Traurigkeit | sadness
+Schweigen | das Schweigen | silence
+Geheimnis | das Geheimnis | secret
+Versprechen | das Versprechen | promise
+Meter | der Meter | metre
+Eis | das Eis | ice; ice cream
+Eindruck | der Eindruck | impression
+Umschlag | der Umschlag | envelope
+Schulden | die Schulden | debts | plural
+Fehler | der Fehler | mistake
+Gefahr | die Gefahr | danger
+Nachricht | die Nachricht | news, message
+Mode | die Mode | fashion
+Ehre | die Ehre | honour
+Wahrheit | die Wahrheit | truth
+Stelle | die Stelle | position, post; place
+Einkommen | das Einkommen | income
+Güte | die Güte | kindness, goodness
+Aufgabe | die Aufgabe | task
+Gras | das Gras | grass
+Richtung | die Richtung | direction
+Erkältung | die Erkältung | cold (illness)
+Fieber | das Fieber | fever
+Krankheit | die Krankheit | illness
+Ansteckung | die Ansteckung | infection
+Erleichterung | die Erleichterung | relief
+Kutsche | die Kutsche | carriage, coach
+Anfang | der Anfang | beginning | "am Anfang" = at first
+Pläne | der Plan | plan | plural
+Charme | der Charme | charm
+Schmeichelei | die Schmeichelei | flattery
+London | | London
+
+// verbs
+würde | werden | would | "er würde sterben" = he would die
+wirst | werden | will; to become | "du wirst" = you will
+geworden | werden | to become | past participle
+hätte | haben | would have | "als ob es ihr gehört hätte" = as if it had belonged to her
+seid | sein | to be | "ihr seid" = you (all) are
+warst | sein | to be | past: "du warst" = you were
+musst | müssen | must, to have to | "du musst" = you must
+darf | dürfen | may, to be allowed to | "Darf ich …?" = May I …?
+möchte | mögen | would like | "ich möchte" = I would like
+mochte | mögen | to like | past: liked
+gehören | | to belong (to)
+gehörte | gehören | to belong | past; "das gehörte sich nicht" = that was not proper
+versprich | versprechen | to promise | command: "Versprich mir!" = Promise me!
+versprochen | versprechen | to promise | past participle
+starb | sterben | to die | past: died
+denken | | to think | "denken an" = to think of
+gedacht | denken | to think | past participle
+überzeugte | überzeugen | to convince | past: convinced
+reicht | reichen | to be enough | "das reicht" = that's enough
+beherrscht | beherrschen | to control | "man beherrscht sie" = you control them
+zeigte | zeigen | to show | past: showed
+zeigen | | to show
+fühlte | fühlen | to feel | past: felt
+aussehend | aussehen | looking | "gut aussehend" = good-looking
+sprach | sprechen | to speak | past: spoke
+sprechen | | to speak
+verbrachten | verbringen | to spend (time) | past: (they) spent
+verbringen | | to spend (time)
+glaube | glauben | to believe, to think | "ich glaube" = I think
+geglaubt | glauben | to believe | past participle
+klagte | klagen | to complain | past: complained
+bemerkte | bemerken | to notice | past: noticed
+erwartet | erwarten | to expect | "sie erwartet" = she expects
+heiraten | | to marry
+heiratet | heiraten | to marry | "er heiratet" = he marries
+heiratete | heiraten | to marry | past: married
+heirateten | heiraten | to marry | past: (they) married
+geheiratet | heiraten | to marry | past participle: "er hat geheiratet" = he has got married
+wirkte | wirken | to seem, to appear | past: seemed
+flüsterte | flüstern | to whisper | past: whispered
+wiedersehen | | to see again | separable
+bewunderte | bewundern | to admire | past: admired
+begrüßen | | to greet, to welcome
+hasste | hassen | to hate | past: hated
+lachte | lachen | to laugh | past: laughed
+lachend | lachen | laughing
+lächelte | lächeln | to smile | past: smiled
+besaß | besitzen | to own, to have | past: owned, had
+spielte | spielen | to play | past: played
+gespielt | spielen | to play | past participle
+bedeutete | bedeuten | to mean | past: meant
+bedeutet | bedeuten | to mean | "was bedeutet das?" = what does that mean?
+gehofft | hoffen | to hope | past participle
+hoffte | hoffen | to hope | past: hoped
+besuchen | | to visit
+besuchte | besuchen | to visit | past: visited
+wartete | warten | to wait | past: waited; "warten auf" = to wait for
+regnen | | to rain
+rannten | rennen | to run | past: (they) ran
+stolperte | stolpern | to stumble, to trip | past: stumbled
+verletzt | verletzen | to hurt, to injure | past participle
+hob | heben | to lift | past: lifted
+erben | | to inherit
+fragen | | to ask
+verschwand | verschwinden | to disappear | past: disappeared
+verschwunden | verschwinden | to disappear | past participle
+merkten | merken | to notice | past: (they) noticed
+liebten | lieben | to love | past: (they) loved
+liebt | lieben | to love | "er liebt" = he loves
+lasen | lesen | to read | past: (they) read
+lesen | | to read
+sangen | singen | to sing | past: (they) sang
+gesungen | singen | to sing | past participle
+spazieren | | to walk, to stroll | "spazieren gehen" = to go for a walk
+tanzte | tanzen | to dance | past: danced
+reden | | to talk
+erzählte | erzählen | to tell | past: told
+erzählt | erzählen | to tell | past participle
+erzählen | | to tell
+schenken | | to give (as a present)
+küsste | küssen | to kiss | past: kissed
+beobachtete | beobachten | to watch, to observe | past: watched
+aufbrechen | | to set off | separable
+verdorben | verderben | to spoil, to ruin | past participle
+blieb | bleiben | to stay | past: stayed
+geblieben | bleiben | to stay, to remain | past participle
+zurückkamen | zurückkommen | to come back | past; one piece after "als"
+weinend | weinen | crying, in tears
+fahren | | to go (by vehicle), to travel, to drive
+fuhren | fahren | to go (by vehicle), to travel | past: (they) travelled
+schickt | schicken | to send | "sie schickt mich" = she sends me
+schlief | schlafen | to sleep | past: slept
+geschehen | | to happen | also past participle: "was geschehen war" = what had happened
+zukommen | | to come towards | "auf das Haus zukommen" = to come towards the house
+schwieg | schweigen | to be silent | past: said nothing
+genommen | nehmen | to take | past participle
+lobte | loben | to praise | past: praised
+begann | beginnen | to begin | past: began
+kennen | | to know (be familiar with)
+kennt | kennen | to know (be familiar with) | "er kennt mich" = he knows me
+getroffen | treffen | to meet | past participle
+zuhörte | zuhören | to listen | past; one piece after "ob"
+vertrauen | | to trust
+gewohnt | wohnen | to live (somewhere) | past participle
+enterben | | to disinherit
+enterbte | enterben | to disinherit | past: disinherited
+erführe | erfahren | to find out | Konjunktiv II: "wenn sie es erführe" = if she found out
+erfahren | | to find out, to learn | also past participle
+erfuhr | erfahren | to find out, to learn | past: found out
+erfuhren | erfahren | to find out, to learn | past: (they) found out
+gesehen | sehen | to see | past participle
+wünsche | wünschen | to wish | "ich wünsche Ihnen" = I wish you
+ahnte | ahnen | to suspect, to sense | past: suspected
+gebeten | bitten | to ask (someone to do something) | past participle
+schrieb | schreiben | to write | past: wrote
+murmelte | murmeln | to mumble | past: mumbled
+brachte | bringen | to bring, to take | past: brought, took
+gegeben | geben | to give | past participle
+brauchte | brauchen | to need | past: needed
+zwang | zwingen | to force | past: forced
+hinterließ | hinterlassen | to leave behind | past: left behind
+verführt | verführen | to seduce | past participle
+abgereist | abreisen | to leave, to depart | past participle
+hörte | hören | to hear | past: heard
+schmeichelte | schmeicheln | to flatter | past: flattered
+gewonnen | gewinnen | to win | past participle: "für sich gewinnen" = to win over
+erreichte | erreichen | to reach | past: reached
+ausgesucht | aussuchen | to choose, to pick | past participle
+lösen | | to break off (an engagement); to solve
+befahl | befehlen | to order, to command | past: ordered
+bekommst | bekommen | to get, to receive | "du bekommst" = you get
+brechen | | to break
+verloren | verlieren | to lose | past participle
+gelernt | lernen | to learn | past participle
+weiterleben | | to go on living | separable
+umarmte | umarmen | to hug | past: hugged
+behandelt | behandeln | to treat | past participle
+anbieten | | to offer | separable
+tut | tun | to do | "warum tut er das?" = why is he doing that?; "es tut gut" = it does (one) good
+tat | tun | to do | past: did
+heißt | heißen | to be called; to mean | "was es heißt" = what it means
+entschieden | entscheiden | to decide | past participle: "alles ist entschieden" = everything is decided
+erkannte | erkennen | to recognise | past: recognised
+zusehen | | to watch, to look on | separable
+sank | sinken | to sink, to go down | past: went down
+lebt | leben | to live, to be alive | "lebt sie?" = is she alive?
+lebend | leben | alive, living
+verließ | verlassen | to leave | past: left
+gewählt | wählen | to choose; to vote | past participle
+diktiert | diktieren | to dictate | past participle
+abgeschrieben | abschreiben | to copy (out) | past participle
+verachtete | verachten | to despise | past: despised
+zerstört | zerstören | to destroy | past participle
+wiederfand | wiederfinden | to find again | past; one piece after "als"
+aufgepasst | aufpassen | to take care, to pay attention | past participle: "auf sich aufpassen" = to take care of oneself
+üben | | to practise
+berichtete | berichten | to report | past: reported
+lässt | lassen | to let; to leave | "sie lässt grüßen" = she sends her regards
+grüßen | | to greet | "jemanden grüßen lassen" = to send someone one's regards
+gewusst | wissen | to know | past participle
+gelitten | leiden | to suffer | past participle
+erobert | erobern | to win (over), to conquer | past participle
+zogen | ziehen | to move; to pull | past: (they) moved
+verzieh | verzeihen | to forgive | past: forgave
+stritten | streiten | to quarrel, to argue | past: (they) quarrelled
+ritt | reiten | to ride | past: rode
+
+// --- added with Emma B1 ---
+// small words
+bisher | | so far, until now
+nämlich | | you see; namely | explains a reason: "ich habe sie nämlich gestiftet" = you see, I made the match
+zueinander | | to each other
+ineinander | | in(to) each other | "sich ineinander verlieben" = to fall in love with each other
+insgeheim | | secretly
+entweder | | either | "entweder … oder" = either … or
+sobald | | as soon as
+während | | during; while
+wegen | | because of
+außerhalb | | outside (of)
+daneben | | next to it, beside them
+davor | | of it; in front of it | "Angst davor haben" = to be afraid of it
+leider | | unfortunately
+ständig | | constantly
+ununterbrochen | | without stopping, continuously
+natürlich | | of course; natural
+eigentlich | | actually
+wohl | | probably, I suppose; well
+all | | all | "all ihre Fehler" = all her mistakes
+jede | jeder | every, each
+niemanden | niemand | nobody | object form
+anderer | ander- | other | "das Leben anderer" = other people's lives
+selben | derselbe | same | "am selben Abend" = that same evening
+wenigen | wenig | few | "einer der wenigen Menschen" = one of the few people
+meisten | viel | most | "die meisten" = most (of them)
+erste | erst- | first
+zweite | zweit- | second
+eigene | eigen | own
+sechzehn | | sixteen
+einundzwanzig | | twenty-one
+dreiundzwanzig | | twenty-three
+sechsundzwanzig | | twenty-six
+siebenunddreißig | | thirty-seven
+
+// adjectives
+glückliches | glücklich | happy
+ältere | alt | older, elder | comparative of "alt"
+ängstlicher | ängstlich | anxious, fearful
+kaltem | kalt | cold
+warm | | warm
+dünne | dünn | thin
+neuen | neu | new
+blauen | blau | blue
+blondem | blond | fair, blond
+elegante | elegant | elegant
+passenden | passend | suitable
+leuchtenden | leuchtend | shining, bright
+anständiger | anständig | decent, respectable
+charmant | | charming
+warmherzig | | warm-hearted
+unsicher | | uncertain; uncertainly
+höflichen | höflich | polite
+kluger | klug | clever
+fleißiger | fleißig | hard-working
+fleißig | | hard-working; hard
+ehrlicher | ehrlich | honest
+beste | gut | best | superlative of "gut"
+ärgerlich | | annoyed, cross; angrily
+wunderschönes | wunderschön | beautiful, lovely
+wunderschönen | wunderschön | beautiful, lovely
+liebstes | lieb | dearest | superlative: "Liebstes Fräulein Woodhouse!" = Dearest Miss Woodhouse!
+eitel | | vain
+reichen | reich | rich, wealthy
+freundlichen | freundlich | kind, friendly
+wunderbar | | wonderful; wonderfully
+wunderbares | wunderbar | wonderful
+verschlossen | | reserved, closed
+möglich | | possible
+lebhafte | lebhaft | lively
+verheirateter | verheiratet | married
+spöttisch | | mocking; mockingly
+lächelnd | lächeln | smiling, with a smile
+hübsches | hübsch | pretty
+hilflos | | helpless
+kluge | klug | clever
+mäßig | | moderately; moderate
+schwierig | | difficult
+lästig | | tiresome, annoying
+grausam | | cruel
+überraschende | überraschend | surprising
+größere | groß | bigger | comparative of "groß"
+besorgten | besorgt | worried
+geheim | | secret | "geheim halten" = to keep secret
+deutlich | | clear; clearly
+blind | | blind
+erleichtert | | relieved
+dumm | | stupid, silly
+unendlich | | endlessly, immensely
+wohlhabender | wohlhabend | well-to-do, wealthy
+einfache | einfach | simple
+starken | stark | strong
+bescheiden | | modest
+weißer | weiß | white
+echten | echt | real, true
+armselig | | pitiful, wretched
+
+// nouns
+Ort | der Ort | place; small town
+Krankheiten | die Krankheit | illness | plural
+Wetter | das Wetter | weather
+Veränderungen | die Veränderung | change | plural
+Veränderung | die Veränderung | change
+Kamin | der Kamin | fireplace
+Haferschleimsuppe | die Haferschleimsuppe | gruel (thin oat soup) | Mr Woodhouse's favourite food
+Gouvernante | die Gouvernante | governess
+Freundin | die Freundin | (female) friend
+Lehrerin | die Lehrerin | (female) teacher
+Witwer | der Witwer | widower
+Nachbarschaft | die Nachbarschaft | neighbourhood
+Papa | der Papa | dad, papa
+Meile | die Meile | mile
+Meilen | die Meile | mile | plural
+Vermutung | die Vermutung | guess, assumption
+Spaß | der Spaß | fun | "es macht Spaß" = it's fun
+Nächstes | das Nächste | the next thing | "als Nächstes" = next
+Ehemann | der Ehemann | husband
+Sommer | der Sommer | summer
+Walnüsse | die Walnuss | walnut | plural
+Bauer | der Bauer | farmer
+Bauern | der Bauer | farmer | object form, or plural
+Bildung | die Bildung | education
+Manieren | die Manieren | manners | plural
+Heiratsantrag | der Heiratsantrag | proposal of marriage
+Chance | die Chance | chance
+Ideen | die Idee | idea | plural
+Porträt | das Porträt | portrait
+Rahmen | der Rahmen | frame
+Rätsel | das Rätsel | riddle
+Rätsels | das Rätsel | riddle | genitive: "die Lösung des Rätsels" = the answer to the riddle
+Form | die Form | form, shape | "in Form eines Gedichts" = in the form of a poem
+Gedicht | das Gedicht | poem
+Gedichts | das Gedicht | poem | genitive
+Sammlung | die Sammlung | collection
+Lösung | die Lösung | solution, answer
+Brautwerbung | die Brautwerbung | courtship
+Weihnachten | das Weihnachten | Christmas
+Heiligabend | der Heiligabend | Christmas Eve
+Unsinn | der Unsinn | nonsense
+Zufall | der Zufall | chance, coincidence | "durch einen Zufall" = by chance
+Rest | der Rest | rest
+Ehen | die Ehe | marriage | plural: "Ehen stiften" = to make matches
+Haushalt | der Haushalt | household
+Schwagers | der Schwager | brother-in-law | genitive: "ihres Schwagers" = of her brother-in-law
+Gebieter | der Gebieter | master, lord | old-fashioned: "mein Herr und Gebieter" = my lord and master
+Namen | der Name | name | "ihren Namen tragen" = to bear their name
+Februar | der Februar | February
+Mai | der Mai | May
+Juni | der Juni | June
+Nichte | die Nichte | niece
+Neffe | der Neffe | nephew
+Jungfer | die Jungfer | spinster | old-fashioned: "alte Jungfer" = old maid
+Fantasie | die Fantasie | imagination
+Klatsch | der Klatsch | gossip
+Gasthaus | das Gasthaus | inn
+Krone | die Krone | crown | "Zur Krone" = name of the inn
+Tanz | der Tanz | dance
+Rand | der Rand | edge, side | "am Rand" = at the side
+Haltung | die Haltung | posture, bearing
+Bank | die Bank | bench; bank
+Partner | der Partner | partner
+Aufregendes | das Aufregende | something exciting | "etwas Aufregendes" = something exciting
+Dorfes | das Dorf | village | genitive: "außerhalb des Dorfes" = outside the village
+Gruppe | die Gruppe | group
+Landstreicher | der Landstreicher | tramp, vagrant | same form in the plural
+Krampf | der Krampf | cramp
+Aussicht | die Aussicht | view
+Stimmung | die Stimmung | mood, atmosphere
+Laune | die Laune | mood | "schlechte Laune haben" = to be in a bad mood
+Kluges | das Kluge | something clever | "etwas Kluges" = something clever
+Sache | die Sache | thing
+Sachen | die Sache | thing | plural
+Grenze | die Grenze | limit; border
+Kutschen | die Kutsche | carriage | plural
+Heimfahrt | die Heimfahrt | journey home
+Blick | der Blick | look, glance
+Wärme | die Wärme | warmth
+Überraschung | die Überraschung | surprise
+Pfeil | der Pfeil | arrow
+Schuld | die Schuld | fault, guilt
+Probleme | das Problem | problem | plural
+Seite | die Seite | side | "auf ihrer Seite" = on her side
+Kaufmann | der Kaufmann | merchant, tradesman
+Diebe | der Dieb | thief | plural
+Hühner | das Huhn | chicken, hen | plural
+Satin | der Satin | satin
+Spitzenschleier | der Spitzenschleier | lace veil | same form in the plural
+
+// verbs
+geschah | geschehen | to happen | past: happened
+gelebt | leben | to live | past participle
+seufzte | seufzen | to sigh | past: sighed
+schade | | a pity | "wie schade!" = what a pity!
+kritisierten | kritisieren | to criticise | past: (they) criticised
+kritisiert | kritisieren | to criticise | past participle
+gestiftet | stiften | to found; to make (a match) | past participle: "eine Ehe stiften" = to make a match
+stiften | | to found; to bring about | "Ehen stiften" = to make matches
+zusammenpassen | | to go well together, to be well suited | separable
+geraten | raten | to guess | past participle
+gefunden | finden | to find | past participle
+aussuchen | | to choose, to pick out | separable
+beschloss | beschließen | to decide | past: decided
+verbracht | verbringen | to spend (time) | past participle
+verbrachte | verbringen | to spend (time) | past: spent
+gelaufen | laufen | to run; to walk | past participle
+verdienst | verdienen | to deserve; to earn | "du verdienst" = you deserve
+denk | denken | to think | command: "Denk an …!" = Think of …!
+geschrieben | schreiben | to write | past participle
+las | lesen | to read | past: read
+entscheiden | | to decide
+ablehnen | | to refuse, to turn down | separable
+beeinflussen | | to influence
+heiratest | heiraten | to marry | "du heiratest" = you marry
+half | helfen | to help | past: helped
+geholfen | helfen | to help | past participle
+kenne | kennen | to know (be familiar with) | "ich kenne" = I know
+kennst | kennen | to know (be familiar with) | "du kennst" = you know
+glaubst | glauben | to believe, to think | "du glaubst" = you think
+arbeitete | arbeiten | to work | past: worked
+malte | malen | to paint | past: painted
+eingeladen | einladen | to invite | past participle
+schneien | | to snow
+losgefahren | losfahren | to set off, to drive off | past participle
+schwiegen | schweigen | to be silent | past: (they) were silent
+fuhr | fahren | to go (by vehicle), to drive | past: went, drove
+zurückkam | zurückkommen | to come back | past; one piece after "als"
+nannte | nennen | to call, to name | past: called
+nennen | | to call, to name
+ausstehen | | to stand, to bear | "jemanden nicht ausstehen können" = not to be able to stand someone
+aufgewachsen | aufwachsen | to grow up | past participle
+besucht | besuchen | to visit | past participle
+hofften | hoffen | to hope | past: (they) hoped
+hoffe | hoffen | to hope | "ich hoffe" = I hope
+spielt | spielen | to play | "sie spielt" = she plays
+geschickt | schicken | to send | past participle
+organisiert | organisieren | to organise | past participle
+bewundernd | bewundern | admiringly
+bewundert | bewundern | to admire | past participle
+aufgefordert | auffordern | to ask (to dance); to invite | past participle: "zum Tanz auffordern" = to ask to dance
+möchten | mögen | would like | "Möchten Sie …?" = Would you like …?
+tanzen | | to dance
+tanze | tanzen | to dance | "ich tanze" = I dance
+senkte | senken | to lower | past: lowered
+bitten | | to ask (for) | "darf ich um diesen Tanz bitten?" = may I have this dance?
+strahlte | strahlen | to beam, to shine | past: beamed
+bedrängt | bedrängen | to harass, to press | past participle
+fliehen | | to flee, to escape
+verjagte | verjagen | to chase away | past: chased away
+rettet | retten | to save, to rescue | "er rettet" = he saves
+flirtete | flirten | to flirt | past: flirted
+geflirtet | flirten | to flirt | past participle
+wünscht | wünschen | to wish | "sie wünscht" = she wishes
+lacht | lachen | to laugh | "sie lacht" = she laughs
+sage | sagen | to say | "ich sage" = I say
+aufmache | aufmachen | to open | "sobald ich den Mund aufmache" = as soon as I open my mouth
+widerstehen | | to resist
+gesetzt | setzen | to set, to put | past participle: "eine Grenze setzen" = to set a limit
+konntest | können | could | past: "du konntest" = you could
+ausgelacht | auslachen | to laugh at (someone) | past participle
+antworten | | to answer
+reisen | | to travel
+geküsst | küssen | to kiss | past participle
+gestanden | gestehen | to confess | past participle
+gestand | gestehen | to confess | past: confessed
+erklärte | erklären | to explain | past: explained
+erlaubt | erlauben | to allow | past participle
+gehalten | halten | to hold; to keep | past participle: "geheim gehalten" = kept secret
+halten | | to hold; to keep; to give (a speech) | "Reden halten" = to make speeches
+merkt | merken | to notice | "damit niemand etwas merkt" = so that nobody notices anything
+mitzuteilen | mitteilen | to tell, to inform | "um ihr die Nachricht mitzuteilen" = to tell her the news
+liebst | lieben | to love | "du liebst" = you love
+spricht | sprechen | to speak | "er spricht" = he speaks
+durfte | dürfen | may, to be allowed to | past: "das durfte nicht sein" = that must not be
+getrennt | trennen | to separate | past participle
+eingeredet | einreden | to talk (someone) into (believing) something | past participle
+bestimmen | | to decide, to determine | "über etwas bestimmen" = to decide about something
+verstanden | verstehen | to understand | past participle
+geschmeichelt | schmeicheln | to flatter | past participle: "sich geschmeichelt fühlen" = to feel flattered
+getadelt | tadeln | to scold, to criticise | past participle
+willst | wollen | to want | "willst du?" = do you want?, will you?
+errötend | erröten | blushing
+ziehe | ziehen | to move; to pull | "ich ziehe nach Hartfield" = I'll move to Hartfield
+stahlen | stehlen | to steal | past: (they) stole
+feierten | feiern | to celebrate | past: (they) celebrated
+wussten | wissen | to know | past: (they) knew
