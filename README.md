@@ -1,8 +1,8 @@
 # Leseecke
 
-Your own German graded reader. You read classic stories retold in simple German. Tap any
-word to see what it means and hear it spoken, save words you want to learn, and review them
-later with spaced-repetition flashcards.
+Your own graded reader for German and French. You read classic stories retold in simple
+German or French. Tap any word to see what it means and hear it spoken, save words you want
+to learn, and review them later with spaced-repetition flashcards.
 
 It costs nothing to run: no account, no server, no API.
 
@@ -14,7 +14,7 @@ Open a terminal (PowerShell) in this folder and run:
 python -m http.server 8765
 ```
 
-Then open <http://localhost:8765> in your browser. Microsoft Edge has the most natural German
+Then open <http://localhost:8765> in your browser. Microsoft Edge has the most natural German and French
 voices on Windows.
 
 ## Use it on your phone
@@ -40,6 +40,9 @@ Changes to the app itself take effect on the second open.
 
 ## How to use it
 
+- **Languages.** The library shows the books of one language at a time. Switch between
+  *Deutsch* and *Français* at the top of the library. Opening a book also switches the
+  library to its language.
 - **Levels.** Some books come in several levels (e.g. A1, A2, B1). Choose one on the
   book's page, or switch while reading with the level buttons at the top: you stay in the
   same chapter. Each book remembers your level, and new books start at your latest level.
@@ -52,7 +55,9 @@ Changes to the app itself take effect on the second open.
 - **Review.** You see the German word and its sentence. Try to recall the meaning, show the
   answer, then grade yourself honestly (Again, Hard, Good, Easy). The scheduler (FSRS, the
   algorithm modern Anki uses) decides when you see the word again.
-- **Words.** Your saved words, voice and speed settings, the daily limit for new words, and backups.
+- **Words.** Your saved words, a voice for each language, speed settings, the daily limit for
+  new words, and backups. German and French words share one review queue; each card shows
+  its language once you have saved words in both.
 
 ## Your data
 
@@ -67,6 +72,7 @@ Open this folder in Claude Code and ask, for example:
 
 > Add Kafka's *Die Verwandlung* at A2.
 > Add *Sherlock Holmes: A Scandal in Bohemia* at B1, retold in German.
+> Add Maupassant's *Le Horla* in French at A2 and B1.
 
 Claude follows the rules in `CLAUDE.md`. It uses public-domain originals only, matches the
 level, glosses every word, and runs `node tools/check.mjs` until the book passes.

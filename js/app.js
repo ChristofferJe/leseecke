@@ -1,5 +1,6 @@
 import { parseChapter, parseGlossary, annotateChapter } from './format.js';
 import { preview, formatInterval, isLearning, GRADES, GRADE_NAMES, MINUTE } from './srs.js';
+import { language, langOf, sortLanguages } from './languages.js';
 import * as store from './store.js';
 import * as speech from './speech.js';
 
@@ -32,22 +33,22 @@ const sheet = $('#sheet');
 const sheetInner = $('#sheet-inner');
 const settings = store.state.settings;
 
-// A "work" is a book (e.g. Grimms Märchen). It has one or more "editions", one per level,
-// each in its own folder books/<edition id>/. Most of the app works with an edition's
-// metadata: the work's fields plus the edition's id, level and chapters.
+// A "work" is a book (e.g. Grimms Märchen) in one language ("lang"). It has one or more
+// "editions", one per level, each in its own folder books/<edition id>/. Most of the app works
+// with an edition's metadata: the work's fields plus the edition's id, level and chapters.
 let works = [];
 const editions = new Map(); // edition id -> { ...work, ...edition, work, workId }
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 const levelRank = (level) => LEVELS.indexOf(level);
 
 const bookCache = new Map();
-let sharedGlossary = null;
+const sharedGlossaries = new Map(); // language code -> Promise<glossary>
 let renderId = 0; // guards against an older async render overwriting a newer view
 let view = '';
 let reader = null; // { book, bookId, ci, tokens, selected, enOpenFor }
 let review = null; // { card, revealed, counts }
 
-const say = (text) => speech.speak(text, { rate: settings.rate, voice: settings.voice });
+const say = (text, lang) => speech.speak(text, { lang, rate: settings.rate, voice: settings.voices[lang] });
 
 // ---------- data ----------
 
@@ -61,6 +62,7 @@ async function loadLibrary() {
   works = JSON.parse(await fetchText('books/library.json'));
   editions.clear();
   for (const work of works) {
+    work.lang = langOf(work);
     work.editions.sort((a, b) => levelRank(a.level) - levelRank(b.level));
     for (const ed of work.editions) editions.set(ed.id, { ...work, ...ed, work, workId: work.id });
   }
@@ -68,15 +70,28 @@ async function loadLibrary() {
 
 const findWork = (id) => works.find((w) => w.id === id);
 
-// The glossary shared by all books (common words); each edition can add or override entries.
-function loadSharedGlossary() {
-  sharedGlossary ??= fetchText('books/glossary.txt')
-    .then((text) => parseGlossary(text).glossary)
-    .catch((err) => {
-      sharedGlossary = null;
-      throw err;
-    });
-  return sharedGlossary;
+// The languages that have books, in a fixed order (German first).
+const libraryLanguages = () => sortLanguages(new Set(works.map((w) => w.lang)));
+
+// The language the library shows: the one chosen last, if it still has books.
+function libraryLanguage() {
+  const langs = libraryLanguages();
+  return langs.includes(settings.language) ? settings.language : langs[0];
+}
+
+// The glossary shared by all books in one language (common words); each edition can add or
+// override entries.
+function loadSharedGlossary(lang) {
+  if (!sharedGlossaries.has(lang)) {
+    const p = fetchText(language(lang).glossary)
+      .then((text) => parseGlossary(text).glossary)
+      .catch((err) => {
+        sharedGlossaries.delete(lang);
+        throw err;
+      });
+    sharedGlossaries.set(lang, p);
+  }
+  return sharedGlossaries.get(lang);
 }
 
 async function loadBook(id) {
@@ -84,13 +99,13 @@ async function loadBook(id) {
   const meta = editions.get(id);
   if (!meta) throw new Error(`There is no book called "${id}".`);
   const [shared, glossText, ...texts] = await Promise.all([
-    loadSharedGlossary(),
+    loadSharedGlossary(meta.lang),
     fetchText(`books/${id}/glossary.txt`),
     ...meta.chapters.map((f) => fetchText(`books/${id}/${f}`)),
   ]);
   const glossary = new Map([...shared, ...parseGlossary(glossText).glossary]);
   const chapters = texts.map((t) => {
-    const { chapter } = parseChapter(t);
+    const { chapter } = parseChapter(t, meta.lang);
     annotateChapter(chapter, glossary);
     return chapter;
   });
@@ -141,6 +156,8 @@ async function downloadWork(work, { quiet = false } = {}) {
       refreshDownloadUi();
     }
     for (const [edId, f, res] of fetched) await (await caches.open(bookCacheName(edId))).put(f, res);
+    // The language's shared glossary is an app file: fetching it once lets sw.js keep it offline.
+    await fetch(language(work.lang).glossary).catch(() => {});
     navigator.storage?.persist?.().catch(() => {});
   } catch (err) {
     if (!quiet) alert(`Could not download "${work.title}". Check your internet connection and try again.\n\n${err.message}`);
@@ -207,11 +224,12 @@ const downloadSlot = (work) => `<div class="dl" data-dl="${esc(work.id)}"></div>
 
 // ---------- levels ----------
 
-// The level last chosen for this book, or else the one closest to the level the reader last used.
+// The level last chosen for this book, or else the one closest to the level the reader last
+// used in this language.
 function chosenEdition(work) {
   const saved = store.state.choices[work.id];
   if (saved && work.editions.some((e) => e.id === saved)) return editions.get(saved);
-  const want = levelRank(settings.level || 'A2');
+  const want = levelRank(settings.levels[work.lang] || 'A2');
   const best = [...work.editions].sort(
     (a, b) => Math.abs(levelRank(a.level) - want) - Math.abs(levelRank(b.level) - want) || levelRank(a.level) - levelRank(b.level),
   )[0];
@@ -220,7 +238,14 @@ function chosenEdition(work) {
 
 function chooseEdition(meta) {
   store.state.choices[meta.workId] = meta.id;
-  settings.level = meta.level;
+  settings.levels[meta.lang] = meta.level;
+  store.save();
+}
+
+// Opening a book also switches the library to its language, so "Library" leads back to it.
+function showLanguage(lang) {
+  if (settings.language === lang) return;
+  settings.language = lang;
   store.save();
 }
 
@@ -336,15 +361,37 @@ function cover(work) {
   </div>`;
 }
 
+// Shown only when the library has books in more than one language.
+function languageSwitch(current) {
+  const langs = libraryLanguages();
+  if (langs.length < 2) return '';
+  return `<div class="levels lang-switch" role="group" aria-label="Book language">
+    ${langs
+      .map((code) => {
+        const l = language(code);
+        const on = code === current;
+        return `<button class="level-btn${on ? ' active' : ''}" data-act="choose-language" data-lang="${esc(code)}"
+          aria-pressed="${on}" lang="${esc(code)}" title="Books in ${esc(l.name)}">${esc(l.native)}</button>`;
+      })
+      .join('')}
+  </div>`;
+}
+
 function showLibrary() {
   ++renderId;
   const { counts } = queue();
   const due = counts.new + counts.learning + counts.review;
+  const lang = libraryLanguage();
+  const shown = works.filter((w) => w.lang === lang);
+  const { example } = language(lang);
   app.innerHTML = `
-    <h1 class="page-title">Library</h1>
+    <div class="library-head">
+      <h1 class="page-title">Library</h1>
+      ${languageSwitch(lang)}
+    </div>
     ${due ? `<a class="panel due-teaser" href="#/review"><strong>${due} flashcard${due === 1 ? '' : 's'} ready</strong><span>Review now →</span></a>` : ''}
-    <div class="books">
-      ${works
+    <div class="books" lang="${esc(lang)}">
+      ${shown
         .map((w) => {
           const p = latestProgress(w);
           const ed = chosenEdition(w);
@@ -367,7 +414,7 @@ function showLibrary() {
     </div>
     ${canDownload() ? '<p class="hint small">Download a book to read it without internet. Only downloaded books take up space on this device.</p>' : ''}
     <p class="hint">Want another book? Open this folder in Claude Code and ask, for example:
-      <em>“Add Kafka's Die Verwandlung at A2.”</em> The steps are in <code>CLAUDE.md</code>.</p>`;
+      <em>“${esc(example)}”</em> The steps are in <code>CLAUDE.md</code>.</p>`;
   refreshDownloadUi();
 }
 
@@ -380,6 +427,7 @@ async function showBook(id) {
   }
   const work = findWork(id);
   if (!work) return showError(new Error(`There is no book called "${id}".`));
+  showLanguage(work.lang);
   const meta = chosenEdition(work);
   app.innerHTML = loading();
   let book;
@@ -418,7 +466,7 @@ async function showBook(id) {
         .map(
           (c, i) => `<li><a href="#/read/${edId}/${i}">
             <span class="toc-num">${i + 1}</span>
-            <span class="toc-title"><span lang="de">${esc(c.title)}</span><span class="muted">${esc(c.titleEn)}</span></span>
+            <span class="toc-title"><span lang="${esc(meta.lang)}">${esc(c.title)}</span><span class="muted">${esc(c.titleEn)}</span></span>
             <span class="muted small">${c.wordCount} words</span>
           </a></li>`,
         )
@@ -430,14 +478,14 @@ async function showBook(id) {
 
 // ---------- reader ----------
 
-function sentenceHtml(s, tokens) {
+function sentenceHtml(s, tokens, lang) {
   const inner = s.parts
     .map((p) => {
       if (!p.w) return esc(p.text);
       const i = tokens.length;
       p._i = i;
       tokens.push({ part: p, sentence: s });
-      const saved = p.gloss && store.isSaved(p.gloss.lemma) ? ' saved' : '';
+      const saved = p.gloss && store.isSaved(lang, p.gloss.lemma) ? ' saved' : '';
       return `<span class="w${saved}" data-i="${i}">${esc(p.text)}</span>`;
     })
     .join('');
@@ -460,11 +508,13 @@ async function showReader(bookId, ci) {
     return;
   }
 
+  const lang = book.meta.lang;
   const tokens = [];
-  const body = ch.paragraphs.map((p) => `<p>${p.sentences.map((s) => sentenceHtml(s, tokens)).join(' ')}</p>`).join('');
-  reader = { book, bookId, ci, tokens, selected: -1, enOpenFor: null };
+  const body = ch.paragraphs.map((p) => `<p>${p.sentences.map((s) => sentenceHtml(s, tokens, lang)).join(' ')}</p>`).join('');
+  reader = { book, bookId, ci, lang, tokens, selected: -1, enOpenFor: null };
 
   chooseEdition(book.meta);
+  showLanguage(lang);
   const enc = encodeURIComponent(bookId);
   const workLink = `#/book/${encodeURIComponent(book.meta.workId)}`;
   const last = book.chapters.length - 1;
@@ -486,11 +536,11 @@ async function showReader(bookId, ci) {
     <article class="reader" style="--reader-size:${settings.fontSize}px">
       <header class="chapter-head">
         <p class="eyebrow">Chapter ${ci + 1} of ${book.chapters.length} · ${esc(book.meta.level)}</p>
-        <h1 lang="de">${esc(ch.title)}</h1>
+        <h1 lang="${esc(lang)}">${esc(ch.title)}</h1>
         <p class="muted">${esc(ch.titleEn)}</p>
       </header>
       ${store.cardList().length ? '' : '<p class="tip">Tap any word to see what it means and hear it.</p>'}
-      <div class="text" lang="de">${body}</div>
+      <div class="text" lang="${esc(lang)}">${body}</div>
     </article>
     <nav class="chapter-nav">${prev}${next}</nav>`;
 
@@ -510,29 +560,38 @@ function selectWord(i) {
   $$('.w.sel', app).forEach((el) => el.classList.remove('sel'));
   const idx = tok.part.members ? tok.part.members.map((m) => m._i) : [i];
   idx.forEach((k) => $(`.w[data-i="${k}"]`, app)?.classList.add('sel'));
-  if (settings.autoSpeak) say(tok.part.text);
+  if (settings.autoSpeak) say(spokenForm(tok), reader.lang);
   renderWordSheet();
   openSheet();
   keepVisible($(`.w[data-i="${i}"]`, app));
 }
 
+// A French elision sounds wrong on its own, so "l’" is spoken together with its word: "l’homme".
+function spokenForm({ part, sentence }) {
+  if (!/['’]$/.test(part.text)) return part.text;
+  const next = sentence.parts[sentence.parts.indexOf(part) + 1];
+  return next?.w ? part.text + next.text : part.text;
+}
+
 function renderWordSheet() {
-  const { part, sentence } = reader.tokens[reader.selected];
+  const tok = reader.tokens[reader.selected];
+  const { part, sentence } = tok;
+  const { lang } = reader;
   const g = part.gloss;
   const head = part.head || part.text;
-  const saved = g && store.isSaved(g.lemma);
+  const saved = g && store.isSaved(lang, g.lemma);
   const enOpen = reader.enOpenFor === sentence;
   sheetInner.innerHTML = `
     <div class="sheet-head">
-      <button class="word-say" data-act="say" data-text="${esc(part.text)}" aria-label="Pronounce ${esc(part.text)}">
-        <span class="form" lang="de">${esc(head)}</span>${ICON.speaker}
+      <button class="word-say" data-act="say" data-text="${esc(spokenForm(tok))}" data-lang="${esc(lang)}" aria-label="Pronounce ${esc(part.text)}">
+        <span class="form" lang="${esc(lang)}">${esc(head)}</span>${ICON.speaker}
       </button>
       <button class="icon-btn" data-act="close" aria-label="Close">${ICON.close}</button>
     </div>
     ${
       g
         ? `<p class="gloss">
-             <button class="lemma" data-act="say" data-text="${esc(g.lemma)}" lang="de" title="Pronounce">${esc(g.lemma)}</button>
+             <button class="lemma" data-act="say" data-text="${esc(g.lemma)}" data-lang="${esc(lang)}" lang="${esc(lang)}" title="Pronounce">${esc(g.lemma)}</button>
              <span class="en">${esc(g.en)}</span>
            </p>
            ${g.note ? `<p class="note">${esc(g.note)}</p>` : ''}
@@ -552,12 +611,13 @@ function renderWordSheet() {
 
 function toggleSave() {
   const { part, sentence } = reader.tokens[reader.selected];
+  const { lang } = reader;
   const g = part.gloss;
   if (!g) return;
-  if (store.isSaved(g.lemma)) {
-    const card = store.state.cards[g.lemma];
+  if (store.isSaved(lang, g.lemma)) {
+    const card = store.getCard(lang, g.lemma);
     if (card.srs.reps > 0 && !confirm(`Remove "${g.lemma}" from your flashcards? Its review history will be lost.`)) return;
-    store.removeCard(g.lemma);
+    store.removeCard(card.id);
   } else {
     const members = part.members || [part];
     const context = [];
@@ -568,6 +628,7 @@ function toggleSave() {
       else context.push([p.text, hi]);
     }
     store.addCard({
+      lang,
       lemma: g.lemma,
       en: g.en,
       note: g.note,
@@ -579,7 +640,7 @@ function toggleSave() {
     });
   }
   reader.tokens.forEach((tok, i) => {
-    const on = !!tok.part.gloss && store.isSaved(tok.part.gloss.lemma);
+    const on = !!tok.part.gloss && store.isSaved(lang, tok.part.gloss.lemma);
     $(`.w[data-i="${i}"]`, app)?.classList.toggle('saved', on);
   });
   renderWordSheet();
@@ -681,11 +742,16 @@ function showReview() {
 
   review = { card: next, revealed: false, counts };
   renderCard();
-  if (settings.autoSpeak) say(next.lemma);
+  if (settings.autoSpeak) say(next.lemma, store.cardLang(next));
 }
+
+// Words from more than one language get a small language label.
+const cardLanguages = () => new Set(store.cardList().map(store.cardLang));
+const langTag = (code) => `<span class="lang-tag" title="${esc(language(code).name)}">${esc(code.toUpperCase())}</span>`;
 
 function renderCard() {
   const { card: c, revealed, counts } = review;
+  const lang = store.cardLang(c);
   const now = Date.now();
   const options = revealed ? preview(c.srs, now) : null;
   const ctx = (c.context || []).map(([text, hi]) => (hi ? `<mark>${esc(text)}</mark>` : esc(text))).join('');
@@ -697,10 +763,11 @@ function renderCard() {
         <span class="count c-due"><b>${counts.review}</b> to review</span>
       </div>
       <section class="flashcard${revealed ? ' revealed' : ''}">
-        <button class="card-word" data-act="say" data-text="${esc(c.lemma)}" aria-label="Pronounce ${esc(c.lemma)}">
-          <span lang="de">${esc(c.lemma)}</span>${ICON.speaker}
+        ${cardLanguages().size > 1 ? `<p class="card-lang">${esc(language(lang).name)}</p>` : ''}
+        <button class="card-word" data-act="say" data-text="${esc(c.lemma)}" data-lang="${esc(lang)}" aria-label="Pronounce ${esc(c.lemma)}">
+          <span lang="${esc(lang)}">${esc(c.lemma)}</span>${ICON.speaker}
         </button>
-        <p class="card-context" lang="de">${ctx}</p>
+        <p class="card-context" lang="${esc(lang)}">${ctx}</p>
         ${
           revealed
             ? `<hr><p class="card-en">${esc(c.en)}</p>
@@ -749,64 +816,83 @@ function dueText(c) {
   return ms <= 0 ? 'due now' : `next review in ${formatInterval(ms)}`;
 }
 
-function voiceOptions() {
-  const voices = speech.germanVoices();
-  if (!voices.length) return '<option value="">No German voice found</option>';
+// The languages to offer a voice for: those with books, plus any with saved words.
+const voiceLanguages = () => sortLanguages(new Set([...works.map((w) => w.lang), ...cardLanguages()]));
+
+function voiceOptions(lang) {
+  const voices = speech.voicesFor(lang);
+  if (!voices.length) return `<option value="">No ${esc(language(lang).name)} voice found</option>`;
   return [
     `<option value="">Automatic (best available)</option>`,
     ...voices.map(
-      (v) => `<option value="${esc(v.voiceURI)}" ${v.voiceURI === settings.voice ? 'selected' : ''}>${esc(v.name)} (${esc(v.lang)})</option>`,
+      (v) =>
+        `<option value="${esc(v.voiceURI)}" ${v.voiceURI === settings.voices[lang] ? 'selected' : ''}>${esc(v.name)} (${esc(v.lang)})</option>`,
     ),
   ].join('');
+}
+
+const noVoiceFor = (lang) => !speech.supported() || !speech.voicesFor(lang).length;
+
+function voiceHelp(lang) {
+  const { name, voiceSetting } = language(lang);
+  return `<p>This browser doesn't list a ${esc(name)} voice. Tap <em>Test</em> anyway, because some phones still speak ${esc(name)}.
+      If you hear nothing, or an English accent, install a ${esc(name)} voice. Then close the app completely and open it again
+      (or restart the phone):</p>
+    <ul>
+      <li><strong>Android:</strong> Settings → search “Text-to-speech” → Preferred engine: <em>Speech Services by Google</em>
+        → ⚙ → Install voice data → ${esc(voiceSetting)}. Adding ${esc(name)} under “Languages” is not enough.</li>
+      <li><strong>iPhone:</strong> Settings → Accessibility → Spoken Content → Voices → ${esc(name)}.</li>
+      <li><strong>Windows:</strong> Settings → Time &amp; language → Speech → Add voices → ${esc(name)}, or use Microsoft Edge.</li>
+    </ul>`;
+}
+
+function voicePicker(lang, several) {
+  const { name } = language(lang);
+  return `<div class="field">
+      <label for="voice-select-${esc(lang)}">${several ? `${esc(name)} voice` : 'Voice'}</label>
+      <div class="voice-pick">
+        <select data-role="voice" data-lang="${esc(lang)}" id="voice-select-${esc(lang)}">${voiceOptions(lang)}</select>
+        <button class="btn small" data-act="test-voice" data-lang="${esc(lang)}">${ICON.speaker} Test</button>
+      </div>
+    </div>
+    <div class="hint small" id="voice-help-${esc(lang)}" ${noVoiceFor(lang) ? '' : 'hidden'}>${voiceHelp(lang)}</div>`;
 }
 
 function showWords() {
   ++renderId;
   const cards = store.cardList().sort((a, b) => b.created - a.created);
-  const noVoice = !speech.supported() || !speech.germanVoices().length;
+  const tagged = cardLanguages().size > 1;
+  const langs = voiceLanguages();
   app.innerHTML = `
     <h1 class="page-title">Saved words <span class="muted">(${cards.length})</span></h1>
     ${cards.length ? '<input type="search" class="filter" placeholder="Filter words…" aria-label="Filter words" data-role="filter">' : ''}
     <ul class="word-list">
       ${
         cards
-          .map(
-            (c) => `<li data-search="${esc(`${c.lemma} ${c.en}`.toLowerCase())}">
-              <button class="icon-btn" data-act="say" data-text="${esc(c.lemma)}" aria-label="Pronounce ${esc(c.lemma)}">${ICON.speaker}</button>
+          .map((c) => {
+            const lang = store.cardLang(c);
+            return `<li data-search="${esc(`${c.lemma} ${c.en}`.toLowerCase())}">
+              <button class="icon-btn" data-act="say" data-text="${esc(c.lemma)}" data-lang="${esc(lang)}" aria-label="Pronounce ${esc(c.lemma)}">${ICON.speaker}</button>
               <div class="word-main">
-                <span><span class="lemma" lang="de">${esc(c.lemma)}</span> <span class="en">${esc(c.en)}</span></span>
+                <span>${tagged ? langTag(lang) : ''}<span class="lemma" lang="${esc(lang)}">${esc(c.lemma)}</span> <span class="en">${esc(c.en)}</span></span>
                 <span class="muted small">${esc(dueText(c))}</span>
               </div>
-              <button class="icon-btn danger" data-act="delete" data-lemma="${esc(c.lemma)}" aria-label="Delete ${esc(c.lemma)}">${ICON.trash}</button>
-            </li>`,
-          )
+              <button class="icon-btn danger" data-act="delete" data-card="${esc(c.id)}" aria-label="Delete ${esc(c.lemma)}">${ICON.trash}</button>
+            </li>`;
+          })
           .join('') || '<li class="empty">No saved words yet. While reading, tap a word and choose “Save word”.</li>'
       }
     </ul>
 
     <section class="panel settings">
       <h2>Pronunciation</h2>
-      <label class="field">Voice
-        <select data-role="voice" id="voice-select">${voiceOptions()}</select>
-      </label>
-      <div class="hint small" id="voice-help" ${noVoice ? '' : 'hidden'}>
-        <p>This browser doesn't list a German voice. Tap <em>Test voice</em> anyway, because some phones still speak German.
-          If you hear nothing, or an English accent, install a German voice. Then close the app completely and open it again
-          (or restart the phone):</p>
-        <ul>
-          <li><strong>Android:</strong> Settings → search “Text-to-speech” → Preferred engine: <em>Speech Services by Google</em>
-            → ⚙ → Install voice data → Deutsch (Deutschland). Adding German under “Languages” is not enough.</li>
-          <li><strong>iPhone:</strong> Settings → Accessibility → Spoken Content → Voices → German.</li>
-          <li><strong>Windows:</strong> Settings → Time &amp; language → Speech → Add voices → German, or use Microsoft Edge.</li>
-        </ul>
-      </div>
+      ${langs.map((lang) => voicePicker(lang, langs.length > 1)).join('')}
       <p class="hint small" id="voice-diag">${esc(voiceDiagnostics())}</p>
       <label class="field">Speed <span class="muted" id="rate-value">${settings.rate.toFixed(2)}×</span>
         <input type="range" min="0.5" max="1.2" step="0.05" value="${settings.rate}" data-role="rate">
       </label>
       <label class="check"><input type="checkbox" data-role="autospeak" ${settings.autoSpeak ? 'checked' : ''}>
         Pronounce words automatically when I tap them</label>
-      <button class="btn" data-act="test-voice">${ICON.speaker} Test voice</button>
     </section>
 
     <section class="panel settings">
@@ -834,15 +920,20 @@ function voiceDiagnostics() {
   if (!all.length) return 'This browser reports no voices at all (yet).';
   const langs = [...new Set(all.map((v) => v.lang))].sort();
   const shown = langs.slice(0, 24).join(', ') + (langs.length > 24 ? ', …' : '');
-  return `This browser reports ${all.length} voice${all.length === 1 ? '' : 's'}, ${speech.germanVoices().length} of them German. Languages: ${shown}.`;
+  const ours = voiceLanguages()
+    .map((lang) => `${speech.voicesFor(lang).length} ${language(lang).name}`)
+    .join(', ');
+  return `This browser reports ${all.length} voice${all.length === 1 ? '' : 's'}: ${ours}. Languages: ${shown}.`;
 }
 
 function updateVoiceUi() {
   if (view !== 'words') return;
-  const sel = $('#voice-select');
-  if (sel) sel.innerHTML = voiceOptions();
-  const help = $('#voice-help');
-  if (help) help.hidden = speech.germanVoices().length > 0;
+  for (const lang of voiceLanguages()) {
+    const sel = $(`#voice-select-${lang}`);
+    if (sel) sel.innerHTML = voiceOptions(lang);
+    const help = $(`#voice-help-${lang}`);
+    if (help) help.hidden = !noVoiceFor(lang);
+  }
   const diag = $('#voice-diag');
   if (diag) diag.textContent = voiceDiagnostics();
 }
@@ -861,10 +952,12 @@ const today = () => new Date().toISOString().slice(0, 10);
 
 function ankiCsv() {
   const q = (s) => `"${String(s ?? '').replace(/"/g, '""')}"`;
-  const lines = ['#separator:Comma', '#html:true', '#columns:German,English,Sentence,Sentence (English),Note'];
+  // The last column becomes an Anki tag (German, French …).
+  const lines = ['#separator:Comma', '#html:true', '#columns:Word,English,Sentence,Sentence (English),Note,Language', '#tags column:6'];
   for (const c of store.cardList()) {
     const sentence = (c.context || []).map(([t, hi]) => (hi ? `<b>${esc(t)}</b>` : esc(t))).join('');
-    lines.push([c.lemma, c.en, sentence, c.contextEn, c.note].map(q).join(','));
+    const tag = language(store.cardLang(c)).name.replace(/\s+/g, '_');
+    lines.push([c.lemma, c.en, sentence, c.contextEn, c.note, tag].map(q).join(','));
   }
   return lines.join('\n');
 }
@@ -874,13 +967,13 @@ function ankiCsv() {
 function handleAction(act, el) {
   switch (act) {
     case 'say':
-      return say(el.dataset.text);
+      return say(el.dataset.text, el.dataset.lang || reader?.lang);
     case 'close':
       return closeSheet();
     case 'toggle-save':
       return toggleSave();
     case 'say-sentence':
-      return say(reader?.tokens[reader.selected]?.sentence.de);
+      return say(reader?.tokens[reader.selected]?.sentence.text, reader?.lang);
     case 'toggle-en': {
       const s = reader?.tokens[reader.selected]?.sentence;
       reader.enOpenFor = reader.enOpenFor === s ? null : s;
@@ -895,16 +988,22 @@ function handleAction(act, el) {
     case 'grade':
       return grade(Number(el.dataset.g));
     case 'delete': {
-      const lemma = el.dataset.lemma;
-      if (!confirm(`Delete "${lemma}" from your flashcards?`)) return;
-      store.removeCard(lemma);
+      const card = store.state.cards[el.dataset.card];
+      if (!card || !confirm(`Delete "${card.lemma}" from your flashcards?`)) return;
+      store.removeCard(card.id);
       updateBadge();
       return showWords();
     }
-    case 'test-voice':
-      say('Guten Tag! Ich lese gern Märchen auf Deutsch.');
+    case 'test-voice': {
+      const lang = el.dataset.lang;
+      say(language(lang).test || language(lang).native, lang);
       setTimeout(updateVoiceUi, 1000); // some phones only load their voice list after the first use
       return;
+    }
+    case 'choose-language':
+      settings.language = el.dataset.lang;
+      store.save();
+      return showLibrary();
     case 'export':
       return download(`leseecke-backup-${today()}.json`, store.exportData(), 'application/json');
     case 'export-anki':
@@ -962,9 +1061,10 @@ app.addEventListener('input', (e) => {
 app.addEventListener('change', async (e) => {
   const role = e.target.dataset.role;
   if (role === 'voice') {
-    settings.voice = e.target.value;
+    const lang = e.target.dataset.lang;
+    settings.voices[lang] = e.target.value;
     store.save();
-    say('Hallo! So klinge ich.');
+    say(language(lang).hello || language(lang).native, lang);
   } else if (role === 'autospeak') {
     settings.autoSpeak = e.target.checked;
     store.save();

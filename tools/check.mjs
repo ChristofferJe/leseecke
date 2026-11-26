@@ -6,12 +6,14 @@
 //   node tools/check.mjs grimm-b1 --missing   also print glossary stub lines for missing words
 //   node tools/check.mjs --unused          also list glossary entries that no chapter uses
 //
-// Words are looked up in the edition's own glossary first, then in books/glossary.txt.
+// Words are looked up in the edition's own glossary first, then in the shared glossary of the
+// book's language (books/glossary.txt for German, books/glossary-fr.txt for French).
 
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { parseChapter, parseGlossary, annotateChapter } from '../js/format.js';
+import { language, langOf } from '../js/languages.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -29,16 +31,34 @@ const fail = (msg) => {
 const read = (...p) => readFileSync(join(root, ...p), 'utf8');
 
 const works = JSON.parse(read('books', 'library.json'));
-const shared = parseGlossary(read('books', 'glossary.txt'));
-if (shared.errors.length) {
-  console.log('\nbooks/glossary.txt (shared)');
-  shared.errors.forEach((e) => fail(`glossary.txt:${e.line} ${e.msg}`));
+
+// One shared glossary per language, loaded when the first book in that language is checked.
+const sharedGlossaries = new Map(); // language code -> { path, glossary, used }
+function sharedFor(lang) {
+  if (sharedGlossaries.has(lang)) return sharedGlossaries.get(lang);
+  const path = language(lang).glossary;
+  const entry = { path, glossary: new Map(), used: new Set() };
+  if (!existsSync(join(root, path))) {
+    console.log(`\n${path} (shared, ${language(lang).name})`);
+    fail(`${path} not found: create it for books in ${language(lang).name}`);
+  } else {
+    const parsed = parseGlossary(read(path));
+    entry.glossary = parsed.glossary;
+    if (parsed.errors.length) console.log(`\n${path} (shared, ${language(lang).name})`);
+    parsed.errors.forEach((e) => fail(`${path}:${e.line} ${e.msg}`));
+  }
+  sharedGlossaries.set(lang, entry);
+  return entry;
 }
-const usedShared = new Set();
+sharedFor('de');
+
 const editionIds = new Set();
 
 for (const work of works) {
   for (const key of ['id', 'title', 'author', 'color', 'editions']) if (!work[key]) fail(`library.json: book "${work.id}" has no "${key}"`);
+  if (work.language !== undefined && !/^[a-z]{2,3}$/.test(work.language)) {
+    fail(`library.json: book "${work.id}" has "language": "${work.language}" (use a code like "de" or "fr")`);
+  }
   for (const ed of work.editions || []) {
     if (editionIds.has(ed.id)) fail(`library.json: edition id "${ed.id}" is used twice`);
     editionIds.add(ed.id);
@@ -49,8 +69,10 @@ for (const work of works) {
 
 function checkEdition(work, ed) {
   const dir = join(root, 'books', ed.id);
-  console.log(`\n${work.title} — ${ed.id} (${ed.level})`);
+  const lang = langOf(work);
+  console.log(`\n${work.title} — ${ed.id} (${ed.level}, ${language(lang).name})`);
 
+  const shared = sharedFor(lang);
   const own = existsSync(join(dir, 'glossary.txt'))
     ? parseGlossary(readFileSync(join(dir, 'glossary.txt'), 'utf8'))
     : { glossary: new Map(), errors: [{ line: 0, msg: 'glossary.txt not found (create it, even if it only has a comment)' }] };
@@ -68,23 +90,28 @@ function checkEdition(work, ed) {
       fail(`${file}: file not found`);
       continue;
     }
-    const { chapter, errors } = parseChapter(readFileSync(path, 'utf8'));
+    const { chapter, errors } = parseChapter(readFileSync(path, 'utf8'), lang);
     errors.forEach((e) => fail(`${file}:${e.line} ${e.msg}`));
     if (!chapter.titleEn) fail(`${file}: title has no "= English title" line`);
 
     const all = chapter.paragraphs.flatMap((p) => p.sentences);
-    for (const s of all) if (!s.en) fail(`${file}:${s.line} no "= translation" line for: ${s.de}`);
+    for (const s of all) if (!s.en) fail(`${file}:${s.line} no "= translation" line for: ${s.text}`);
 
     for (const m of annotateChapter(chapter, glossary)) {
-      const entry = missing.get(m.form) || { count: 0, example: `${file}:${m.sentence.line} ${m.sentence.de}` };
+      // German keeps "Weg" and "weg" apart; elsewhere only names need a capital, so "Le" and "le"
+      // are one missing word (listed in lower case if it ever appears in lower case).
+      const form = m.form.replace(/'/g, '’');
+      const key = lang === 'de' ? form : form.toLowerCase();
+      const entry = missing.get(key) || { count: 0, form, example: `${file}:${m.sentence.line} ${m.sentence.text}` };
+      if (form[0] !== form[0].toUpperCase()) entry.form = form;
       entry.count++;
-      missing.set(m.form, entry);
+      missing.set(key, entry);
     }
     for (const s of all) {
       for (const p of s.parts) {
         if (!p.glossKey) continue;
         if (own.glossary.has(p.glossKey)) usedOwn.add(p.glossKey);
-        else usedShared.add(p.glossKey);
+        else shared.used.add(p.glossKey);
       }
     }
 
@@ -106,12 +133,12 @@ function checkEdition(work, ed) {
 
   if (missing.size) {
     fail(`${missing.size} word forms have no gloss (add them to a glossary or annotate them inline)`);
-    const list = [...missing.entries()];
+    const list = [...missing.values()];
     if (flags.has('--missing')) {
       console.log(`\n// --- stub lines (${ed.id}) ---`);
-      for (const [form, info] of list) console.log(`${form} |  |  |    // ×${info.count}  ${info.example}`);
+      for (const info of list) console.log(`${info.form} |  |  |    // ×${info.count}  ${info.example}`);
     } else {
-      console.log(`    ${list.slice(0, 30).map(([f]) => f).join(', ')}${list.length > 30 ? ', …' : ''}`);
+      console.log(`    ${list.slice(0, 30).map((info) => info.form).join(', ')}${list.length > 30 ? ', …' : ''}`);
       console.log('    (run with --missing to print stub lines with example sentences)');
     }
   }
@@ -120,8 +147,12 @@ function checkEdition(work, ed) {
 }
 
 if (!only) {
-  const unused = [...shared.glossary.keys()].filter((k) => !usedShared.has(k));
-  console.log(`\nShared glossary: ${shared.glossary.size} entries, ${unused.length} not used by any book${flags.has('--unused') ? `: ${unused.join(', ')}` : ''}`);
+  for (const [lang, shared] of sharedGlossaries) {
+    const unused = [...shared.glossary.keys()].filter((k) => !shared.used.has(k));
+    console.log(
+      `\nShared glossary (${language(lang).name}, ${shared.path}): ${shared.glossary.size} entries, ${unused.length} not used by any book${flags.has('--unused') ? `: ${unused.join(', ')}` : ''}`,
+    );
+  }
 }
 
 console.log(problems ? `\n${problems} problem(s) found.` : '\nAll good.');

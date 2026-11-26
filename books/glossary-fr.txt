@@ -1,0 +1,2290 @@
+// Shared glossary for all French books.  form | lemma (empty = same as form) | English | note
+// Every edition also has its own books/<edition>/glossary.txt, whose entries win over these.
+// Words are split at elisions (l’ + homme, qu’ + il) and at pronouns joined by a hyphen
+// (dit + il), so each part has its own entry. Keys use the typographic apostrophe ’.
+// Nouns give the lemma with its article: la prison, le juge, l’homme (m).
+
+// --- articles and small words ---
+le | | the; him, it | article (masculine); as a pronoun before a verb: "je le vois" = I see him/it
+la | | the; her, it | article (feminine); as a pronoun before a verb: "je la vois" = I see her/it
+l’ | le, la | the; him, her, it | le/la before a vowel: l’homme = the man; "je l’ai vu" = I saw him
+les | | the; them | article (plural); as a pronoun before a verb: "je les vois" = I see them
+un | | a, an; one | masculine
+une | un | a, an; one | feminine
+des | | some; of the | plural of un/une; also de + les: "le bruit des chaînes"
+du | de | of the; some | de + le: "le jour du procès" = the day of the trial; "du pain" = some bread
+au | à | to the; at the; in the | à + le: "je pense au procès"
+aux | à | to the; at the | à + les
+de | | of; from; some | "la tête de l’homme" = the man's head
+d’ | de | of; from | de before a vowel: "un matin d’août"
+à | | to; at; in | "à Paris" = in Paris; "à mort" = to death
+en | | in; to; some, of it | "en prison" = in prison; as a pronoun: "j’en ai" = I have some
+dans | | in, into | "dans la tête" = in the head
+sur | | on | "sur une fenêtre" = on a window
+pour | | for; in order to | "pour toute la vie" = for life; "pour voir" = to see
+près | | near | "près de Paris" = near Paris
+depuis | | since; for | "ici depuis cinq semaines" = here for five weeks (and still here)
+avant | | before | "avant, j’étais libre" = before, I was free
+et | | and
+mais | | but
+ou | | or
+comme | | like, as | "comme les autres" = like the others
+puis | | then, next
+alors | | so, then
+aussi | | too, also
+même | | even; same | "même dans mes rêves" = even in my dreams; "le même" = the same
+plutôt | | rather | "plutôt la mort" = death rather than that
+peut-être | | perhaps, maybe
+quand | | when
+pourquoi | | why | "pourquoi pas ?" = why not?
+eh | | well | "eh bien" = well, all right
+ah | | ah, oh
+bien | | well; good | "bien !" = good!; "eh bien" = well
+ne | | not | with pas: "ne … pas" = not; "ils ne savent pas" = they don't know
+pas | | not | "ne … pas" = not; "pourquoi pas ?" = why not?
+non | | no
+oui | | yes
+tout | | everything; all, whole | "tout a changé" = everything changed
+toute | tout | all, the whole | feminine: "toute la vie" = the whole life
+tous | tout | all, every; everyone | plural: "tous les hommes" = all men
+y | | there; to it | "il y a" = there is/are; "il y avait" = there was/were
+qu’ | que | that; what | que before a vowel; "qu’est-ce que" = what
+que | | that; what; than | "je sais que …" = I know that …
+ce | | this, that; it | "ce matin" = this morning; "c’est" = it is; "qu’est-ce que" = what
+cette | ce | this, that | feminine: "cette idée" = this idea
+c’ | ce | it, that | ce before a vowel: "c’est" = it is
+qui | | who; which, that | "qu’est-ce qui a changé ?" = what has changed?
+
+// --- pronouns ---
+je | | I
+j’ | je | I | je before a vowel: "j’ai" = I have
+moi | | me; I | stressed form: "pour moi" = for me; "moi, je sais" = I know
+il | | he; it | "il y a" = there is
+elle | | she; it | also "it" for a feminine noun: l’idée → elle
+on | | one, people, they; we | "on vous attend" = they are waiting for you
+vous | | you | polite "you" to one person, or "you" to several people; also "you" as an object
+ils | il | they | masculine or mixed group
+mon | | my | masculine
+ma | mon | my | feminine
+mes | mon | my | plural
+
+// --- verbs: être (to be), avoir (to have), aller (to go) ---
+suis | être | to be | je suis = I am
+est | être | to be | il/elle est = he/she/it is; "c’est" = it is
+était | être | to be | past (imparfait): il était = he/it was
+étais | être | to be | past (imparfait): j’étais = I was
+étaient | être | to be | past (imparfait): ils étaient = they were
+ai | avoir | to have | j’ai = I have; also makes the past: "j’ai regardé" = I looked
+a | avoir | to have | il/elle a = he/she has; also makes the past: "il a dit" = he said; "il y a" = there is
+avait | avoir | to have | past (imparfait): il avait = he had; "il y avait" = there was/were
+eu | avoir | to have | past participle: "j’ai eu" = I had, I got
+vont | aller | to go | ils vont = they go; "vont mourir" = are going to die
+
+// --- verbs ---
+pense | penser | to think | je pense = I think; "penser à" = to think about
+dit | dire | to say | past participle: "il a dit" = he said; also il dit = he says
+attend | attendre | to wait (for) | "on vous attend" = they're waiting for you
+levez | se lever | to get up | command: "levez-vous !" = get up!
+regardé | regarder | to look at, to watch | past participle: "j’ai regardé" = I looked at
+arrivé | arriver | to arrive | past participle: "il est arrivé" = he arrived (with être)
+crié | crier | to shout, to cry out | past participle: "j’ai crié" = I shouted
+lu | lire | to read | past participle: "il a lu" = he read
+changé | changer | to change | past participle: "tout a changé" = everything changed
+mourir | | to die
+savent | savoir | to know | ils savent = they know
+
+// --- nouns ---
+prison | la prison | prison
+semaines | la semaine | week | plural
+idée | l’idée (f) | idea
+tête | la tête | head
+mort | la mort | death | "condamné à mort" = condemned to death
+homme | l’homme (m) | man
+hommes | l’homme (m) | man; people | plural
+autres | autre | other; others | "les autres" = the others
+choses | la chose | thing | plural
+filles | la fille | girl; daughter | plural; "jeune fille" = (young) girl
+fêtes | la fête | party, celebration | plural
+théâtres | le théâtre | theatre | plural
+corps | le corps | body | same form in the plural
+jour | le jour | day | "le jour et la nuit" = day and night
+nuit | la nuit | night
+rêves | le rêve | dream | plural
+procès | le procès | trial
+matin | le matin | morning
+août | | August
+gardien | le gardien | guard, warder
+salle | la salle | room, hall | here: the courtroom
+gens | les gens | people | always plural
+fenêtres | la fenêtre | window | plural
+fenêtre | la fenêtre | window
+soleil | le soleil | sun; sunshine
+fleur | la fleur | flower
+espoir | l’espoir (m) | hope
+avocat | l’avocat (m) | lawyer
+bagne | le bagne | prison camp, the galleys | hard labour for convicts, often for life
+vie | la vie | life | "pour toute la vie" = for life
+juge | le juge | judge
+décision | la décision | decision
+Bicêtre | | Bicêtre | an old prison (and hospital) just south of Paris
+Paris | | Paris
+
+// --- adjectives ---
+condamné | condamner | condemned, sentenced | past participle of condamner; "un condamné" = a condemned man
+jeune | | young
+jeunes | jeune | young | plural
+libre | | free
+seule | seul | only; alone | feminine: "une seule idée" = only one idea
+beau | | beautiful, fine | "un beau matin" = a fine morning
+ouvertes | ouvert | open | feminine plural; from ouvrir (to open)
+petite | petit | small, little | feminine; "la petite" = the little one
+jaune | | yellow
+blanc | | white
+triste | | sad
+horrible | | horrible
+
+// --- numbers and adverbs ---
+cinq | | five
+deux | | two
+six | | six
+ici | | here
+là | | there; here | "toujours là" = always there
+toujours | | always; still
+maintenant | | now
+souvent | | often
+dehors | | outside
+beaucoup | | a lot, many | "beaucoup de gens" = a lot of people
+
+// --- more small words ---
+n’ | ne | not | ne before a vowel: "il n’y a pas" = there isn't
+me | | me; (to) me; myself | before a verb: "il me regarde" = he looks at me
+m’ | me | me; (to) me; myself | me before a vowel: "il m’a vu" = he saw me
+se | | himself, herself, themselves | reflexive: "ils se lèvent" = they get up
+s’ | se | himself, herself, itself, themselves | se before a vowel: "elle s’appelle" = she is called; in "s’il vous plaît" (please), s’ = si (if)
+leur | | their; (to) them | "leur langue" = their language; "on leur met" = they put on them
+leurs | leur | their | plural: "leurs chaînes" = their chains
+sa | son | his, her, its | feminine: "sa voix" = her voice
+son | | his, her, its | masculine: "son uniforme" = his uniform
+ta | ton | your | informal, feminine: "ta redingote" = your frock coat
+ton | | your | informal, masculine
+votre | | your | polite, or to several people
+vos | votre | your | plural
+nos | notre | our | plural
+ces | ce | these, those
+cet | ce | this, that | before a masculine word starting with a vowel: "cet homme"
+nous | | we; us; each other | "nous nous embrassons" = we kiss (each other)
+tu | | you | informal, to one person (family, friends, children)
+toi | tu | you | stressed form: "comme toi" = like you
+lui | | him; (to) him, (to) her | "pour lui" = for him; "je lui donne" = I give (to) him
+eux | ils | them | stressed form: "pour eux" = for them
+ça | | that, it | informal for "cela"
+mien | | mine | "le mien" = mine
+avec | | with
+derrière | | behind
+devant | | in front of
+sous | | under | "sous la pluie" = in the rain
+vers | | towards
+chez | | at (someone’s) place | "chez moi" = at my place, at home
+par | | by; through; per | "heure par heure" = hour by hour; "par terre" = on the ground
+après | | after
+autour | | around | "autour de" = around
+entre | | between | "entre A et B" = between A and B
+si | | if; so | "si vous voulez" = if you like
+très | | very
+peu | | little | "un peu de" = a little
+plus | | more; no more | "ne … plus" = no longer, not any more; "plus que" = more than
+presque | | almost
+encore | | again; still; more
+bientôt | | soon
+seulement | | only
+partout | | everywhere
+loin | | far | "de loin" = from far away
+chaque | | each, every
+comment | | how
+rien | | nothing | "ne … rien" = nothing; "je n’ai plus rien" = I have nothing left
+lentement | | slowly
+demain | | tomorrow
+aujourd’hui | | today
+voilà | | there is, here is | "le voilà !" = there he is!
+adieu | | goodbye, farewell | said when you will not meet again
+oh | | oh
+accord | l’accord (m) | agreement | "d’accord" = all right, OK
+pardon | le pardon | sorry; forgiveness | "pardon !" = sorry!
+coup | le coup | blow, knock | "tout à coup" = suddenly
+certains | certain | some (people) | "certains pleurent" = some (of them) cry
+
+// --- être, avoir, aller, faire and other common verbs ---
+sont | être | to be | ils sont = they are
+êtes | être | to be | vous êtes = you are
+être | | to be
+as | avoir | to have | tu as = you have
+avez | avoir | to have | vous avez = you have; "vous avez froid ?" = are you cold?
+vais | aller | to go | je vais = I go; "je vais mourir" = I am going to die
+va | aller | to go | il va = he goes; "il va pendre" = he is going to hang
+allez | aller | to go | vous allez = you go; "vous allez mourir" = you are going to die
+allé | aller | to go | past participle: "il est allé" = he went (with être)
+fait | faire | to do, to make | il fait = he does; "il fait froid" = it is cold
+fais | faire | to do, to make | je fais; "je vous fais mal ?" = am I hurting you?
+faites | faire | to do, to make | vous faites; "vous me faites mal" = you are hurting me
+font | faire | to do, to make | ils font = they make
+dis | dire | to say | je dis = I say; also passé simple: "dis-je" = I said
+sait | savoir | to know | il/elle sait = he/she knows
+sais | savoir | to know; can | je sais, tu sais; "tu sais lire ?" = can you read?
+veux | vouloir | to want | je veux = I want
+veut | vouloir | to want | il veut = he wants
+voulez | vouloir | to want | vous voulez; "si vous voulez" = if you like
+veulent | vouloir | to want | ils veulent = they want
+peux | pouvoir | can, to be able to | je peux = I can
+peuvent | pouvoir | can, to be able to | ils peuvent = they can
+devez | devoir | must, to have to | vous devez = you must
+vois | voir | to see | je vois = I see
+voir | | to see
+vu | voir | to see | past participle: "elle m’a vu" = she saw me
+vient | venir | to come | il vient = he comes
+venez | venir | to come | command: "venez !" = come!
+venir | | to come
+venu | venir | to come | past participle: "il est venu" = he came (with être)
+revient | revenir | to come back | il revient = it comes back
+met | mettre | to put | il met; "on met les chaînes" = they put the chains on
+prends | prendre | to take | je prends = I take
+apprennent | apprendre | to learn; to teach | "ils m’apprennent" = they teach me
+lit | lire | to read | il lit = he reads (le lit = bed)
+lis | lire | to read | je lis; command: "lis !" = read!
+lisons | lire | to read | nous lisons = we read
+lire | | to read
+écris | écrire | to write | j’écris = I write
+rit | rire | to laugh | il/elle rit = he/she laughs
+rient | rire | to laugh | ils rient = they laugh
+rire | | to laugh; a laugh | "un rire" = a laugh
+partent | partir | to leave | ils partent = they leave
+part | partir | to leave | il part = it leaves
+partons | partir | to leave | nous partons = we leave
+partir | | to leave, to go away
+partie | partir | to leave | "elle est partie" = she has gone (feminine)
+partis | partir | to leave | "ils sont partis" = they have gone (plural)
+sortent | sortir | to go out | ils sortent = they go out
+sortir | | to go out, to get out
+courent | courir | to run | ils courent = they run
+courons | courir | to run | nous courons = we run; command: "courons !" = let’s run!
+ouvre | ouvrir | to open | "la porte s’ouvre" = the door opens
+ouvrir | | to open
+dormir | | to sleep
+comprendre | | to understand
+entendre | | to hear
+entends | entendre | to hear | j’entends = I hear
+réponds | répondre | to answer | je réponds = I answer
+répond | répondre | to answer | il répond = he answers
+perds | perdre | to lose | je perds = I lose
+vend | vendre | to sell | "on vend" = people sell, they sell
+descends | descendre | to go down, to get out | je descends = I get down
+rendez | rendre | to give back | command: "rendez-moi" = give me back
+pendre | | to hang (someone)
+connais | connaître | to know (a person) | tu connais = you know
+reconnaît | reconnaître | to recognise | elle reconnaît = she recognises
+plaît | plaire | to please | "s’il vous plaît" = please
+pleut | pleuvoir | to rain | "il pleut" = it is raining
+pleuvoir | | to rain
+souri | sourire | to smile | past participle: "il a souri" = he smiled
+assieds | s’asseoir | to sit down | "je m’assieds" = I sit down
+assoient | s’asseoir | to sit down | "ils s’assoient" = they sit down
+assis | s’asseoir | sitting, seated | "je suis assis" = I am sitting
+envoie | envoyer | to send | command: "envoie-moi" = send me
+
+// --- -er verbs ---
+regarde | regarder | to look at, to watch | je/il regarde
+regardent | regarder | to look at, to watch | ils regardent
+coupe | couper | to cut | on coupe = one cuts
+coupent | couper | to cut | ils coupent
+appelle | appeler | to call | "elle s’appelle Marie" = her name is Marie
+joue | jouer | to play | elle joue = she plays
+jouer | | to play
+chante | chanter | to sing | elle chante = she sings
+chantent | chanter | to sing | ils chantent
+pleure | pleurer | to cry, to weep | je pleure = I cry
+pleurent | pleurer | to cry, to weep | ils pleurent
+tombe | tomber | to fall | je/il tombe
+crie | crier | to shout | je/il crie
+crient | crier | to shout | ils crient
+demande | demander | to ask | je demande = I ask
+demandé | demander | to ask | past participle: "j’ai demandé" = I asked
+arrivent | arriver | to arrive | ils arrivent
+arrivons | arriver | to arrive | nous arrivons = we arrive
+arriver | | to arrive; to come, to happen
+donnent | donner | to give | ils donnent
+donne | donner | to give | je/il donne; command: "donne-la-moi" = give it to me
+donnez | donner | to give | command: "donnez-moi" = give me
+donner | | to give
+enlèvent | enlever | to take off, to remove | ils enlèvent
+commence | commencer | to begin, to start | "il commence à pleuvoir" = it starts to rain
+tremblent | trembler | to tremble, to shiver | ils tremblent
+ferme | fermer | to close | je/il ferme
+lèvent | se lever | to get up, to stand up | "ils se lèvent" = they stand up
+dansent | danser | to dance | ils dansent
+arrêtent | s’arrêter | to stop | "ils s’arrêtent" = they stop
+arrête | s’arrêter | to stop | "il s’arrête" = he stops
+réveille | se réveiller | to wake up | "je me réveille" = I wake up
+parlé | parler | to speak, to talk | past participle: "il a parlé" = he talked
+parle | parler | to speak, to talk | je/il parle
+parler | | to speak, to talk
+tué | tuer | to kill | past participle: "il a tué" = he killed
+tourne | tourner | to turn | "ma tête tourne" = my head is spinning
+préparé | préparer | to prepare | prepared
+refusé | refuser | to refuse | refused, rejected
+échapper | s’échapper | to escape | "je veux m’échapper" = I want to escape
+monte | monter | to go up, to climb | "monter dans une voiture" = to get into a carriage
+écoute | écouter | to listen (to) | j’écoute = I listen
+aime | aimer | to like, to love | il aime = he likes
+raconte | raconter | to tell (a story) | il raconte = he tells
+volé | voler | to steal | past participle: "il a volé" = he stole (voler also means to fly)
+trouvé | trouver | to find | past participle: "il a trouvé" = he found
+garde | garder | to guard, to keep | il garde = he guards (la garde = guard duty: "monter la garde" = to stand guard)
+gagner | | to win; to earn
+embrassons | embrasser | to kiss; to hug | "nous nous embrassons" = we kiss
+embrasse | embrasser | to kiss; to hug | j’embrasse = I kiss
+serre | serrer | to hold tight, to squeeze | je serre
+prie | prier | to pray | je prie = I pray
+acheté | acheter | to buy | past participle: "elle l’a acheté" = she bought it
+emportez | emporter | to take away | command: "emportez-la" = take her away
+chercher | | to look for; to fetch | "venir chercher" = to come and fetch
+attachent | attacher | to tie (up) | ils attachent
+traverse | traverser | to cross | elle traverse = it crosses
+pardonner | | to pardon, to forgive
+
+// --- nouns ---
+château | le château | castle
+roi | le roi | king
+barreaux | le barreau | bar (of a window) | plural
+visages | le visage | face | plural
+cellule | la cellule | cell
+murs | le mur | wall | plural
+pierre | la pierre | stone | "en pierre" = made of stone
+paille | la paille | straw | prisoners slept on straw
+porte | la porte | door
+soldat | le soldat | soldier
+soldats | le soldat | soldier | plural
+dimanche | le dimanche | Sunday | "le dimanche" = on Sundays
+cour | la cour | courtyard, yard
+prisonniers | le prisonnier | prisoner | plural
+langue | la langue | language; tongue
+argot | l’argot (m) | argot, slang | the secret language of thieves and prisoners
+noms | le nom | name | plural
+sorbonne | la sorbonne | the head (slang) | argot: the head when it thinks (the Sorbonne is a famous university in Paris)
+tronche | la tronche | the head (slang) | argot: the head when it is cut off; today a slang word for "face"
+papier | le papier | paper; a printed sheet
+papiers | le papier | paper; printed sheet | plural
+encre | l’encre (f) | ink
+pensées | la pensée | thought | plural
+heure | l’heure (f) | hour; time | "heure par heure" = hour by hour
+heures | l’heure (f) | hour; o’clock | "sept heures" = seven o’clock
+juges | le juge | judge | plural
+pages | la page | page | plural
+lampe | la lampe | lamp
+dessins | le dessin | drawing | plural
+dessin | le dessin | drawing
+condamnés | le condamné | condemned man | plural
+cœurs | le cœur | heart | plural
+mots | le mot | word | plural
+amour | l’amour (m) | love
+temps | le temps | time; weather
+coin | le coin | corner
+guillotine | la guillotine | guillotine | the machine that cut off heads
+peur | la peur | fear | "avoir peur" = to be afraid
+mains | la main | hand | plural
+main | la main | hand
+bruit | le bruit | noise
+monde | le monde | world; people | "tout le monde" = everybody
+fête | la fête | party, celebration
+chaînes | la chaîne | chain | plural
+forçats | le forçat | convict | plural; a prisoner sentenced to hard labour in a prison camp
+forçat | le forçat | convict | sentenced to hard labour in a prison camp
+Toulon | | Toulon | a port in the south of France with a big prison camp
+midi | le midi | noon | "à midi" = at noon
+gardiens | le gardien | guard, warder | plural
+vêtements | le vêtement | clothes | plural: les vêtements = clothes
+moment | le moment | moment
+froid | le froid | cold | "il fait froid" = it is cold (weather); "j’ai froid" = I am cold
+pluie | la pluie | rain
+boue | la boue | mud
+collier | le collier | collar; necklace | here: an iron ring round the neck
+fer | le fer | iron | "de fer" = (made of) iron; "en fer" = made of iron
+cou | le cou | neck
+marteau | le marteau | hammer
+rond | le rond | circle | "en rond" = in a circle
+musique | la musique | music
+chance | la chance | luck | "il a de la chance" = he is lucky
+camarade | le camarade | comrade, mate
+terre | la terre | earth, ground | "par terre" = on/to the ground
+infirmerie | l’infirmerie (f) | infirmary, sick ward
+charrettes | la charrette | cart | plural
+charrette | la charrette | cart | condemned men were driven to the guillotine on a cart
+Dieu | | God | "mon Dieu" = my God
+oiseau | l’oiseau (m) | bird
+chanson | la chanson | song
+voix | la voix | voice | same form in the plural
+histoire | l’histoire (f) | story; history
+voleur | le voleur | thief
+prêtre | le prêtre | priest
+fils | le fils | son | a priest calls a man "mon fils" (my son)
+directeur | le directeur | director, governor (of a prison)
+huissier | l’huissier (m) | bailiff, court officer | he reads out the decisions of the court
+appel | l’appel (m) | appeal; call | in law: asking a higher court to change a judgment
+place | la place | square; place, seat | "la place de Grève" = the square in Paris where executions took place
+Grève | | Grève | "la place de Grève": the square in front of the Paris town hall, where executions took place
+couloir | le couloir | corridor
+voiture | la voiture | carriage; car | here: a horse-drawn carriage
+gendarmes | le gendarme | gendarme | plural; a soldier who works as a policeman
+gendarme | le gendarme | gendarme | a soldier who works as a policeman
+nouvelles | la nouvelle | news | plural: "les nouvelles" = the news
+tabac | le tabac | tobacco | in 1829 often taken as snuff (sniffed up the nose)
+boîte | la boîte | box
+rues | la rue | street | plural
+rue | la rue | street
+Conciergerie | la Conciergerie | the Conciergerie | an old prison in the Palace of Justice in Paris, the last stop before an execution
+côté | le côté | side | "à côté de" = next to
+Palais | le palais | palace | "le Palais de Justice" = the law courts in Paris
+justice | la justice | justice | "le Palais de Justice" = the law courts
+soir | le soir | evening | "ce soir" = tonight, this evening
+parents | les parents | parents
+travail | le travail | work, job
+faim | la faim | hunger | "avoir faim" = to be hungry
+pain | le pain | bread; a loaf
+routes | la route | road | plural
+redingote | la redingote | frock coat | a long coat for men
+besoin | le besoin | need | "avoir besoin de" = to need; "tu n’en as plus besoin" = you no longer need it
+veste | la veste | jacket
+enfant | l’enfant (m/f) | child
+chambre | la chambre | room; bedroom
+morts | le mort | the dead | plural: "les morts" = the dead
+numéros | le numéro | number | plural
+loterie | la loterie | lottery
+fantômes | le fantôme | ghost | plural
+uniforme | l’uniforme (m) | uniform
+enfance | l’enfance (f) | childhood
+jardin | le jardin | garden
+frères | le frère | brother | plural
+Pepa | | Pepa | a Spanish girl, the narrator’s first love
+Espagnole | l’Espagnole (f) | Spanish girl, Spanish woman
+été | l’été (m) | summer | "un soir d’été" = a summer evening (été is also "been": j’ai été = I have been)
+livre | le livre | book
+banc | le banc | bench
+têtes | la tête | head | plural
+souvenir | le souvenir | memory
+sang | le sang | blood
+an | l’an (m) | year | "il y a un an" = a year ago
+ans | l’an (m) | year | plural; "elle a trois ans" = she is three (years old)
+bonne | la bonne | maid, nanny | (bonne is also the feminine of bon = good)
+grand-mère | la grand-mère | grandmother
+robe | la robe | dress
+bras | le bras | arm | same form in the plural
+mal | le mal | pain, harm; badly | "faire mal" = to hurt; "vous me faites mal" = you are hurting me
+monsieur | le monsieur | sir; gentleman; Mr
+barbe | la barbe | beard
+papa | le papa | daddy
+maman | la maman | mummy, mum
+condamnation | la condamnation | sentence, conviction | "ma condamnation à mort" = my death sentence
+sou | le sou | penny | an old coin worth very little
+chaise | la chaise | chair
+bourreau | le bourreau | executioner
+bourreaux | le bourreau | executioner | plural
+col | le col | collar (of a shirt)
+chemise | la chemise | shirt
+dos | le dos | back | "derrière mon dos" = behind my back
+foule | la foule | crowd
+ponts | le pont | bridge | plural
+chapeaux | le chapeau | hat | plural; "chapeaux bas !" = hats off!
+Hôtel | l’Hôtel de Ville (m) | town hall | "l’Hôtel de Ville" = the town hall of Paris, on the place de Grève
+Ville | la ville | town, city | "l’Hôtel de Ville" = the town hall
+lignes | la ligne | line | plural
+grâce | la grâce | pardon; grace | "demander sa grâce" = to beg to be pardoned (by the king)
+genoux | le genou | knee | plural; "à genoux" = on one’s knees
+minutes | la minute | minute | plural
+escalier | l’escalier (m) | staircase, stairs
+Marie | | Marie | the narrator’s little daughter
+yeux | l’œil (m) | eye | plural of œil: les yeux = the eyes
+cheveux | le cheveu | hair | plural: the hair on your head
+mère | la mère | mother
+femme | la femme | woman; wife | "ma femme" = my wife
+fille | la fille | daughter; girl | "ma fille" = my daughter; "une jeune fille" = a girl
+
+// --- adjectives ---
+sale | | dirty
+sales | sale | dirty | plural
+vieux | | old
+vieille | vieux | old | feminine
+vieil | vieux | old | before a vowel: "un vieil homme" = an old man
+tristes | triste | sad | plural
+gentils | gentil | kind, nice | plural
+secrète | secret | secret | feminine
+malade | | ill, sick
+malades | malade | ill, sick | plural
+grands | grand | big, tall | plural
+grand | | big, tall; great
+grande | grand | big, tall | feminine
+noirs | noir | black; dark | plural; "des yeux noirs" = dark eyes
+noire | noir | black | feminine
+longs | long | long | plural
+terrible | | terrible
+vraie | vrai | real, true | feminine
+neufs | neuf | new | plural (neuf also means nine)
+nus | nu | naked | plural
+gros | | big, fat
+fini | finir | finished, over | "c’est fini" = it is over
+fatigué | | tired
+petit | | small, little
+belle | beau | beautiful | feminine
+douce | doux | soft, gentle, sweet | feminine
+doux | | soft, gentle, sweet
+horribles | horrible | horrible | plural
+prêt | | ready
+autre | | other; another | "un autre homme" = another man
+seul | | alone; only
+laid | | ugly
+nouveau | | new
+content | | happy, pleased
+heureux | | happy
+jolie | joli | pretty | feminine
+fort | | strong; hard, tight | "très fort" = very tight
+pâle | | pale
+sombre | | dark
+rouge | | red; red-faced
+immense | | huge
+bas | | low | "chapeaux bas !" = hats off!
+dernières | dernier | last | feminine plural
+
+// --- numbers ---
+trois | | three
+quatre | | four
+sept | | seven
+quinze | | fifteen
+quatorze | | fourteen
+demie | demi | half | "sept heures et demie" = half past seven
+
+// --- words added with the A2 level ---
+// small words
+cela | | that, it
+sans | | without | "sans doute" = probably
+quoi | | what | "quoi ?" = what?
+déjà | | already
+parce | parce que | because | always with que: "parce que" = because
+quelques | quelque | a few, some | "il y a quelques jours" = a few days ago
+quelque | | some | "quelque chose" = something
+ensuite | | then, next
+jusqu’ | jusque | up to, as far as, until | "jusqu’à moi" = up to me
+contre | | against
+pendant | | during | "pendant ce temps" = meanwhile
+environ | | about, around | "environ cinquante ans" = about fifty
+ni | | nor | "ni … ni" = neither … nor; "plus de père ni de mère" = no father or mother
+moins | | less | "moins d’espoir" = less hope
+tard | | late | "plus tard" = later
+ensemble | | together
+où | | where
+longtemps | | (for) a long time
+voici | | here is, here are
+hélas | | alas
+abord | d’abord | first, at first | always "d’abord"
+celui | | the one | "celui qui" = the one who
+te | | you; (to) you | informal object: "je te donnerai" = I will give you
+ses | son | his, her | plural: "ses vêtements" = his clothes
+mienne | la mienne | mine | feminine: "qui veut la mienne ?" = who wants mine?
+quelqu’un | | someone, somebody
+personne | | nobody; person | "personne ne voulait" = nobody wanted; "une personne" = a person
+attention | l’attention (f) | attention | "attention !" = careful! watch out!
+quelle | quel | what, which | feminine: "quelle chanson !" = what a song!
+
+// verbs: être, avoir, aller, faire, pouvoir, vouloir
+ont | avoir | to have | ils ont = they have; also makes the past: "ils ont discuté" = they talked it over
+avons | avoir | to have | nous avons = we have; "nous avons lu" = we read
+avais | avoir | to have | past (imparfait): j’avais = I had
+avaient | avoir | to have | past (imparfait): ils avaient; "ils avaient l’air" = they looked
+aura | avoir | to have | future: elle aura = she will have
+aurez | avoir | to have | future: vous aurez = you will have
+sommes | être | to be | nous sommes = we are; "nous sommes arrivés" = we arrived
+étions | être | to be | past (imparfait): nous étions = we were
+sera | être | to be | future: "ce sera" = it will be
+aller | | to go
+allait | aller | to go | past (imparfait); "allait durer" = was going to last
+allaient | aller | to go | past (imparfait); "ils allaient monter" = they were going to climb
+allons | aller | to go | nous allons; "allons !" = come on!, let us go!
+faire | | to do, to make
+faisait | faire | to do, to make | past (imparfait); "faisait du bruit" = was making noise
+faisaient | faire | to do, to make | past (imparfait): ils faisaient
+peut | pouvoir | can, to be able to | il peut = he/it can
+pouvais | pouvoir | can, to be able to | past (imparfait): je pouvais = I could
+pourrait | pouvoir | can, to be able to | conditional: il pourrait = he could
+pourra | pouvoir | can, to be able to | future: elle pourra = she will be able to
+voulais | vouloir | to want | past (imparfait): je voulais = I wanted
+voulait | vouloir | to want | past (imparfait): il voulait = he wanted
+voulaient | vouloir | to want | past (imparfait): ils voulaient
+voulu | vouloir | to want | past participle: "j’ai voulu" = I wanted
+voudrais | vouloir | to want | conditional: "je voudrais" = I would like
+dois | devoir | must, to have to | je dois = I must
+faut | falloir | to be necessary | "il faut" = you need, it is necessary
+savez | savoir | to know | vous savez = you know
+dites | dire | to say, to tell | vous dites; command: "dites-moi" = tell me
+mis | mettre | to put | past participle: "on m’a mis" = they put me
+mettez | mettre | to put | command: "mettez ça" = put this on
+pris | prendre | to take | past participle: "il a pris" = he took
+prise | prendre | to take | past participle (feminine): "je l’ai prise" = I took her
+compris | comprendre | to understand | past participle: "j’ai compris" = I understood
+devient | devenir | to become | il devient = it becomes
+devenu | devenir | to become | past participle: "il est devenu" = he became; "le ciel est devenu noir" = the sky turned black
+revenu | revenir | to come back | past participle: "le soleil est revenu" = the sun came back
+venue | venir | to come | past participle (feminine): "elle est venue" = she came
+venus | venir | to come | past participle (plural): "ils sont venus" = they came
+suit | suivre | to follow | elle suit = it follows
+suivaient | suivre | to follow | past (imparfait): ils suivaient = they followed
+vis | vivre | to live | je vis = I live (la vis = screw)
+dors | dormir | to sleep | je dors = I sleep
+dormi | dormir | to sleep | past participle: "j’ai dormi" = I slept
+répondu | répondre | to answer | past participle: "il a répondu" = he answered
+attendais | attendre | to wait (for) | past (imparfait): j’attendais = I was waiting (for)
+attends | attendre | to wait (for) | j’attends = I am waiting (for)
+entendu | entendre | to hear | past participle: "j’ai entendu" = I heard
+perdu | perdre | to lose | past participle: lost
+descendu | descendre | to go down, to get down | past participle: "je suis descendu" = I got down
+vendrai | vendre | to sell | future: je vendrai = I will sell
+vendaient | vendre | to sell | past (imparfait): ils vendaient
+ri | rire | to laugh | past participle: "ils ont ri" = they laughed
+riait | rire | to laugh | past (imparfait): il riait = he was laughing
+riaient | rire | to laugh | past (imparfait): ils riaient
+voit | voir | to see | "on voit" = you see, one sees
+voyais | voir | to see | past (imparfait): je voyais = I could see
+cru | croire | to believe, to think | past participle: "j’ai cru" = I thought
+couru | courir | to run | past participle: "ils ont couru" = they ran
+courait | courir | to run | past (imparfait): elle courait = she was running
+courais | courir | to run | past (imparfait): je courais
+ouvert | ouvrir | to open | past participle: opened; open
+offert | offrir | to offer | past participle: "il m’a offert" = he offered me
+couverte | couvrir | to cover | past participle (feminine): "je l’ai couverte de baisers" = I covered her with kisses
+sorti | sortir | to go out, to come out | past participle: "il est sorti" = he came out
+sortis | sortir | to go out | past participle (plural): "ils sont sortis" = they went out
+connaissent | connaître | to know | ils connaissent = they know
+reconnaître | | to recognise
+souffre | souffrir | to suffer | il souffre = he suffers
+senti | sentir | to feel | past participle: "j’ai senti" = I felt
+sent | sentir | to smell; to feel | "elle sent mauvais" = it smells bad
+fuir | | to flee, to run away
+écrire | | to write
+penser | | to think
+garder | | to keep; to guard
+durer | | to last
+amuser | | to amuse | "ça va vous amuser" = it will amuse you
+regarder | | to look at, to watch
+pleurer | | to cry
+monter | | to go up, to climb
+envoyer | | to send
+acheter | | to buy
+voler | | to steal (also: to fly)
+oublier | | to forget
+embrasser | | to kiss
+continuer | | to continue, to go on
+crier | | to shout
+percer | | to pierce, to break through
+rouiller | | to rust
+asseoir | s’asseoir | to sit down | "on les a fait asseoir" = they were made to sit down
+lever | se lever | to get up, to stand up | "me lever" = to stand up
+assise | asseoir | to sit (someone) down | past participle (feminine): "je l’ai assise" = I sat her down
+souvenu | se souvenir | to remember | past participle: "je me suis souvenu de" = I remembered
+souviendrai | se souvenir | to remember | future: "je me souviendrai" = I will remember
+battait | battre | to beat | past (imparfait): "mon cœur battait" = my heart was pounding
+battions | se battre | to fight | past (imparfait): "nous nous battions" = we used to fight
+vieillit | vieillir | to grow old; to make older | "chaque quart d’heure me vieillit d’un an" = every quarter of an hour makes me a year older
+salit | salir | to make dirty | il salit = it makes dirty
+applaudi | applaudir | to applaud, to clap | past participle
+
+// -er verbs
+pensais | penser | to think | past (imparfait): je pensais = I was thinking
+pensent | penser | to think | ils pensent = they think
+mange | manger | to eat | je mange = I eat
+durait | durer | to last | past (imparfait): "mon procès durait depuis trois jours" = my trial had been going on for three days
+discuté | discuter | to discuss, to talk over | past participle
+réveillé | réveiller | to wake (someone) up | past participle: "il m’a réveillé" = he woke me; "je me suis réveillé" = I woke up
+entrait | entrer | to come in, to enter | past (imparfait): "le soleil entrait" = the sun was coming in
+entré | entrer | to come in, to enter | past participle: "il est entré" = he came in
+entrée | entrer | to come in, to enter | past participle (feminine): "elle est entrée" = it came in
+jouait | jouer | to play | past (imparfait): elle jouait
+jouais | jouer | to play | past (imparfait): je jouais = I used to play
+espère | espérer | to hope | j’espère = I hope
+coulé | couler | to run, to flow | past participle
+emmené | emmener | to take (someone) away | past participle: "on m’a emmené" = they took me away
+amené | amener | to bring (someone) | past participle: "elle m’a amené" = it brought me
+regardaient | regarder | to look at | past (imparfait): ils regardaient
+regardais | regarder | to look at | past (imparfait): je regardais
+regardait | regarder | to look at | past (imparfait): elle regardait
+ressemble | ressembler | to look like | "ressembler à" = to look like
+approche | s’approcher | to come closer | "quand on s’approche" = when you come closer
+donné | donner | to give | past participle
+donnée | donner | to give | past participle (feminine): "je l’ai donnée" = I handed her
+donnerai | donner | to give | future: je donnerai = I will give
+parlent | parler | to speak, to talk | ils parlent
+parlait | parler | to speak, to talk | past (imparfait): il parlait
+laisse | laisser | to leave (behind); to let | je laisse = I leave behind
+laissé | laisser | to leave; to let | past participle: "ils m’ont laissé seul" = they left me alone
+laissait | laisser | to let | past (imparfait): "elle se laissait embrasser" = she let herself be kissed
+aimé | aimer | to love, to like | past participle
+aimais | aimer | to love, to like | past (imparfait): je l’aimais = I loved it
+aimait | aimer | to love, to like | past (imparfait): il aimait
+tombée | tomber | to fall | past participle (feminine): "elle est tombée" = it fell
+tombé | tomber | to fall | past participle: "je suis tombé" = I fell
+chanté | chanter | to sing | past participle
+chantant | chanter | to sing | "en chantant" = singing
+arrivés | arriver | to arrive | past participle (plural): "ils sont arrivés" = they arrived
+enlevé | enlever | to take off | past participle
+tremblaient | trembler | to tremble, to shiver | past (imparfait)
+tremblé | trembler | to tremble | past participle
+tremblez | trembler | to tremble | vous tremblez
+claquaient | claquer | to bang, to chatter | "leurs dents claquaient" = their teeth were chattering
+attaché | attacher | to tie, to fix | past participle: fixed, tied
+fermait | fermer | to close | past (imparfait)
+fermée | fermer | to close | past participle (feminine): closed, locked
+fermé | fermer | to close | past participle
+sautait | sauter | to jump | past (imparfait): "la tête sautait" = the head jerked
+pleuraient | pleurer | to cry | past (imparfait): ils pleuraient
+pleurait | pleurer | to cry | past (imparfait): elle pleurait
+levés | se lever | to get up, to stand up | past participle (plural): "ils se sont levés" = they stood up
+levé | lever | to raise, to lift | past participle: "elle a levé les yeux" = she raised her eyes
+dansé | danser | to dance | past participle
+arrêtée | s’arrêter | to stop | past participle (feminine): "la danse s’est arrêtée" = the dance stopped
+arrêté | s’arrêter | to stop | past participle: "il s’est arrêté" = he stopped
+arrêtaient | s’arrêter | to stop | past (imparfait): "les gens s’arrêtaient" = people stopped
+tournés | se tourner | to turn | past participle (plural): "les yeux se sont tournés" = the eyes turned
+tourné | tourner | to turn | past participle: "le dos tourné vers la porte" = with my back to the door
+jeté | jeter | to throw | past participle: "je me suis jeté" = I threw myself
+pleuvait | pleuvoir | to rain | past (imparfait): "il pleuvait" = it was raining
+monté | monter | to go up, to get in | past participle: "je suis monté" = I got in
+écoutais | écouter | to listen | past (imparfait): je n’écoutais pas = I was not listening
+achetaient | acheter | to buy | past (imparfait)
+raconté | raconter | to tell | past participle
+commencé | commencer | to begin, to start | past participle
+envoyé | envoyer | to send | past participle
+cassé | casser | to break | past participle
+échappé | s’échapper | to escape | past participle: "il s’est échappé" = he escaped
+touché | toucher | to touch | past participle
+touchaient | toucher | to touch | past (imparfait): "nos têtes se touchaient" = our heads were touching
+touchées | toucher | to touch | past participle (feminine plural)
+continué | continuer | to continue, to go on | past participle
+attrapée | attraper | to catch | past participle (feminine): "je l’ai attrapée" = I caught her
+embrassé | embrasser | to kiss | past participle
+serrais | serrer | to hold tight | past (imparfait)
+poussé | pousser | to push | "pousser un cri" = to give a cry
+oublié | oublier | to forget | past participle: "elle m’a oublié" = she has forgotten me
+arraché | arracher | to snatch, to tear away | past participle
+coûtait | coûter | to cost | past (imparfait): "il coûtait plus cher" = it cost more
+brisé | briser | to break | past participle: broken
+repartie | repartir | to leave again | past participle (feminine): "elle est repartie" = she has gone off again
+passé | passer | to pass; to happen | "ce qui s’est passé" = what happened
+coupé | couper | to cut | past participle
+criait | crier | to shout | past (imparfait)
+criaient | crier | to shout | past (imparfait): ils criaient
+marche | marcher | to walk | "il marche bien" = he walks well
+traversé | traverser | to cross | past participle
+traversait | traverser | to cross, to go through | past (imparfait)
+arrivait | arriver | to arrive, to come | past (imparfait): "l’heure arrivait" = the time was coming
+salué | saluer | to greet | past participle
+apporte | apporter | to bring | j’apporte = I bring
+rejeté | rejeter | to reject | past participle: rejected
+ajouté | ajouter | to add | past participle
+
+// nouns
+esprit | l’esprit (m) | mind; spirit
+batailles | la bataille | battle | plural
+lumière | la lumière | light
+prisonnier | le prisonnier | prisoner
+cachot | le cachot | dungeon, prison cell
+forme | la forme | shape, form | "sous la forme de" = in the shape of
+couteau | le couteau | knife
+rêve | le rêve | dream
+oreille | l’oreille (f) | ear
+jours | le jour | day | plural
+jurés | le juré | juror | plural: "les jurés" = the jury
+plafond | le plafond | ceiling
+air | l’air (m) | air; look | "avoir l’air" = to look, to seem
+bord | le bord | edge | "au bord de" = on the edge of
+vent | le vent | wind
+sentence | la sentence | sentence (of a court)
+liberté | la liberté | freedom, liberty
+doute | le doute | doubt | "sans doute" = probably (not "without doubt")
+travaux | le travail | work | plural; "les travaux forcés" = hard labour (in a prison camp)
+fois | la fois | time (occasion) | "cent fois" = a hundred times; "une fois" = once
+président | le président | president; presiding judge | in court: the judge in charge of the trial
+sueur | la sueur | sweat
+mur | le mur | wall
+ciel | le ciel | sky; heaven
+couleur | la couleur | colour
+linceul | le linceul | shroud | a cloth wrapped around a dead body
+soupe | la soupe | soup
+palais | le palais | palace
+ruine | la ruine | ruin
+vitres | la vitre | window pane, glass | plural
+vitre | la vitre | window pane
+visage | le visage | face
+fou | le fou | madman; mad
+début | le début | beginning | "au début" = at first
+camisole | la camisole | camisole | "une camisole de force" = a straitjacket
+force | la force | strength, force | "une camisole de force" = a straitjacket
+pitié | la pitié | pity | "avoir pitié de" = to feel sorry for; "par pitié" = for pity’s sake
+chose | la chose | thing
+journal | le journal | diary; newspaper
+souffrances | la souffrance | suffering | plural
+douleur | la douleur | pain
+père | le père | father
+carré | le carré | square | also an adjective: square
+pieds | le pied | foot | plural; also an old measure of length (about 32 cm)
+ouverture | l’ouverture (f) | opening
+traces | la trace | trace, mark | plural
+craie | la craie | chalk
+échafaud | l’échafaud (m) | scaffold | the platform where the guillotine stood
+centaines | la centaine | about a hundred | "des centaines de" = hundreds of
+silence | le silence | silence
+toile | la toile | cloth, canvas | "grosse toile" = coarse cloth
+dents | la dent | tooth | plural
+chaîne | la chaîne | chain
+forgeron | le forgeron | blacksmith
+rires | le rire | laugh | plural: "leurs rires" = their laughter
+danse | la danse | dance
+envie | l’envie (f) | envy; wish | "avec envie" = enviously; "avoir envie de" = to want to
+connaissance | la connaissance | consciousness; knowledge | "sans connaissance" = unconscious
+lendemain | le lendemain | the next day | "le lendemain matin" = the next morning
+voyage | le voyage | journey
+galères | les galères | the galleys | hard labour; long ago, convicts rowed the king’s ships
+bouche | la bouche | mouth
+bouches | la bouche | mouth | plural
+signe | le signe | sign
+face | la face | face | "en face de" = opposite
+sourire | le sourire | smile; to smile
+message | le message | message
+procureur | le procureur | prosecutor | "le procureur général" = the chief public prosecutor
+plaisir | le plaisir | pleasure | "faire plaisir à" = to please
+exécution | l’exécution (f) | execution
+fusils | le fusil | rifle, gun | plural
+toit | le toit | roof
+toits | le toit | roof | plural
+mois | le mois | month | same form in the plural
+outils | l’outil (m) | tool | plural
+clou | le clou | nail
+départ | le départ | departure
+journée | la journée | day | "toute la journée" = all day long
+cheval | le cheval | horse | "à cheval" = on horseback
+politique | la politique | politics
+quart | le quart | quarter | "un quart d’heure" = a quarter of an hour
+femmes | la femme | woman | plural
+pièce | la pièce | room; coin
+passeport | le passeport | passport | freed convicts had a yellow passport that showed they had been in prison
+boulanger | le boulanger | baker
+assassin | l’assassin (m) | murderer
+laine | la laine | wool | "de laine" = woollen
+table | la table | table
+épaule | l’épaule (f) | shoulder
+criminel | le criminel | criminal
+cœur | le cœur | heart | "avoir bon cœur" = to be kind-hearted
+adresse | l’adresse (f) | address
+portes | la porte | door | plural
+pomme | la pomme | apple
+nid | le nid | nest
+arbres | l’arbre (m) | tree | plural
+puits | le puits | well | same form in the plural
+page | la page | page
+étoiles | l’étoile (f) | star | plural
+jeunesse | la jeunesse | youth
+rivière | la rivière | river
+cri | le cri | cry, shout
+mot | le mot | word
+baisers | le baiser | kiss | plural
+larmes | la larme | tear | plural
+lettres | la lettre | letter | plural
+doigt | le doigt | finger
+déclaration | la déclaration | statement, declaration
+chapeau | le chapeau | hat | "un chapeau à trois cornes" = a three-cornered hat
+cornes | la corne | horn; point (of a hat) | plural
+aides | l’aide (m) | assistant, helper | plural
+ciseaux | les ciseaux | scissors
+milliers | le millier | about a thousand | "des milliers de" = thousands of
+pont | le pont | bridge
+marchands | le marchand | trader, seller | plural
+places | la place | seat; place | plural; "qui veut des places ?" = who wants a seat?
+lanternes | la lanterne | lantern, street lamp | plural
+âge | l’âge (m) | age
+machine | la machine | machine
+misérables | le misérable | wretch | plural; also an adjective: wretched
+
+// adjectives
+riche | | rich
+pleins | plein | full | plural: "pleins de lumière" = full of light
+contents | content | pleased, happy | plural
+fatigués | fatigué | tired | plural
+forcés | forcé | forced | plural; "travaux forcés" = hard labour
+froide | froid | cold | feminine
+différent | | different
+libres | libre | free | plural
+noir | | black; dark | "du pain noir" = black (cheap, coarse) bread
+brutaux | brutal | brutal | plural
+vivant | | alive, living
+étrange | | strange
+laide | laid | ugly | feminine
+seuls | seul | only; alone | plural: "les seuls" = the only ones
+rapide | | quick, fast
+rose | | pink, rosy
+couverts | couvert | covered | plural: "couverts de" = covered with
+pauvre | | poor
+carrée | carré | square | feminine
+pâles | pâle | pale | plural
+grosse | gros | big; coarse | feminine: "grosse toile" = coarse cloth
+longue | long | long | feminine
+longues | long | long | feminine plural
+bon | | good | "le bon Dieu" = the good Lord
+bons | bon | good | plural
+pure | pur | pure | feminine
+fraîche | frais | fresh | feminine
+mauvais | | bad | "sentir mauvais" = to smell bad
+calme | | calm
+ouverte | ouvert | open | feminine
+blancs | blanc | white | plural
+faible | | weak
+poli | | polite
+général | | general; chief
+dernière | dernier | last | feminine
+fine | fin | fine, thin | feminine
+malheureux | | unhappy; unlucky
+vieilles | vieux | old | feminine plural
+déchirés | déchiré | torn | plural
+anciens | ancien | former; old | plural: "les anciens forçats" = former convicts
+stupide | | stupid
+basse | bas | low | feminine: "à voix basse" = in a low voice
+folle | fou | crazy, mad | feminine
+sauvage | | wild
+petits | petit | small, little | plural
+étonné | | surprised, astonished | "d’un air étonné" = in surprise
+étonnés | étonné | surprised | plural
+cher | | expensive; dear
+jointes | joint | joined | feminine plural: "les mains jointes" = with hands together, as in prayer
+possible | | possible
+
+// numbers
+cent | | (a) hundred
+mille | | (a) thousand
+huit | | eight
+dix-sept | | seventeen
+vingt-cinq | | twenty-five
+cinquante-cinq | | fifty-five
+soixante-quatre | | sixty-four
+souriant | sourire | to smile | "en souriant" = smiling, with a smile
+importe | importer | to matter | "n’importe !" = never mind!; "n’importe comment" = any way at all
+trouvez | trouver | to find | vous trouvez = you find
+
+// --- words added with the B1 level ---
+// small words
+autrefois | | in the past, formerly
+car | | for, because
+toutes | tout | all, every | feminine plural: "toutes les paroles" = all the words
+donc | | so, then | "levez-vous donc !" = get up, then!
+tant | | so much, so many | "tant de lumière" = so much light
+enfin | | at last, finally
+tandis | tandis que | while, as | always "tandis que"
+quel | | what, which | "je ne sais quel livre" = some book or other
+combien | | how many, how much
+parfois | | sometimes
+puisque | | since, as
+ceux | celui | those | "ceux qui" = those who
+vite | | quickly, fast
+jamais | | never; ever | "ne … jamais" = never
+au-dessus | | above
+aussitôt | | at once, immediately
+moindre | | (the) slightest
+trop | | too, too much
+travers | à travers | through | always "à travers": "à travers la grille" = through the grille
+ceci | | this
+lequel | | which (one) | "n’importe lequel" = any one at all
+laquelle | lequel | which (one) | feminine: "laquelle ?" = which one?
+lieu | le lieu | place | "au lieu de" = instead of
+t’ | te | you; (to) you | te before a vowel: "je t’en promets quatre" = I promise you four
+çà | | hey!, now then! | old-fashioned: "ah çà !"
+tôt | | early | "plus tôt" = earlier
+dont | | of which, whose | "une soirée dont je me souviendrai" = an evening I will remember
+pourtant | | yet, however
+pareil | | same, such | "à pareil jour" = on this same day
+notre | | our
+ainsi | | like this, thus
+assez | | enough; fairly | "d’un pas assez ferme" = with a fairly steady step
+grand-chose | | much | "pas grand-chose" = not much; "plus à grand-chose" = not much use any more
+est-à-dire | c’est-à-dire | that is to say | always "c’est-à-dire"
+merci | | thank you | "Dieu merci" = thank God
+suite | la suite | continuation | "tout de suite" = right away
+mieux | | better | "j’aime encore mieux cela" = I like this even better
+drôle | | funny, strange | "drôle de question !" = what a funny question!
+tienne | la tienne | yours | feminine: "la tienne" = yours (your head)
+
+// verbs (irregular and tenses)
+semble | sembler | to seem | "il me semble que" = it seems to me that
+semblait | sembler | to seem | past (imparfait): "il me semblait" = it seemed to me
+fasse | faire | to do | subjunctive: "quoi que je fasse" = whatever I do
+ferais | faire | to do | conditional: "pourquoi ne le ferais-je pas ?" = why shouldn’t I do it?
+viens | venir | to come | "je viens de me réveiller" = I have just woken up
+venait | venir | to come | past (imparfait); "il venait de déjeuner" = he had just had lunch
+viendra | venir | to come | future: "un jour viendra" = a day will come
+reviennent | revenir | to come back | ils reviennent
+revenue | revenir | to come back | past participle (feminine)
+dû | devoir | must, to have to | past participle: "il a dû" = he had to
+devait | devoir | must, to have to | past (imparfait): "elle devait" = she had to
+devrait | devoir | ought to | conditional: "il devrait" = he ought to
+aurait | avoir | to have | conditional: "aurait-elle pu" = could it have
+aurais | avoir | to have | conditional: "j’aurais méprisé" = I would have despised
+aurai | avoir | to have | future: j’aurai = I will have
+auront | avoir | to have | future: "auront contribué" = will have helped
+avoir | | to have
+pu | pouvoir | can, to be able to | past participle: "aurait pu" = could have
+pouvait | pouvoir | can | past (imparfait): il pouvait = it could
+pouvoir | | can, to be able to | "sans pouvoir bouger" = unable to move
+seront | être | to be | future: ils seront = they will be
+serez | être | to be | future: vous serez = you will be
+serait | être | to be | conditional: "ce serait" = it would be
+soient | être | to be | subjunctive: "pour qu’ils soient bons" = for them to be good
+soyez | être | to be | subjunctive: "il faut que vous soyez mort" = you have to be dead
+sois | être | to be | subjunctive: "veux-tu que je sois ton papa ?" = would you like me to be your daddy?
+mourra | mourir | to die | future: elle mourra = she will die
+deviendra | devenir | to become | future: elle deviendra = she will become
+devenus | devenir | to become | past participle (plural)
+verrez | voir | to see | future: vous verrez = you will see
+voient | voir | to see | ils voient = they see
+vus | voir | to see | past participle (plural): "je les ai vus" = I saw them
+voyant | voir | to see | "en me voyant" = seeing me
+voyons | voir | to see | "voyons !" = let us see!
+vue | la vue; voir | sight, view; seen | la vue = eyesight; also past participle (feminine) of voir: "vue de près" = seen up close
+revois | revoir | to see again | "je me revois" = I see myself again
+dire | | to say | "vouloir dire" = to mean
+disant | dire | to say | "en me disant" = saying to myself
+dirait | dire | to say | conditional: "on dirait" = you would think, it looks like
+écrit | écrire | to write | past participle: written
+écrivait | écrire | to write | past (imparfait)
+écrive | écrire | to write | subjunctive: "pour que j’écrive" = so that I can write
+lisait | lire | to read | past (imparfait)
+lisez | lire | to read | command: "lisez !" = read!
+croient | croire | to believe | ils croient = they believe
+croit | croire | to believe | "on croit" = you believe, one believes
+tenir | | to hold; to keep | "tenir un journal" = to keep a diary
+tenait | tenir | to hold | past (imparfait): elle tenait = she was holding
+tiens | tenir | to hold | "tiens !" = here! look! (when showing or giving something)
+prend | prendre | to take | "qu’on me prend" = that they are taking from me
+prenez | prendre | to take | "ne me prenez pas" = don’t take me
+comprends | comprendre | to understand | je comprends = I understand
+mise | mettre | to put | past participle (feminine); "elle s’est mise à épeler" = she began to spell
+mettent | mettre | to put | "il fallait qu’ils mettent" = they had to put on
+remise | remettre | to hand back | past participle (feminine): "je l’ai remise à sa bonne" = I handed her back to her nanny
+promets | promettre | to promise | je promets = I promise
+promettez | promettre | to promise | command: "promettez-moi" = promise me
+promettait | promettre | to promise | past (imparfait)
+entend | entendre | to hear | il entend = he hears
+entendait | entendre | to hear | past (imparfait): "on entendait" = you could hear
+entendais | entendre | to hear | past (imparfait): j’entendais = I could hear
+attendait | attendre | to wait (for), to expect | past (imparfait)
+attendaient | attendre | to wait (for) | past (imparfait)
+attendre | | to wait (for)
+attendant | attendre | to wait | "en attendant" = while waiting
+connaissais | connaître | to know | past (imparfait)
+reconnaîtrait | reconnaître | to recognise | conditional: "qui me reconnaîtrait ?" = who would recognise me?
+paraît | paraître | to seem | "il paraît que" = it seems that, apparently
+apparaît | apparaître | to appear | il apparaît = he appears
+naître | | to be born
+vivre | | to live
+sache | savoir | to know | subjunctive: "il faut qu’elle sache" = she must know
+savoir | | to know
+servira | servir | to serve, to be useful | future: "qui ne vous servira plus" = which will be of no more use to you
+servaient | servir | to serve | past (imparfait); "servir de" = to serve as
+fallait | falloir | to be necessary | past (imparfait): "il fallait qu’ils mettent" = they had to put on
+faudrait | falloir | to be necessary | conditional: "il faudrait des mois" = it would take months
+évade | s’évader | to escape | "il faut que je m’évade" = I must escape
+évadé | s’évader | to escape | past participle: "il s’est évadé" = he escaped
+évanoui | s’évanouir | to faint | "je suis tombé évanoui" = I fell down in a faint
+tressailli | tressaillir | to give a start | past participle: "j’ai tressailli" = I gave a start
+failli | faillir | to nearly (do) | "a failli tomber" = nearly fell
+flétrit | se flétrir | to wither | "tout s’y flétrit" = everything withers there
+cueillez | cueillir | to pick (a flower) | vous cueillez
+pue | puer | to stink | elle pue = it stinks
+aboie | aboyer | to bark | il aboie = it barks
+interrompue | interrompre | to interrupt | past participle (feminine)
+rouverte | rouvrir | to open again | past participle (feminine): "la porte s’est rouverte" = the door opened again
+défaisant | défaire | to undo | "en défaisant" = undoing
+rassis | se rasseoir | to sit down again | past participle: "je me suis rassis" = I sat down again
+soutenu | soutenir | to hold up, to support | past participle
+mords | mordre | to bite | "je mords !" = I’ll bite!
+défends | se défendre | to defend oneself | "je me défends !" = I’ll fight back!
+tendu | tendre | to hold out | past participle: "il m’a tendu" = he held out to me
+répandu | se répandre | to spill, to spread | past participle
+coupera | couper | to cut | future: il coupera = he will cut
+couper | | to cut
+amusera | amuser | to amuse | future: "cela vous amusera" = it will amuse you
+restera | rester | to stay, to remain | future
+durera | durer | to last | future
+
+// -er verbs
+gagnées | gagner | to win | past participle (feminine plural): "des batailles gagnées" = battles won
+gagné | gagner | to gain, to win | "c’est toujours cela de gagné" = that is something gained at least
+mêle | se mêler | to mix (with) | "elle se mêle à" = it mixes with
+mêlent | se mêler | to mix, to mingle | ils se mêlent
+mêlés | se mêler | to mingle | past participle (plural)
+surveille | surveiller | to watch (over)
+réveiller | se réveiller | to wake up | "je viens de me réveiller" = I have just woken up
+murmure | murmurer | to whisper, to murmur | il murmure
+murmuré | murmurer | to whisper, to murmur | past participle
+délibéraient | délibérer | to deliberate | past (imparfait): "pendant que les jurés délibéraient" = while the jury was deliberating
+secouer | | to shake
+resté | rester | to stay, to remain | past participle: "il est resté" = he stayed
+restée | rester | to stay | past participle (feminine): "restée entrouverte" = which had stayed ajar
+restait | rester | to remain | "il ne restait que" = only … were left
+répondre | | to answer
+répété | répéter | to repeat | past participle
+entraient | entrer | to come in | past (imparfait)
+entrés | entrer | to come in | past participle (plural)
+veillé | veiller | to stay awake, to stay up | past participle
+penché | se pencher | to lean | past participle: "il s’est penché vers moi" = he leaned towards me
+écarté | écarter | to rule out, to set aside | past participle
+couvert | couvrir | to cover | past participle: covered
+demander | | to ask (for)
+espérait | espérer | to hope | past (imparfait)
+espérais | espérer | to hope | past (imparfait): j’espérais = I was hoping
+saisi | saisir | to seize, to grab | past participle
+criant | crier | to shout | "en criant" = shouting
+emmenait | emmener | to take away | past (imparfait)
+montant | monter | to get in, to climb | "en montant" = as I got in
+comptaient | compter | to count on, to expect | past (imparfait)
+enlever | | to take away, to remove
+racontent | raconter | to tell | ils racontent
+pousse | pousser | to grow; to push | "une langue qui pousse" = a language that grows
+pendu | pendre | to hang | past participle: hanged
+réfléchit | réfléchir | to think, to reflect | elle réfléchit
+prépare | préparer | to prepare, to plan | elle prépare
+jugent | juger | to judge | ils jugent
+contribué | contribuer | to contribute, to help | past participle
+quittent | quitter | to leave | "ne me quittent jamais" = never leave me
+quitté | quitter | to leave, to let go of | "elle a quitté mon bras" = she let go of my arm
+promené | promener | to walk, to move around | "j’ai promené ma lampe" = I moved my lamp around
+effacent | s’effacer | to fade | ils s’effacent
+effacé | effacer | to wipe out | past participle
+laisser | | to leave; to let | "laisser tomber" = to drop
+percés | percer | to pierce | past participle (plural)
+engageait | s’engager | to commit oneself | past (imparfait)
+dessinée | dessiner | to draw | past participle (feminine)
+dresse | se dresser | to rise (up), to stand | "qui se dresse" = which is rising
+tomber | | to fall
+ferre | ferrer | to put irons on | "on ferre les forçats" = they put the convicts in irons
+accepté | accepter | to accept | past participle
+enfermé | enfermer | to lock up | past participle
+donnait | donner | to give; to look onto | past (imparfait): "la fenêtre donnait sur une cour" = the window looked onto a courtyard
+entourée | entourer | to surround | past participle (feminine)
+entouraient | entourer | to surround | past (imparfait)
+collés | coller | to stick, to press | past participle (plural)
+éclaté | éclater | to burst (out) | past participle
+redoublé | redoubler | to grow louder, to increase | past participle
+vidée | se vider | to empty | past participle (feminine)
+grelottaient | grelotter | to shiver | past (imparfait)
+montrait | montrer | to show | "montrer le poing" = to shake one’s fist
+montrant | montrer | to show, to point to | "en montrant" = pointing to
+fermaient | fermer | to close | past (imparfait)
+appuyée | appuyer | to lean, to prop | past participle (feminine)
+appuyé | appuyer | to lean | past participle
+appuie | s’appuyer | to lean | "elle s’appuie sur mon bras" = she leans on my arm
+formé | former | to form | past participle
+chantaient | chanter | to sing | past (imparfait)
+chantait | chanter | to sing | past (imparfait)
+chanter | | to sing
+entrechoquant | s’entrechoquer | to clank together | "en s’entrechoquant" = clanking together
+avancer | s’avancer | to come forward
+escalader | | to climb (up or over)
+verrouillée | verrouiller | to bolt | past participle (feminine): bolted
+commençaient | commencer | to begin | past (imparfait)
+élevée | s’élever | to rise | past participle (feminine): "une voix s’est élevée" = a voice rose
+danser | | to dance
+avoue | avouer | to admit | j’avoue = I admit
+passer | | to pass | "se passer" = to happen; "ce qui vient de se passer" = what has just happened
+passez | passer | to pass; to go | "vous passez aujourd’hui" = you are going (to the guillotine) today
+troublée | se troubler | to blur | past participle (feminine): "ma vue s’est troublée" = my sight blurred
+bourdonnaient | bourdonner | to buzz | past (imparfait)
+apporter | | to bring
+exécuté | exécuter | to carry out; to execute | "l’arrêt sera exécuté" = the sentence will be carried out
+présenté | se présenter | to appear, to present oneself | past participle
+tombait | tomber | to fall | past (imparfait): "il tombait une pluie fine" = a fine rain was falling
+sentais | se sentir | to feel | past (imparfait): "je me sentais" = I felt
+emporté | emporter | to carry off | past participle
+enterre | enterrer | to bury | "qu’on l’enterre" = that he is being buried
+bouger | | to move
+inspecté | inspecter | to inspect | past participle
+mène | mener | to lead, to take | "qu’on mène" = being taken
+payer | | to pay
+paie | payer | to pay | "une tête ne paie rien" = a head pays nothing
+arrachaient | s’arracher | to fight over | "que les passants s’arrachaient" = that passers-by were fighting over
+tiré | tirer | to pull | past participle: "tirer de" = to pull out of
+jette | jeter | to throw | subjunctive: "pour qu’on lui jette un sou" = so that people would throw him a penny
+jetait | jeter | to throw | "jeter un coup d’œil" = to glance
+volait | voler | to steal | past (imparfait)
+libéré | libérer | to free, to release | past participle: "forçat libéré" = released convict
+tremblais | trembler | to tremble, to shiver | past (imparfait)
+trompez | se tromper | to make a mistake | "ne vous trompez pas" = don’t make a mistake
+relever | | to relieve (a guard)
+frappé | frapper | to hit, to tap, to knock | past participle
+hésité | hésiter | to hesitate | past participle
+méprisé | mépriser | to despise | past participle
+briser | | to break
+rendre | | to give back; to make | "te rendre plus riche" = make you richer
+plaire | | to please | "tout pour vous plaire" = anything to please you
+change | changer | to change | command: "change d’habits avec moi" = swap clothes with me
+écrié | s’écrier | to exclaim | past participle: "il s’est écrié" = he exclaimed
+retourné | se retourner | to turn round | past participle
+essayé | essayer | to try | past participle
+essayait | essayer | to try | past (imparfait)
+jouant | jouer | to play | "jouant" = playing
+soulevait | soulever | to lift | past (imparfait)
+rattrapée | rattraper | to catch up with | past participle (feminine)
+tourner | | to turn
+sonner | | to ring, to strike (of a clock)
+sonnaient | sonner | to ring, to strike | past (imparfait): "trois heures sonnaient" = three o’clock was striking
+marchais | marcher | to walk | past (imparfait)
+demandais | demander | to ask | past (imparfait)
+détournée | se détourner | to turn away | past participle (feminine)
+dégager | se dégager | to free oneself, to pull free
+reposée | reposer | to put back, to settle | past participle (feminine)
+déplié | déplier | to unfold | past participle
+épeler | | to spell (out)
+effrayée | effrayer | to frighten | past participle (feminine)
+retombé | retomber | to fall back | past participle
+ramenée | ramener | to take back | past participle (feminine)
+manqué | manquer | to miss, to fail | "le cœur m’a manqué" = my heart failed me
+pensé | penser | to think | past participle
+descendre | | to go down | "on m’a fait descendre" = they took me down
+éclairée | éclairer | to light (up) | past participle (feminine)
+approchés | s’approcher | to come near | past participle (plural)
+approché | s’approcher | to come near | past participle
+approchait | s’approcher | to come near | past (imparfait)
+grincé | grincer | to creak, to grate | past participle
+appelait | s’appeler | to be called | past (imparfait)
+louait | louer | to rent (out) | past (imparfait): "on louait" = people were renting out
+mouillait | mouiller | to wet | past (imparfait)
+coupés | couper | to cut | past participle (plural)
+distinguais | distinguer | to tell apart, to make out | past (imparfait)
+délié | délier | to untie | past participle
+risquait | risquer | to risk | "la machine risquait de rouiller" = the machine might rust
+
+// nouns
+pensée | la pensée | thought
+années | l’année (f) | year | plural
+année | l’année (f) | year
+minute | la minute | minute
+spectre | le spectre | ghost, spectre
+plomb | le plomb | lead (the metal) | "de plomb" = (made) of lead, heavy as lead
+paroles | la parole | (spoken) word | plural
+sommeil | le sommeil | sleep
+sursaut | le sursaut | start, jump | "en sursaut" = with a start
+matinée | la matinée | morning
+curieux | le curieux | onlooker | also an adjective: curious
+corbeaux | le corbeau | crow, raven | plural
+cadavre | le cadavre | corpse
+guichetier | le guichetier | turnkey | a prison guard who opens and shuts the doors
+reflet | le reflet | reflection, glow
+réalité | la réalité | reality
+ville | la ville | town, city
+noce | la noce | wedding
+fatigue | la fatigue | tiredness
+fente | la fente | crack
+milieu | le milieu | middle | "au milieu de" = in the middle of, amid
+déjeuner | le déjeuner | lunch | also a verb: to have lunch
+préméditation | la préméditation | premeditation | planning a crime in advance; it made a murder punishable by death
+perpétuité | la perpétuité | for life | "à perpétuité" = for life
+greffier | le greffier | clerk of the court
+verdict | le verdict | verdict
+peine | la peine | sentence, punishment; trouble | "à peine" = barely, hardly
+arrêt | l’arrêt (m) | sentence, judgment (of a court) | also: a stop
+révolution | la révolution | revolution
+barrière | la barrière | fence, barrier
+sursis | le sursis | reprieve | a delay before a sentence is carried out
+situation | la situation | situation
+édifice | l’édifice (m) | building
+majesté | la majesté | majesty
+mesure | la mesure | measure | "à mesure que" = as
+masure | la masure | hovel, shack
+galérien | le galérien | convict | sentenced to the galleys (hard labour)
+santé | la santé | health
+affaire | l’affaire (f) | case; matter, business
+docilité | la docilité | meekness, docility
+latin | le latin | Latin
+messe | la messe | Mass
+détenus | le détenu | prisoner, inmate | plural
+crimes | le crime | crime | plural
+crime | le crime | crime
+verrue | la verrue | wart
+exemple | l’exemple (m) | example | "par exemple" = for example
+testament | le testament | will (what you leave when you die)
+sol | le sol | floor, ground
+dalles | la dalle | flagstone | plural
+botte | la botte | bundle (of straw); boot
+grille | la grille | grille, iron grating; gate
+inscriptions | l’inscription (f) | inscription | plural
+trace | la trace | trace, mark
+flèche | la flèche | arrow
+nom | le nom | name
+Papavoine | | Papavoine | a murderer executed in 1825
+image | l’image (f) | picture, image
+verrous | le verrou | bolt | plural
+clés | la clé | key | plural
+geôliers | le geôlier | jailer | plural
+geôlier | le geôlier | jailer
+escaliers | l’escalier (m) | staircase, stairs | plural
+spectacle | le spectacle | show, spectacle
+loge | la loge | box (at the theatre)
+bâtiment | le bâtiment | building
+étages | l’étage (m) | floor, storey | plural
+spectateurs | le spectateur | spectator | plural
+cérémonie | la cérémonie | ceremony
+acteurs | l’acteur (m) | actor | plural
+acteur | l’acteur (m) | actor
+ferraille | la ferraille | scrap iron | "un bruit de ferraille" = a clatter of iron
+cris | le cri | cry, shout | plural
+joie | la joie | joy
+chansons | la chanson | song | plural
+menaces | la menace | threat | plural
+applaudissements | l’applaudissement (m) | applause | plural
+garçon | le garçon | boy
+gardes | le garde | guard | plural
+pantalon | le pantalon | (pair of) trousers
+averse | l’averse (f) | downpour, shower
+automne | l’automne (m) | autumn
+instant | l’instant (m) | instant, moment
+pavés | le pavé | cobblestone | plural
+poing | le poing | fist
+colliers | le collier | collar | plural
+forgerons | le forgeron | blacksmith | plural
+coups | le coup | blow | plural; "à coups de marteau" = with hammer blows
+enclume | l’enclume (f) | anvil
+menton | le menton | chin
+mouvement | le mouvement | movement
+crâne | le crâne | skull
+rayon | le rayon | ray
+ronde | la ronde | ring, round dance
+orchestre | l’orchestre (m) | orchestra
+sœur | la sœur | sister
+extérieur | l’extérieur (m) | outside
+aube | l’aube (f) | dawn
+moitié | la moitié | half | "à moitié nus" = half naked
+néant | le néant | nothingness
+enfer | l’enfer (m) | hell
+Versailles | | Versailles | the king’s palace near Paris
+plancher | le plancher | floor | "une danse où il n’y a pas de plancher" = argot for hanging
+bave | la bave | slime, drool
+limace | la limace | slug
+ailes | l’aile (f) | wing | plural
+vieillard | le vieillard | old man
+soutane | la soutane | cassock | the long black robe of a priest
+aumônier | l’aumônier (m) | chaplain | the prison priest
+oreilles | l’oreille (f) | ear | plural
+habit | l’habit (m) | coat | "un habit noir" = a black (formal) coat
+habits | l’habit (m) | clothes | plural
+tristesse | la tristesse | sadness
+employés | l’employé (m) | employee | plural
+pompes | la pompe | pump | "les pompes funèbres" = the undertakers
+honneur | l’honneur (m) | honour
+présence | la présence | presence | "présence d’esprit" = presence of mind
+ardeur | l’ardeur (f) | eagerness, ardour
+texte | le texte | text
+fin | la fin | end | "à la fin de" = at the end of
+ligne | la ligne | line
+rejet | le rejet | rejection
+pourvoi | le pourvoi | appeal (to the highest court)
+demi-heure | la demi-heure | half an hour
+moyen | le moyen | means, way
+chair | la chair | flesh
+regard | le regard | look, glance
+sorte | la sorte | kind, sort | "une sorte de" = a kind of
+cage | la cage | cage
+roues | la roue | wheel | plural
+roue | la roue | wheel | "faire la roue" = to do cartwheels
+tours | la tour | tower | plural (le tour = a turn)
+Notre-Dame | | Notre-Dame | the great cathedral of Paris
+brume | la brume | mist
+nouvelle | la nouvelle | (piece of) news
+tabatière | la tabatière | snuffbox
+cahot | le cahot | jolt, bump
+douaniers | le douanier | customs officer | plural; at the gates of Paris, a tax was paid on goods coming in
+bœuf | le bœuf | ox
+abattoir | l’abattoir (m) | slaughterhouse
+feuilles | la feuille | sheet (of paper); leaf | plural
+passants | le passant | passer-by | plural
+cabinet | le cabinet | small room; office
+éclat | l’éclat (m) | burst | "un éclat de rire" = a burst of laughter
+rêverie | la rêverie | daydream
+guenilles | les guenilles | rags | "en guenilles" = in rags
+question | la question | question
+héritier | l’héritier (m) | heir
+orphelin | l’orphelin (m) | orphan
+francs | le franc | franc | plural; the French money
+brigand | le brigand | robber, highwayman
+front | le front | forehead
+figure | la figure | face
+service | le service | duty, service
+paye | la paye | pay, wages
+avance | l’avance (f) | advance | "d’avance" = in advance
+revenants | le revenant | ghost | plural
+caserne | la caserne | barracks
+Popincourt | | Popincourt | a district of Paris
+imbécile | l’imbécile (m) | fool, idiot
+espérance | l’espérance (f) | hope
+position | la position | position, situation
+cheveu | le cheveu | (a single) hair
+condition | la condition | condition
+présent | le présent | the present
+souvenirs | le souvenir | memory | plural
+îles | l’île (f) | island | plural
+fleurs | la fleur | flower | plural
+gouffre | le gouffre | abyss, chasm
+allée | l’allée (f) | path (in a garden or park)
+lèvres | la lèvre | lip | plural
+marronniers | le marronnier | chestnut tree | plural
+pèlerine | la pèlerine | cape
+gazon | le gazon | grass, lawn | "un banc de gazon" = a grassy bank
+lecture | la lecture | reading
+paradis | le paradis | paradise
+soirée | la soirée | evening
+œil | l’œil (m) | eye | "un coup d’œil" = a glance
+poitrine | la poitrine | chest
+pâleur | la pâleur | paleness, pallor
+mémoire | la mémoire | memory
+violence | la violence | violence
+fibre | la fibre | fibre
+portière | la portière | door (of a carriage)
+fiacre | le fiacre | cab | a horse-drawn carriage for hire
+trajet | le trajet | journey, trip
+peuple | le peuple | people; the crowd, the mob
+triangle | le triangle | triangle | here: the blade of the guillotine
+bout | le bout | end | "au bout" = at the end
+valets | le valet | assistant, servant | plural
+valet | le valet | assistant, servant
+chats | le chat | cat | plural
+acier | l’acier (m) | steel
+toilette | la toilette | washing and dressing | "la toilette du condamné" = preparing the condemned man (cutting his hair and collar)
+contact | le contact | touch, contact
+exécuteur | l’exécuteur (m) | executioner
+crucifix | le crucifix | crucifix
+battants | le battant | door leaf | "à deux battants" = with both halves of the door
+clameur | la clameur | roar, clamour
+arrière | l’arrière (m) | back, rear
+compliment | le compliment | compliment
+courage | le courage | courage
+hurlements | le hurlement | howl | plural
+tables | la table | table | plural
+chaises | la chaise | chair | plural
+poids | le poids | weight
+regards | le regard | look, gaze | plural
+quai | le quai | quay, embankment
+corde | la corde | rope
+reste | le reste | rest, remainder
+hyène | la hyène | hyena
+
+// adjectives and adverbs
+plein | | full
+pleine | plein | full | feminine
+captif | | captive
+enchaîné | | chained
+enchaînés | enchaîné | chained | plural
+sanglante | sanglant | bloody | feminine
+implacable | | relentless
+troisième | | third
+profond | | deep
+brutalement | | brutally
+librement | | freely
+claire | clair | bright, light | feminine
+satisfaits | satisfait | satisfied | plural
+sinistre | | sinister
+copieusement | | heartily
+légère | léger | light | feminine
+clairement | | clearly
+indéfinis | indéfini | indefinite | plural
+précieux | | precious
+hideux | | hideous
+hideuse | hideux | hideous | feminine
+maigre | | thin
+maigres | maigre | thin | plural
+générale | général | general | feminine: "la langue générale" = ordinary language
+utiles | utile | useful | plural
+physique | | physical
+morale | moral | moral | feminine: "la douleur morale" = suffering of the mind
+châtains | châtain | chestnut-brown | plural (of hair)
+célèbre | | famous
+épouvantable | | dreadful
+passés | passé | past | plural: "ces jours passés" = these past days
+lourdes | lourd | heavy | feminine plural
+lourd | | heavy; hard
+odieux | | odious, hateful
+vide | | empty
+grillées | grillé | barred | feminine plural: "fenêtres grillées" = barred windows
+trempés | trempé | soaked | plural
+mouillés | mouillé | wet | plural
+attachés | attaché | fixed, tied | plural
+sombres | sombre | dark, gloomy | plural
+propre | | own; clean | before a noun: "ma propre situation" = my own situation
+couché | | lying (down)
+lent | | slow
+furieux | | furious
+furieuse | furieux | furious | feminine
+infâme | | vile, foul
+bienveillant | | kindly
+glacée | glacé | icy | feminine
+officielle | officiel | official | feminine
+funèbres | funèbre | funeral | "les pompes funèbres" = the undertakers
+royale | royal | royal | feminine: "la cour royale" = the royal court
+long | | long
+précises | précis | precise | "sept heures et demie précises" = half past seven sharp
+entrouverte | entrouvert | ajar, half-open | feminine
+dernier | | last
+nombreuse | nombreux | numerous; large | feminine: "la foule était plus nombreuse" = the crowd was bigger
+endormi | | asleep
+bleues | bleu | blue | feminine plural
+humaine | humain | human | feminine
+imprimées | imprimé | printed | feminine plural
+ridé | | wrinkled
+voûté | | stooped, bent
+neuf | | nine; new | "à neuf ans" = at nine (years old)
+soixante-six | | sixty-six
+grandes | grand | big, great | feminine plural: "les grandes routes" = the main roads
+timide | | shy
+grise | gris | grey | feminine
+légèrement | | lightly
+mystérieux | | mysterious
+indécis | | undecided, unsure
+muet | | silent, speechless
+désespéré | | desperate
+riants | riant | smiling, cheerful | plural
+verte | vert | green | feminine
+rouges | rouge | red | plural
+fier | | proud
+ému | | moved, touched
+méchant | | wicked, nasty
+inquiet | | anxious, worried
+quarante | | forty
+beaux | beau | beautiful | plural
+froissé | | crumpled
+brisée | brisé | broken | feminine
+voûtée | voûté | vaulted | feminine
+gras | | fat
+blanche | blanc | white | feminine
+hurlantes | hurlant | howling | feminine plural
+atroce | | atrocious, dreadful
+horriblement | | horribly
+insupportable | | unbearable
+brusquement | | suddenly, abruptly
+faiblement | | weakly
+prête | prêt | ready | feminine
+impossible | | impossible
+
+finir | | to finish
+sort | sortir | to go out, to come out | il sort = he comes out
+
+// --- words added with the B2 level ---
+// The passé simple (literary past) is marked "passé simple": il lut = he read.
+// small words
+point | | not, no (old-fashioned) | "point de couteau" = no knife; "ne … point" = not at all
+or | | now, so | links two ideas: "or, je mets à la loterie" = so I play the lottery (l’or = gold)
+cependant | | meanwhile; however
+parmi | | among, amid
+lorsque | | when
+surtout | | above all, especially
+tantôt | | sometimes | "tantôt … tantôt" = now … now
+afin | afin que | so that | always "afin que" (+ subjunctive)
+outre | | besides | "outre le prêtre" = besides the priest
+au-dessous | | below | "au-dessous de" = below
+ailleurs | | elsewhere | "d’ailleurs" = besides, moreover
+auquel | | to which, to whom | "auquel je n’ai pas serré la main" = whose hand I did not shake
+auxquels | auquel | to which | plural: "barreaux auxquels se colle" = bars to which … clings
+celle | celui | the one | feminine: "celle que" = the one that
+celle-là | | that one | feminine: "c’est celle-là qui me fait mal" = she is the one who hurts me
+chacun | | each (one) | "devant chacun d’eux" = in front of each of them
+quelques-uns | | some (of them) | "quelques-uns bâillaient" = some were yawning
+uns | un | some | "les uns les autres" = each other
+autant | | as much | "autant que" = as much as
+soi | | oneself | "devant soi" = in front of oneself
+moi-même | | myself
+elles | | they | feminine plural
+miennes | le mien | mine | feminine plural: "dans les miennes" = in mine (my hands)
+ô | | oh | literary
+probablement | | probably
+apparemment | | apparently
+violemment | | violently
+rudement | | roughly
+lourdement | | heavily
+réellement | | really
+aisément | | easily
+stupidement | | stupidly
+timidement | | shyly
+décemment | | decently
+justement | | rightly, justly
+profondément | | deeply
+doucement | | gently, softly
+ardemment | | ardently, passionately
+subitement | | suddenly
+fatalement | | fatefully; inevitably
+instamment | | urgently
+demi | | half | "à demi" = half
+tue-tête | à tue-tête | at the top of one’s voice | always "à tue-tête"
+P | | (the letter) P
+
+// passé simple and other literary verb forms
+fut | être | to be | passé simple: il fut = he/it was; "il me fut impossible" = it was impossible for me
+furent | être | to be | passé simple: ils furent = they were
+fût | être | to be | imperfect subjunctive (literary): "si odieux qu’il fût" = however odious it was
+eut | avoir | to have | passé simple; "il y en eut qui pleurèrent" = there were some who wept
+eus | avoir | to have | passé simple: j’eus = I had, I got
+eût | avoir | to have | literary: "on eût dit" = you would have said, it was as if; "on eût cru" = you would have thought
+eusse | avoir | to have | literary subjunctive: "j’eusse voulu" = I would have wished
+eue | avoir | to have | past participle (feminine)
+ayez | avoir | to have | "n’ayez pas peur" = don’t be afraid
+fallut | falloir | to be necessary | passé simple: "il fallut" = it took, it was necessary
+fallu | falloir | to be necessary | past participle: "il aurait fallu" = it would have been necessary
+fit | faire | to do, to make | passé simple: "on fit asseoir" = they made (them) sit
+fis | faire | to do, to make | passé simple: "je la fis asseoir" = I sat her down
+firent | faire | to do, to make | passé simple: "firent disparaître" = made disappear
+ferait | faire | to do, to make | conditional: "lui ferait sauter le crâne" = would crack his skull
+feriez | faire | to do, to make | conditional: vous feriez = you would do
+faisant | faire | to do, to make | "en faisant le comédien" = playing the actor
+faisais | faire | to do, to make | past (imparfait): "je faisais peur" = I frightened people
+faite | faire | to do, to make | past participle (feminine)
+vint | venir | to come | passé simple: il vint = he came
+venaient | venir | to come | past (imparfait)
+venues | venir | to come | past participle (feminine plural)
+revins | revenir | to come back | passé simple: "je revins à moi" = I came round
+devint | devenir | to become | passé simple: il devint = it became
+devinrent | devenir | to become | passé simple: ils devinrent = they became
+reprit | reprendre | to take back | passé simple: "l’habitude reprit le dessus" = habit gained the upper hand again
+repris | reprendre | to go on (speaking) | past participle: "ai-je repris" = I went on
+comprit | comprendre | to understand | passé simple: il comprit = he understood
+lut | lire | to read | passé simple: il lut = he read
+lise | lire | to read | subjunctive: "afin qu’elle les lise" = so that she may read them
+sortit | sortir | to go out, to come out | passé simple
+sortirent | sortir | to go out | passé simple: ils sortirent = they went out
+rentrèrent | rentrer | to come back in | passé simple
+resta | rester | to stay | passé simple: il resta = he stayed
+sachant | savoir | to know | "comme ne sachant si" = as if not knowing whether
+valait | valoir | to be worth | past (imparfait): "si cela valait la peine" = whether it was worth it
+vaut | valoir | to be worth | "le voyage vaut la peine d’être conté" = the journey is worth telling
+murmura | murmurer | to whisper, to murmur | passé simple
+répétai | répéter | to repeat | passé simple: je répétai = I repeated
+répondit | répondre | to answer | passé simple: il répondit = he answered
+rejeta | rejeter | to throw back | passé simple
+arriva | arriver | to arrive | passé simple
+pencha | se pencher | to lean | passé simple: "il se pencha" = he leaned
+répliquai | répliquer | to reply | passé simple: je répliquai = I replied
+invita | inviter | to invite, to ask | passé simple
+appuyai | s’appuyer | to lean | passé simple: "je m’appuyai au mur" = I leaned against the wall
+appuya | appuyer | to lean, to rest | passé simple
+chercha | chercher | to try; to look for | passé simple: "il chercha à obtenir" = he tried to obtain
+arrêtai | arrêter | to stop | passé simple: je l’arrêtai = I stopped him
+rua | se ruer | to rush | passé simple: "tout ce peuple se rua" = the whole crowd rushed
+distinguai | distinguer | to make out | passé simple: je distinguai = I made out
+transporta | transporter | to carry, to take | passé simple
+emparèrent | s’emparer | to seize | passé simple: "des mains de fer s’emparèrent de moi" = iron hands seized me
+emprisonna | emprisonner | to imprison | passé simple
+traita | traiter | to treat | passé simple
+confondirent | confondre | to lump together, to mix up | passé simple
+adressai | adresser | to address | passé simple: "que j’adressai au concierge" = that I addressed to the warden
+passa | passer | to pass | passé simple: "un geôlier passa" = a jailer went by
+hasardai | se hasarder | to venture | passé simple: "je me hasardai à" = I ventured to
+acceptai | accepter | to accept | passé simple
+conduisit | conduire | to lead, to take | passé simple
+sonna | sonner | to ring, to strike | passé simple: "midi sonna" = noon struck
+entra | entrer | to come in | passé simple
+éclatèrent | éclater | to burst out | passé simple
+vomirent | vomir | to vomit, to spew out | passé simple
+excita | exciter | to stir up | passé simple
+jeta | jeter | to throw | passé simple
+commencèrent | commencer | to begin | passé simple
+éclata | éclater | to burst | passé simple
+vida | se vider | to empty | passé simple
+écria | s’écrier | to exclaim | passé simple: "il s’écria" = he exclaimed
+montra | montrer | to show | passé simple: "montra le poing au ciel" = shook his fist at the sky
+essaya | essayer | to try (on) | passé simple: "on leur essaya les colliers" = the collars were tried on them
+rivèrent | river | to rivet | passé simple
+pleurèrent | pleurer | to cry | passé simple
+reparut | reparaître | to reappear | passé simple
+levèrent | se lever | to get up | passé simple: "ils se levèrent" = they rose
+formèrent | se former | to form | passé simple
+tournèrent | se tourner | to turn | passé simple
+crièrent | crier | to shout | passé simple
+regarda | regarder | to look at | passé simple
+sembla | sembler | to seem | passé simple: "il me sembla" = it seemed to me
+poussai | pousser | to push; to let out | passé simple: "je poussai un cri" = I let out a cry
+jetai | jeter | to throw | passé simple: "je me jetai" = I threw myself
+tombai | tomber | to fall | passé simple
+entendis | entendre | to hear | passé simple: j’entendis = I heard
+attendis | attendre | to wait for | passé simple
+ouvris | ouvrir | to open | passé simple: j’ouvris = I opened
+quitta | quitter | to leave, to let go of | passé simple
+poursuivis | poursuivre | to pursue, to chase | passé simple: je la poursuivis = I chased her
+atteignis | atteindre | to reach, to catch up with | passé simple
+résista | résister | to resist | passé simple
+mîmes | mettre | to put | passé simple: "nous nous mîmes à lire" = we began to read
+rapprochèrent | se rapprocher | to draw closer | passé simple
+voulûmes | vouloir | to want | passé simple: nous voulûmes = we wanted
+donnai | donner | to give | passé simple
+empoignai | empoigner | to grab | passé simple: j’empoignai = I grabbed
+empoigna | empoigner | to grab | passé simple
+mangeai | manger | to eat | passé simple
+jetât | jeter | to throw | imperfect subjunctive (literary): "pour qu’on lui jetât un sou" = so that people would throw him a penny
+coûtât | coûter | to cost | imperfect subjunctive (literary): "et que cela ne vous coûtât rien" = and it cost you nothing
+restât | rester | to remain | imperfect subjunctive (literary): "seul lambeau qui me restât" = the only shred I had left
+puisse | pouvoir | can | subjunctive: "que puisse m’enlever le bourreau" = that the executioner can take from me
+pouviez | pouvoir | can | past (imparfait): "si vous pouviez" = if you could
+doivent | devoir | must | ils doivent = they must, they are to
+devrais | devoir | must, ought to | conditional: "quand même je devrais" = even if I had to
+devraient | devoir | ought to | conditional: "ils devraient venir" = they should come
+prennent | prendre | to take; to catch | subjunctive: "jusqu’à ce que les gendarmes le prennent" = until the gendarmes caught him
+prendra | prendre | to take | future
+prenait | prendre | to take | past (imparfait)
+verront | voir | to see | future: ils verront = they will see
+entendrez | entendre | to hear | future: vous entendrez = you will hear
+tombera | tomber | to fall | future
+portera | porter | to carry, to bear | future
+jouera | jouer | to play | future
+suffira | suffire | to be enough | future: "tout ce que j’ai y suffira à peine" = all I have will barely be enough
+briserait | briser | to break | conditional
+rappellerai | se rappeler | to remember | future: "je me rappellerai" = I will remember
+rappelle | se rappeler | to remember | "je me rappelle" = I remember
+dirai | dire | to say | future: je la dirai = I will say it
+disait | dire | to say | past (imparfait)
+disais | dire | to say | past (imparfait): je disais = I said
+échapperai | échapper | to escape | future
+serai | être | to be | future: je serai = I will be
+
+// other verbs
+habite | habiter | to live (in) | "j’habite avec cette pensée" = I live with this thought
+secoue | secouer | to shake | elle me secoue = it shakes me
+détourner | | to turn away
+fermer | | to close
+obsède | obséder | to haunt, to obsess
+reparaît | reparaître | to reappear
+éveiller | s’éveiller | to wake up | "je viens de m’éveiller" = I have just woken up
+poursuivi | poursuivre | to pursue, to chase | past participle
+entamé | entamer | to begin | past participle: "mon procès était entamé" = my trial had begun
+attiraient | attirer | to attract, to draw | past (imparfait)
+abattre | s’abattre | to swoop down
+dépenser | | to spend
+rompt | rompre | to break | il rompt = it breaks
+arrivaient | arriver | to arrive, to come | past (imparfait)
+paraissaient | paraître | to seem, to appear | past (imparfait)
+bâillaient | bâiller | to yawn | past (imparfait)
+obtenir | | to obtain, to get
+espérer | | to hope (for)
+respirer | | to breathe
+palpiter | | to throb, to beat
+arrangeaient | s’arranger | to plan, to arrange | past (imparfait): "qui s’arrangeaient pour une longue vie" = who were planning on a long life
+brutalisé | brutaliser | to bully, to ill-treat | past participle
+approchez | approcher | to come near | vous approchez
+colle | se coller | to cling | "se colle" = clings
+importait | importer | to matter | past (imparfait): "il importait de" = it was important to
+conserver | | to keep, to preserve
+sentent | sentir | to smell (of) | "les égards d’un guichetier sentent l’échafaud" = a turnkey’s kindness smells of the scaffold
+disparaître | | to disappear
+lâche | lâcher | to let go, to let loose | "on me lâche dans le préau" = they let me out into the yard
+cause | causer | to chat | je cause = I chat (la cause = cause)
+causent | causer | to chat | ils causent
+vantent | se vanter | to boast | "ils se vantent" = they boast
+médite | méditer | to meditate, to reflect
+raisonne | raisonner | to reason
+conseille | conseiller | to advise, to plan
+plaignent | plaindre | to pity | "ces hommes me plaignent" = these men pity me
+condamnent | condamner | to condemn | ils condamnent
+admets | admettre | to admit | j’admets = I admit
+reposer | | to rest
+pendent | pendre | to hang | ils pendent = they hang (down)
+cache | cacher | to hide | "le fer cache le bois" = iron hides the wood
+rencontrer | | to meet
+ait | avoir | to have | subjunctive: "chaque condamné ait voulu" = every condemned man wanted
+crayonnée | crayonner | to sketch (in pencil) | past participle (feminine)
+grincer | | to creak, to grate
+carillonner | | to jingle, to chime
+courir | | to run
+apercevait | apercevoir | to see, to glimpse | past (imparfait): "on apercevait" = you could see
+tenez | tenir | to hold | "tenez !" = here you are! there!
+élevait | s’élever | to rise | past (imparfait)
+tenaient | tenir | to hold | past (imparfait); "se tenaient collés" = were pressed
+appliquer | | to apply; to put on
+pâlissent | pâlir | to turn pale | ils pâlissent
+rebondir | | to bounce
+sauter | | to jump; to blow up | "faire sauter le crâne" = to crack the skull
+mordaient | se mordre | to bite | past (imparfait): "se mordaient les lèvres" = were biting their lips
+mettait | mettre | to put; to set | past (imparfait): "il mettait le feu" = it set on fire
+entrechoquaient | s’entrechoquer | to clank together | past (imparfait)
+observais | observer | to watch | past (imparfait)
+remuait | remuer | to stir | past (imparfait)
+arrêter | s’arrêter | to stop
+taire | se taire | to fall silent
+escaladait | escalader | to climb | past (imparfait)
+éprouvais | éprouver | to feel | past (imparfait): j’éprouvais = I felt
+élever | s’élever | to rise
+court | courir | to run | "elle court" = she runs (court is also an adjective: short)
+indigne | s’indigner | to become indignant | "le roi qui s’indigne" = the king who grows indignant
+menace | menacer | to threaten | il menace = he threatens (la menace = a threat)
+respirez | respirer | to breathe; to smell | vous respirez
+entrouvert | entrouvrir | to open a little | past participle
+accompagné | accompagner | to accompany | past participle
+hésitant | hésiter | to hesitate | "en hésitant" = hesitating, stumbling
+saluant | saluer | to greet; to bow | "en me saluant" = bowing to me
+transféré | transférer | to transfer | past participle
+conté | conter | to tell (a story) | past participle; "conter" is old-fashioned for "raconter"
+montais | monter | to get in, to climb | past (imparfait)
+conçois | concevoir | to understand, to conceive | je conçois = I understand
+montés | monter | to get in | past participle (plural): "nous sommes montés" = we got in
+divisé | diviser | to divide | past participle
+tricotée | tricoter | to knit | past participle (feminine)
+remuer | | to move, to stir
+encadrer | s’encadrer | to be framed | "venues s’encadrer dans la lucarne" = came into the frame of the little window
+connaissions | connaître | to know | past (imparfait)
+écoule | s’écouler | to pass (of time) | "chaque quart d’heure qui s’écoule" = every quarter of an hour that passes
+gardez | garder | to keep | "ne me gardez pas rancune" = don’t hold it against me
+menait | mener | to lead, to take | past (imparfait)
+disputaient | se disputer | to fight over | past (imparfait)
+déposé | déposer | to put down, to leave | past participle
+verrouillé | verrouiller | to bolt | past participle: bolted
+trouvait | se trouver | to be (somewhere) | past (imparfait): "un homme se trouvait avec moi" = a man was there with me
+sauvaient | se sauver | to run away | past (imparfait)
+épousé | épouser | to marry | "épouser la veuve" = argot: to be hanged
+retire | se retirer | to retire, to withdraw
+ôté | ôter | to take off | past participle
+grelottais | grelotter | to shiver | past (imparfait)
+riant | rire | to laugh | "en riant" = laughing
+serré | serrer | to squeeze | "serrer la main" = to shake hands
+remplacé | remplacer | to replace | past participle
+baissé | baisser | to lower | past participle
+mets | mettre | to put; to bet | "je mets à la loterie" = I play the lottery
+contre-balancer | | to make up for, to balance
+périr | | to perish, to die | "qu’on fait périr" = who are put to death
+dédaigné | dédaigner | to scorn | past participle
+palpitait | palpiter | to throb, to pound | past (imparfait)
+tâché | tâcher | to try | past participle: "j’ai tâché d’oublier" = I tried to forget
+courant | courir | to run | "courant" = running
+courions | courir | to run | past (imparfait): nous courions
+luttions | lutter | to wrestle, to fight | past (imparfait)
+disputais | disputer | to fight for | past (imparfait): "je disputais à Pepita la plus belle pomme" = I fought Pepita for the finest apple
+fuyait | fuir | to flee | past (imparfait): elle fuyait = she ran away
+asseyez | s’asseoir | to sit down | command: "asseyez-vous" = sit down
+mêlaient | se mêler | to mingle | past (imparfait)
+enlevée | enlever | to lift (up) | past participle (feminine): "je l’ai enlevée dans mes bras" = I lifted her up in my arms
+baisée | baiser | to kiss | past participle (feminine); in Hugo’s time it meant "to kiss", today the verb is vulgar (use "embrasser")
+caressée | caresser | to caress, to stroke | past participle (feminine)
+embrassée | embrasser | to kiss | past participle (feminine)
+dévorée | dévorer | to devour | past participle (feminine): "dévorée de baisers" = smothered with kisses
+laissant | laisser | to let | "se laissant faire" = letting it happen
+rester | | to stay
+joignant | joindre | to join | "en joignant ses deux petites mains" = holding her two little hands together
+aimer | | to love
+connaît | connaître | to know | il connaît = he knows
+cherché | chercher | to try; to look for | past participle: "elle a cherché à se dégager" = she tried to free herself
+replacée | replacer | to put back | past participle (feminine)
+couvant | couver | to brood over | "en la couvant des yeux" = gazing at her fondly
+questionnée | questionner | to question | past participle (feminine)
+essaie | essayer | to try | command: "essaie toujours" = try anyway
+déployé | déployer | to unfold | past participle
+remmenée | remmener | to take away again | past participle (feminine)
+raidir | se raidir | to stiffen, to brace oneself | "j’ai eu beau me raidir" = however hard I braced myself
+crisper | se crisper | to tense up
+avertir | | to warn, to tell
+portait | porter | to wear; to carry | past (imparfait): il portait = he was wearing
+tombaient | tomber | to fall | past (imparfait)
+époussetait | épousseter | to dust off | past (imparfait)
+ramené | ramener | to bring back, to pull back | past participle
+rouler | | to roll, to wind
+hésiter | | to hesitate
+touchait | toucher | to touch | past (imparfait)
+entassées | entasser | to pile up, to crowd | past participle (feminine plural)
+battaient | battre | to beat | "battre des mains" = to clap
+frémi | frémir | to shudder | past participle
+poussés | pousser | to push | past participle (plural)
+embaumait | embaumer | to smell sweet | past (imparfait)
+enveloppait | envelopper | to wrap, to surround | past (imparfait)
+traînant | se traîner | to drag oneself | "en me traînant sur les genoux" = dragging myself along on my knees
+risque | risquer | to risk | "cela risque de se rouiller" = it might rust
+
+// nouns
+fantaisies | la fantaisie | fancy, daydream | plural
+promenades | la promenade | walk | plural
+imagination | l’imagination (f) | imagination
+fers | le fer | iron; irons (chains) | plural: "aux fers" = in irons
+conviction | la conviction | conviction
+certitude | la certitude | certainty
+côtés | le côté | side | plural: "à mes côtés" = at my side
+glace | la glace | ice; mirror | "mains de glace" = icy hands
+refrain | le refrain | refrain, chorus
+nuée | la nuée | cloud, swarm
+nuées | la nuée | cloud, swarm | plural
+bancs | le banc | bench | plural
+audience | l’audience (f) | hearing | "la salle d’audience" = the courtroom
+nuits | la nuit | night | plural
+inquiétude | l’inquiétude (f) | anxiety, worry
+terreur | la terreur | terror
+ennui | l’ennui (m) | boredom
+corridor | le corridor | corridor
+ténèbres | les ténèbres | darkness | always plural
+parole | la parole | (spoken) word
+fil | le fil | thread
+vol | le vol | flight; theft | "le vol de l’insecte" = the insect’s flight; "condamné pour vol" = convicted of theft
+insecte | l’insecte (m) | insect
+marchandes | la marchande | seller (woman) | plural: "marchandes de fleurs" = flower-sellers
+plante | la plante | plant
+sensations | la sensation | sensation, feeling | plural
+délivrance | la délivrance | deliverance, release
+appétit | l’appétit (m) | appetite
+absence | l’absence (f) | absence
+membres | le membre | limb | plural: "de tous mes membres" = all over my body
+fracas | le fracas | crash, din
+clôture | la clôture | fence, enclosure
+bouillon | le bouillon | broth
+galériens | le galérien | convict | plural; sentenced to the galleys
+guichetiers | le guichetier | turnkey | plural
+biens | le bien | good thing; possession | plural
+distance | la distance | distance | "à distance" = from afar
+lèpre | la lèpre | leprosy
+fourchette | la fourchette | fork
+repas | le repas | meal | same form in the plural
+douceur | la douceur | gentleness, sweetness
+égards | les égards | consideration, respect | plural
+bonheur | le bonheur | happiness; luck | "par bonheur" = luckily; "faire le bonheur de" = to make (someone) happy
+habitude | l’habitude (f) | habit
+dessus | le dessus | top | "reprendre le dessus" = to get the upper hand again
+brutalité | la brutalité | brutality
+concierge | le concierge | warden; caretaker
+plumes | la plume | (quill) pen; feather | plural
+dimanches | le dimanche | Sunday | plural: "tous les dimanches" = every Sunday
+récréation | la récréation | break, exercise time
+horreur | l’horreur (f) | horror | "ce serait à faire horreur" = it would make you shudder
+espèce | l’espèce (f) | kind, sort | "une espèce de" = a kind of
+excroissance | l’excroissance (f) | growth (on the skin)
+gibet | le gibet | gallows
+veuve | la veuve | widow | in argot, "épouser la veuve" = to be hanged
+pendus | le pendu | hanged man | plural
+porte-clefs | le porte-clefs | key-keeper | a prison guard who carries the keys
+supplice | le supplice | torment, torture
+enseignement | l’enseignement (m) | lesson, teaching
+leçon | la leçon | lesson
+chute | la chute | fall
+mémoires | les mémoires | memoirs | plural
+confidents | le confident | confidant | plural
+misérable | le misérable | wretch | also an adjective: wretched
+frais | les frais | costs, expenses | "condamné aux frais" = ordered to pay the costs (frais is also an adjective: fresh, cool)
+mari | le mari | husband
+veuves | la veuve | widow | plural
+loi | la loi | law
+lois | la loi | law | plural
+innocentes | l’innocente (f) | innocent woman | plural
+murailles | la muraille | (thick) wall | plural
+taille | la taille | cut; size | "pierre de taille" = dressed stone, cut stone
+pavé | le pavé | paving; cobblestone
+hiver | l’hiver (m) | winter
+guise | la guise | way | "en guise de" = by way of, as
+voûte | la voûte | vault, arched ceiling
+ogive | l’ogive (f) | pointed arch | "en ogive" = pointed
+toiles | la toile | cloth | "toiles d’araignée" = cobwebs
+araignée | l’araignée (f) | spider
+haillons | les haillons | rags
+bois | le bois | wood
+croix | la croix | cross | "en croix" = crosswise
+écritures | l’écriture (f) | writing | plural
+figures | la figure | figure; face | plural
+hauteur | la hauteur | height | "à la hauteur de" = at the level of
+engagement | l’engagement (m) | commitment, promise
+arabesques | l’arabesque (f) | flourish, curly decoration | plural
+cadenas | le cadenas | padlock
+trousseaux | le trousseau | bunch (of keys) | plural
+clefs | la clef | key | plural (old spelling of "clés")
+ceinture | la ceinture | belt
+vacarme | le vacarme | din, racket
+tumulte | le tumulte | tumult, uproar
+effet | l’effet (m) | effect | "en effet" = indeed
+reclus | le reclus | recluse, prisoner
+fortune | la fortune | fortune; luck | "une bonne fortune" = a stroke of luck
+amusement | l’amusement (m) | amusement, entertainment
+haut | le haut | top | "du bas en haut" = from bottom to top (haut is also an adjective: high)
+pierres | la pierre | stone | plural
+imprécations | l’imprécation (f) | curse | plural
+éclats | l’éclat (m) | burst | plural: "des éclats de rire" = bursts of laughter
+masques | le masque | mask | plural
+démons | le démon | demon | plural
+démon | le démon | demon, devil
+transports | le transport | outburst (of feeling) | plural: "des transports d’enthousiasme" = wild enthusiasm
+enthousiasme | l’enthousiasme (m) | enthusiasm
+vêtement | le vêtement | garment, piece of clothing
+agilité | l’agilité (f) | agility
+serpent | le serpent | snake
+baladin | le baladin | street acrobat, entertainer
+incident | l’incident (m) | incident
+humiliation | l’humiliation (f) | humiliation
+torture | la torture | torture
+clin | le clin | blink | "en un clin d’œil" = in the blink of an eye
+chemises | la chemise | shirt | plural
+gaieté | la gaieté | cheerfulness
+programme | le programme | programme
+enclumes | l’enclume (f) | anvil | plural
+masses | la masse | sledgehammer; mass | plural
+patient | le patient | patient; here: the man being punished
+coquille | la coquille | shell
+noix | la noix | nut, walnut
+opération | l’opération (f) | operation
+feu | le feu | fire | "mettre le feu à" = to set fire to; "lettres de feu" = branded letters
+cerveaux | le cerveau | brain | plural
+romance | la romance | (sentimental) song, ballad
+cadence | la cadence | rhythm | "en cadence" = in rhythm
+chant | le chant | song, singing
+curiosité | la curiosité | curiosity
+sentiment | le sentiment | feeling
+entrailles | les entrailles | insides, guts | "jusqu’aux entrailles" = to the very depths
+angoisse | l’angoisse (f) | anguish
+juillet | | July
+novembre | | November
+pluies | la pluie | rain | plural
+coudes | le coude | elbow | plural
+coude | le coude | elbow | "un coup de coude" = a blow with the elbow
+lassitude | la lassitude | weariness
+roucoulement | le roucoulement | cooing
+lutte | la lutte | fight, struggle
+police | la police | police
+supplique | la supplique | petition, plea
+coupable | le coupable | culprit, guilty man
+venin | le venin | venom, poison
+aile | l’aile (f) | wing
+anxiété | l’anxiété (f) | anxiety
+visite | la visite | visit
+sortie | la sortie | exit; release | "à sa sortie" = when he came out (also past participle, feminine, of sortir)
+bourdonnements | le bourdonnement | buzzing | plural
+courtoisie | la courtoisie | courtesy
+secousse | la secousse | shock, jolt
+fusiliers | le fusilier | rifleman | plural
+charpente | la charpente | timber frame (of a roof)
+poutres | la poutre | beam | plural
+rage | la rage | rage, fury
+malédiction | la malédiction | curse
+procès-verbal | le procès-verbal | official report
+assises | les assises | criminal court | "la cour d’assises" = the criminal court
+train | le train | train; pace | "être en train de faire" = to be busy doing
+cabriolet | le cabriolet | light carriage
+postillon | le postillon | driver (of a coach)
+léthargie | la léthargie | lethargy, trance
+lucarne | la lucarne | small window, skylight
+tour | la tour | tower | (le tour = a turn; a trick)
+drapeau | le drapeau | flag
+relâche | la relâche | rest | "sans relâche" = without pause
+fontaine | la fontaine | fountain
+étonnement | l’étonnement (m) | astonishment
+rancune | la rancune | grudge | "garder rancune à quelqu’un" = to hold a grudge against someone
+grillage | le grillage | wire grille, mesh
+mouton | le mouton | sheep
+boucherie | la boucherie | butcher’s shop; slaughter
+droit | le droit | right; duty, toll | here: a tax paid at the city gate
+Cité | la Cité | the Cité | the island in the Seine at the old heart of Paris
+liasses | la liasse | bundle (of papers) | plural
+horloge | l’horloge (f) | clock
+taule | le taule | the executioner (argot) | prison slang of the time; today "la taule" means prison
+panier | le panier | basket | "jouer au panier avec ma sorbonne" = argot: to cut off my head (it fell into a basket)
+enfants | l’enfant (m/f) | child | plural
+ouvrage | l’ouvrage (m) | work, job
+carreau | le carreau | window pane; tile
+abbaye | l’abbaye (f) | abbey | "l’abbaye de Mont-à-Regret" = argot for the scaffold
+Mont-à-Regret | | Mount Regret | argot: the scaffold
+égoïste | l’égoïste (m) | egoist, selfish person
+numéro | le numéro | number
+fond | le fond | bottom, far end | "au fond de" = at the far end of, at the bottom of
+moments | le moment | moment | plural: "par moments" = at times
+comédien | le comédien | actor | "faire le comédien" = to play-act
+agrafes | l’agrafe (f) | hook, clasp | plural
+peau | la peau | skin
+joues | la joue | cheek | plural
+Andalouse | l’Andalouse (f) | Andalusian girl | from Andalusia, in the south of Spain
+Pepita | | Pepita | a pet name for Pepa
+pommier | le pommier | apple tree
+deuil | le deuil | mourning | "en deuil de" = in mourning for
+course | la course | run, race
+hasard | le hasard | chance | "au hasard" = at random
+haleines | l’haleine (f) | breath | plural
+étoffe | l’étoffe (f) | cloth, fabric
+extrémité | l’extrémité (f) | end
+sanglots | le sanglot | sob | plural
+accent | l’accent (m) | accent; tone of voice
+prière | la prière | prayer
+maison | la maison | house, home
+fables | la fable | fable | plural; children learned to read with La Fontaine’s fables
+brouillard | le brouillard | fog
+mèches | la mèche | lock (of hair) | plural
+épaules | l’épaule (f) | shoulder | plural
+crayon | le crayon | pencil
+nœuds | le nœud | knot | plural
+poignets | le poignet | wrist | plural
+batiste | la batiste | batiste | a very fine linen cloth
+lambeau | le lambeau | shred, scrap
+saisissement | le saisissement | shock
+rugissement | le rugissement | roar
+irruption | l’irruption (f) | bursting in | "faire irruption" = to burst in
+ombre | l’ombre (f) | shadow, darkness
+rampe | la rampe | slope; banister
+charretier | le charretier | carter, cart driver
+blouse | la blouse | smock
+allure | l’allure (f) | pace, gait
+éloge | l’éloge (m) | praise
+banquette | la banquette | bench seat
+cortège | le cortège | procession
+hurlement | le hurlement | howl
+populace | la populace | mob, rabble
+marché | le marché | market | "jour de marché" = market day
+bouquets | le bouquet | bunch of flowers | plural
+échafaudages | l’échafaudage (m) | scaffolding | plural
+plaintes | la plainte | moan, complaint | plural
+planches | la planche | plank | plural
+commissaire | le commissaire | commissioner (of police)
+magistrat | le magistrat | magistrate, judge
+grâces | la grâce | pardon | plural
+
+// adjectives
+glacé | | frozen, icy
+courbé | | bent, bowed
+larges | large | wide, broad | plural (a false friend: not "large")
+infernale | infernal | hellish, infernal | feminine
+éveillé | | awake
+convulsif | | convulsive; restless
+convulsive | convulsif | convulsive | feminine
+lourds | lourd | heavy | plural
+ouverts | ouvert | open | plural
+premières | premier | first | feminine plural
+premiers | premier | first | plural
+premier | | first
+première | premier | first | feminine
+rude | | rough, harsh
+habitués | habitué | used (to) | plural: "habitués aux ténèbres" = used to the darkness
+satisfait | | satisfied
+blêmes | blême | pallid, ashen | plural
+abattus | abattu | dejected, downcast | plural
+pénétrée | pénétré | filled, soaked through | feminine
+gracieuses | gracieux | graceful, charming | feminine plural
+inondé | | flooded
+indigné | | indignant
+blessé | | hurt, wounded
+ivre | | drunk
+stupéfait | | stunned, dazed
+lumineuses | lumineux | bright, full of light | feminine plural
+pur | | pure, clear
+avides | avide | greedy, eager | plural
+avide | | greedy, eager
+regrettable | | to be regretted
+massifs | massif | massive, solid | plural
+sain | | healthy | "sain et sauf" = safe and sound
+sauf | | safe | "sain et sauf" = safe and sound (sauf is also "except")
+commune | commun | common, shared | feminine
+bonnes | bon | good | feminine plural; "bonnes gens" = good people
+entée | enté | grafted | feminine
+verticale | vertical | vertical | feminine
+triangulaire | | triangular
+derniers | dernier | last | plural
+frêle | | frail, delicate
+puni | | punished
+carrés | carré | square | plural: "huit pieds carrés" = eight feet square
+censé | | supposed (to) | "être censé" = to be supposed to
+épaisses | épais | thick | feminine plural
+épaisse | épais | thick | feminine
+coupée | coupé | cut | feminine
+fixes | fixe | fixed, staring | plural
+bizarres | bizarre | strange | plural
+enflammés | enflammé | flaming | plural
+opposé | | opposite
+majuscule | | capital (letter)
+brodé | | embroidered
+immobile | | motionless, still
+solitaire | | solitary, lonely
+véritable | | real, true
+vaste | | vast, large
+pressés | pressé | pressed, crowded | plural
+escortée | escorté | escorted | feminine
+honteux | | ashamed, shamefaced
+mêlées | mêlé | mixed | feminine plural
+basses | bas | low | feminine plural
+hurlants | hurlant | howling | plural
+hurlante | hurlant | howling | feminine
+déguenillés | déguenillé | ragged | plural
+inattendu | | unexpected
+bleus | bleu | blue | plural
+trempées | trempé | soaked | feminine plural
+conservé | conserver | kept | past participle: "avait conservé quelque gaieté" = had kept some cheerfulness
+inondés | inondé | flooded | plural
+armés | armé | armed | plural
+portatives | portatif | portable | feminine plural
+affreux | | terrible, awful
+hardis | hardi | bold | plural
+asséné | asséner | struck (hard) | past participle
+plaintif | | plaintive, mournful
+gai | | cheerful, merry
+rauque | | hoarse
+perpétuelles | perpétuel | perpetual | feminine plural: "les galères perpétuelles" = the galleys for life
+tirés | tiré | drawn | plural: "les verrous étaient tirés" = the bolts were drawn
+second | | second
+transporté | transporter | carried | past participle
+pénétrante | pénétrant | penetrating | feminine
+vêtus | vêtu | dressed | plural
+vêtu | | dressed
+mêmes | même | same | plural: "les mêmes vêtements" = the same clothes
+froides | froid | cold | feminine plural
+passées | passé | spent | feminine plural: "les heures que j’ai passées" = the hours I spent
+pesante | pesant | heavy | feminine
+veloutée | velouté | velvety | feminine
+langoureux | | languid, languorous
+assassiné | assassiner | murdered | past participle: "j’ai assassiné un homme" = I have murdered a man
+repoussante | repoussant | repulsive | feminine
+monstrueuses | monstrueux | monstrous | feminine plural
+sortant | sortir | coming out | "sortant de cette bouche" = coming out of that mouth
+vermeille | vermeil | bright red, rosy | feminine
+brune | brun | brown | feminine
+pleines | plein | full | feminine plural
+seconde | second | second | feminine: "une seconde fois" = a second time
+passée | passé | past, over | feminine: "la secousse était passée" = the shock had passed
+quelconque | | any (at all) | "un moyen quelconque" = any way at all
+singulier | | strange, peculiar
+gris | | grey
+oblong | | oblong, long and narrow
+effacées | effacé | faded, blurred | feminine plural
+placé | | placed, seated
+inepte | | foolish, inept
+maudit | | cursed
+facile | | easy
+brusque | | sudden, abrupt
+grisonnant | | greying
+louche | | shifty; squinting
+amer | | bitter
+ridicule | | ridiculous
+ingrat | | ungrateful
+déprimé | | low (of a forehead); depressed
+léger | | light
+idiote | idiot | idiotic | feminine
+certain | | certain, sure
+désespérée | désespéré | desperate | feminine
+calmes | calme | calm | plural
+noires | noir | black, dark | feminine plural
+dorée | doré | golden | feminine
+roses | rose | pink | plural
+étoilé | | starry
+enflée | enflé | swollen | feminine
+petites | petit | little | feminine plural
+chiffonné | | crumpled
+désert | | empty, deserted
+sanglant | | bloody, stained with blood
+exécrable | | abominable
+étroite | étroit | narrow | feminine
+déformé | | misshapen, battered
+rapprochés | rapproché | brought together | plural
+étouffé | | stifled, muffled
+extérieure | extérieur | outer, outside | feminine
+ordinaire | | ordinary
+bleue | bleu | blue | feminine
+humain | | human
+courts | court | short | plural
+appuyés | appuyé | pressing, leaning | plural
+certaine | certain | certain | feminine: "à une certaine heure" = at a certain time
+responsable | | responsible
+sauvé | | saved
+
+// numbers
+soixante-seize | | seventy-six
+soixante-dix-sept | | seventy-seven
+vingt-six | | twenty-six
+
+prononcé | prononcer | to pronounce | past participle: "le verdict que les jurés avaient prononcé" = the verdict the jury had reached
+écroule | s’écrouler | to collapse | "un édifice qui s’écroule" = a collapsing building
+déshabiller | se déshabiller | to undress
+changer | | to change
+argousin | l’argousin (m) | convict guard | old word

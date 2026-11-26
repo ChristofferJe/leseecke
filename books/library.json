@@ -11,17 +11,29 @@
       {
         "id": "grimm-a1",
         "level": "A1",
-        "chapters": ["01-rotkaeppchen.txt", "02-bremer-stadtmusikanten.txt", "03-haensel-und-gretel.txt"]
+        "chapters": [
+          "01-rotkaeppchen.txt",
+          "02-bremer-stadtmusikanten.txt",
+          "03-haensel-und-gretel.txt"
+        ]
       },
       {
         "id": "grimm-a2",
         "level": "A2",
-        "chapters": ["01-rotkaeppchen.txt", "02-bremer-stadtmusikanten.txt", "03-haensel-und-gretel.txt"]
+        "chapters": [
+          "01-rotkaeppchen.txt",
+          "02-bremer-stadtmusikanten.txt",
+          "03-haensel-und-gretel.txt"
+        ]
       },
       {
         "id": "grimm-b1",
         "level": "B1",
-        "chapters": ["01-rotkaeppchen.txt", "02-bremer-stadtmusikanten.txt", "03-haensel-und-gretel.txt"]
+        "chapters": [
+          "01-rotkaeppchen.txt",
+          "02-bremer-stadtmusikanten.txt",
+          "03-haensel-und-gretel.txt"
+        ]
       }
     ]
   },
@@ -71,6 +83,74 @@
           "06-box-hill.txt",
           "07-geheimnisse.txt",
           "08-herr-knightley.txt"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dernier-jour",
+    "language": "fr",
+    "title": "Le Dernier Jour d’un condamné",
+    "titleEn": "The Last Day of a Condemned Man",
+    "author": "Victor Hugo",
+    "color": "#3d3a4a",
+    "description": "A young man sentenced to the guillotine writes down his last weeks: the prison, the other convicts, his hope of a pardon and a final visit from his little daughter. An abridged retelling of Victor Hugo’s short novel against the death penalty.",
+    "source": "Victor Hugo, Le Dernier Jour d’un condamné (1829), public domain. Abridged and retold in French for learners.",
+    "editions": [
+      {
+        "id": "dernier-jour-a1",
+        "level": "A1",
+        "chapters": [
+          "01-condamne-a-mort.txt",
+          "02-bicetre.txt",
+          "03-les-forcats.txt",
+          "04-cest-pour-aujourdhui.txt",
+          "05-la-conciergerie.txt",
+          "06-le-gendarme.txt",
+          "07-marie.txt",
+          "08-quatre-heures.txt"
+        ]
+      },
+      {
+        "id": "dernier-jour-a2",
+        "level": "A2",
+        "chapters": [
+          "01-condamne-a-mort.txt",
+          "02-bicetre.txt",
+          "03-les-forcats.txt",
+          "04-cest-pour-aujourdhui.txt",
+          "05-la-conciergerie.txt",
+          "06-le-gendarme.txt",
+          "07-marie.txt",
+          "08-quatre-heures.txt"
+        ]
+      },
+      {
+        "id": "dernier-jour-b1",
+        "level": "B1",
+        "chapters": [
+          "01-condamne-a-mort.txt",
+          "02-bicetre.txt",
+          "03-les-forcats.txt",
+          "04-cest-pour-aujourdhui.txt",
+          "05-la-conciergerie.txt",
+          "06-le-gendarme.txt",
+          "07-marie.txt",
+          "08-quatre-heures.txt"
+        ]
+      },
+      {
+        "id": "dernier-jour-b2",
+        "level": "B2",
+        "chapters": [
+          "01-condamne-a-mort.txt",
+          "02-bicetre.txt",
+          "03-les-forcats.txt",
+          "04-cest-pour-aujourdhui.txt",
+          "05-la-conciergerie.txt",
+          "06-le-gendarme.txt",
+          "07-marie.txt",
+          "08-quatre-heures.txt"
         ]
       }
     ]

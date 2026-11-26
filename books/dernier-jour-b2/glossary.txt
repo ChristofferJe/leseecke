@@ -1,0 +1,1 @@
+// Glossary for dernier-jour-b2: entries that differ from books/glossary-fr.txt for this edition.

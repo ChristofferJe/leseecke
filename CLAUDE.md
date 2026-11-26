@@ -1,18 +1,24 @@
 # Leseecke: notes for Claude
 
-Leseecke is a personal German graded reader. It is a static web app: plain HTML, CSS and
+Leseecke is a personal graded reader for German and French. It is a static web app: plain HTML, CSS and
 ES modules, no build step, no dependencies, no backend and **no API calls**. Claude writes
 the books itself, in Claude Code sessions. Never add code that calls an LLM API. The owner
 wants this to cost nothing beyond their existing Claude plan.
 
 - `index.html`, `css/style.css`, `js/app.js`: the user interface (library, reader, review, words)
 - `js/format.js`: the parser for the book format, shared by the app and the checker
+- `js/languages.js`: the book languages (names, voices, shared glossary path, test sentence)
 - `js/srs.js`: the FSRS-5 flashcard scheduler · `js/store.js`: localStorage · `js/speech.js`: browser text-to-speech
-- `books/library.json`: the list of books. Each book has one or more **editions**, one per
-  level, and the reader switches between levels inside the book.
+- `books/library.json`: the list of books. Each book has a `language` (`"fr"`; a book
+  without one is German) and one or more **editions**, one per level; the reader switches
+  between levels inside the book. The library shows one language at a time, with a
+  Deutsch/Français switch.
 - `books/<edition id>/`: an edition's chapter files plus its own `glossary.txt`
-- `books/glossary.txt`: the **shared glossary** used by every book. An edition's own
-  glossary is checked first, so it can override a shared entry for that edition.
+- **Shared glossaries**, one per language: `books/glossary.txt` (German, the original file
+  name) and `books/glossary-fr.txt` (French). An edition's own glossary is checked first,
+  so it can override a shared entry for that edition.
+- Flashcards from all languages share one review queue. German cards are stored by lemma,
+  other languages as `<code>:<lemma>` (e.g. `fr:hier`), so equal lemmas never collide.
 - `books/index.json`: the old single-level list, kept only so that installed copies of
   older app versions keep working during an update. Don't add books to it.
 - `tools/check.mjs`: the book validator · `tools/make-icons.mjs`: regenerates the icons
@@ -22,7 +28,8 @@ wants this to cost nothing beyond their existing Claude plan.
   downloads. A download covers **all levels** of a book: each edition has its own cache,
   `leseecke-book-<edition id>`, managed by the download buttons in `app.js`. A downloaded
   book that gains a level or chapter is topped up automatically. Bump `CACHE` when app files
-  change. Adding a book or level needs no change to `sw.js`.
+  change. Adding a book or level needs no change to `sw.js`; adding a language does (its
+  shared glossary goes in `SHELL`).
 
 Run locally with `python -m http.server 8765` (the preview config is `.claude/launch.json`).
 
@@ -30,7 +37,10 @@ Run locally with `python -m http.server 8765` (the preview config is `.claude/la
 
 1. **Source.** Use only public-domain originals (Project Gutenberg, Projekt Gutenberg-DE,
    Wikisource). Never copy text from commercial graded readers or apps such as Eppika.
-   The source can be German or another language: retell it in German at the target level.
+   Check the dates, because the app is public on GitHub Pages: in the EU a work is free 70
+   years after the author's death, and in the US only works published before 1930 are
+   safe. Camus (died 1960, *L'Étranger* 1942) and Saint-Exupéry are still protected.
+   The source can be in any language: retell it in the book's language at the target level.
    Novels become abridged graded readers (about 6–10 chapters of 600–1000 words) unless
    the owner asks for something longer.
 2. **Folder.** Create `books/<edition id>/`, where the id is the book id plus the level,
@@ -38,14 +48,18 @@ Run locally with `python -m http.server 8765` (the preview config is `.claude/la
 3. **Chapters.** Write one file per chapter, `NN-slug.txt`. Write them one at a time and run
    the checker after each. **All levels of a book use the same chapters in the same order**,
    because the level switcher keeps the reader in the same chapter.
-4. **Register.** In `books/library.json`, add a new book (`id`, `title`, `titleEn`, `author`,
-   `color` (a dark cover colour), `description`, `source`, `editions`) or add an edition to an
-   existing one (`{ "id": "<edition id>", "level": "B1", "chapters": [file names in order] }`).
-   Never create a second book entry for a new level of the same book.
+4. **Register.** In `books/library.json`, add a new book (`id`, `language` (`"fr"`; leave it
+   out for German), `title`, `titleEn`, `author`, `color` (a dark cover colour),
+   `description`, `source`, `editions`) or add an edition to an existing one
+   (`{ "id": "<edition id>", "level": "B1", "chapters": [file names in order] }`).
+   Never create a second book entry for a new level of the same book. Keep the file an
+   array: installed copies of the previous app version read it on their first open.
 5. **Glossary.** Run `node tools/check.mjs <edition id> --missing` to list every word form
-   that has no gloss yet, with an example sentence. Add general words to the shared
-   `books/glossary.txt`, and meanings that only fit this book to the edition's
-   `glossary.txt`. Repeat until the checker prints "All good."
+   that has no gloss yet, with an example sentence. Add general words to the shared glossary
+   of the book's language (`books/glossary.txt` or `books/glossary-fr.txt`), and meanings
+   that only fit this book to the edition's `glossary.txt`. Repeat until the checker prints
+   "All good." For a big batch, write the entries to a scratch file and append it: shell
+   heredocs break on apostrophes.
 6. **Check the result.** Run `node tools/check.mjs` once more. Also read a chapter in the app
    and tap a few words, including separable verbs.
 
@@ -64,11 +78,12 @@ Alle Leute mochten das Mädchen.
 (a blank line starts a new paragraph)
 ```
 
-- Every German line is followed directly by `= English translation`. One line holds one
+- Every sentence line is followed directly by `= English translation`. One line holds one
   sentence, or two very short ones. It is the unit for "Read sentence" and "Translate sentence".
-- The English is a natural, faithful translation of the **simplified German line**, not of
+- The English is a natural, faithful translation of the **simplified line**, not of
   the original book.
-- Use German quotation marks („…“ and ‚…‘ inside them).
+- Use German quotation marks („…“ and ‚…‘ inside them) in German books, and French ones
+  (« … » with no-break spaces) in French books.
 
 ### Inline annotations
 
@@ -114,6 +129,41 @@ und | | and
   `„Sie[Sie|you|formal "you" (always with a capital S)] kennen ihn besser als ich.“`
 - In the Austen books, Emma and Mr Knightley say `du` to each other. Everyone else uses `Sie`,
   except within families.
+
+## French books
+
+- **Word splitting** (`js/format.js`): elisions become words of their own (`l’homme` → `l’` +
+  `homme`, `qu’il` → `qu’` + `il`, `jusqu’à` → `jusqu’` + `à`), and so do pronouns joined by a
+  hyphen (`dit-il` → `dit` + `il`, `donne-le-moi` → `donne` + `le` + `moi`; the `t` of `a-t-il`
+  is ignored). Words like `aujourd’hui`, `quelqu’un`, `peut-être`, `celui-ci`, `sur-le-champ`
+  stay whole. Glossary keys therefore hold `l’`, `homme`, `il` … (the app speaks `l’` together
+  with its word).
+- **Apostrophes:** write the typographic `’`. The checker and app treat `'` and `’` alike.
+- **Typography:** « … » and `? ! : ;` take a no-break space (U+00A0). Write normal spaces
+  and convert them with a small script, as `dernier-jour-*` was.
+- **Annotations** attach to the last word of a token: `l’homme[…]` annotates `homme`. To
+  annotate the elision itself, put the brackets right after the apostrophe: `l’[le|him]ai`.
+  A noun use of `pas` (`un pas[le pas|step]`), `je vis` meaning "I saw", `de garde` etc.
+  need an annotation, because the glossary default is the common meaning.
+- **Glossary:** nouns starting with a vowel show their gender: `l’heure (f)`, `l’homme (m)`.
+  Mark literary tenses in the note ("passé simple: il lut = he read"), and old or slang
+  words ("argot", "old-fashioned").
+- **Levels:** A1: présent, passé composé of common verbs, `c’était`/`il y avait`/`j’avais`,
+  futur proche (`je vais mourir`). A2: adds the imparfait, simple future of common verbs,
+  `qui`/`que`/`où`, and only `je voudrais`/`pourrait`/`ce serait` in the conditional. B1:
+  all indicative tenses incl. plus-que-parfait, conditional, subjunctive after common
+  triggers (`il faut que`, `pour que`), no passé simple. B2: close to the original,
+  passé simple allowed. Sentence lengths as in the table below.
+
+## Adding a language
+
+1. Add it to `LANGUAGES` in `js/languages.js` (names, speech code, voice codes, shared
+   glossary path `books/glossary-<code>.txt`, test sentence, library example).
+2. Create the shared glossary file, add it to `SHELL` in `sw.js`, and bump `CACHE`.
+3. Give the books `"language": "<code>"` in `books/library.json`. The library switch
+   appears by itself as soon as two languages have books.
+4. If the language needs its own word splitting (like French elisions), add it to
+   `parseSentence` in `js/format.js`, and test it with a few sample lines before writing.
 
 ## Level rules (CEFR)
 

@@ -1,7 +1,7 @@
 {
-  "name": "Leseecke – German reader",
+  "name": "Leseecke – graded reader",
   "short_name": "Leseecke",
-  "description": "Read simplified German classics, tap words for their meaning and review them with flashcards.",
+  "description": "Read simplified German and French classics, tap words for their meaning and review them with flashcards.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

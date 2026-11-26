@@ -330,6 +330,32 @@ main {
 
 /* ---------- library ---------- */
 
+.library-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0.4rem 0 1rem;
+}
+
+.library-head .page-title {
+  margin: 0;
+}
+
+.lang-tag {
+  display: inline-block;
+  margin-right: 0.4rem;
+  padding: 0.05rem 0.35rem;
+  border-radius: 5px;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  vertical-align: 0.15em;
+}
+
 .due-teaser {
   display: flex;
   justify-content: space-between;
@@ -830,6 +856,15 @@ main {
   min-height: 15rem;
 }
 
+.card-lang {
+  margin: -0.9rem 0 0.5rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
 .card-word {
   display: inline-flex;
   align-items: center;
@@ -993,6 +1028,18 @@ main {
   gap: 0.3rem;
   font-weight: 600;
   margin-bottom: 0.9rem;
+}
+
+.voice-pick {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.voice-pick select {
+  flex: 1 1 14rem;
+  min-width: 0;
 }
 
 .settings select,

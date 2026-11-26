@@ -8,7 +8,7 @@
 //   "leseecke-book-<edition id>", managed from the page). Other books are read from the
 //   network and never stored.
 
-const CACHE = 'leseecke-v6';
+const CACHE = 'leseecke-v7';
 const BOOK_PREFIX = 'leseecke-book-';
 const NETWORK_TIMEOUT = 4000;
 const SHELL = [
@@ -20,12 +20,15 @@ const SHELL = [
   'js/srs.js',
   'js/store.js',
   'js/speech.js',
+  'js/languages.js',
   'manifest.webmanifest',
   'icons/icon.svg',
   'icons/icon-192.png',
   'icons/icon-512.png',
   'books/library.json',
+  // The shared glossary of each language (see js/languages.js).
   'books/glossary.txt',
+  'books/glossary-fr.txt',
 ];
 // The book lists are fetched network-first so new books and levels show up on the first open.
 // (books/index.json is the list format used by versions before multi-level books.)

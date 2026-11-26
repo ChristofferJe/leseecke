@@ -1,11 +1,11 @@
 // Parser for the book text format. Used by the app (browser) and by tools/check.mjs (Node).
-// The format is described in CLAUDE.md.
+// The format is described in CLAUDE.md. Books can be in German ("de") or French ("fr").
 //
 // Chapter file:                     Glossary file (one entry per word form):
-//   # German title                    ging | gehen | to go | Präteritum
+//   # Title                           ging | gehen | to go | Präteritum
 //   = English title                   Mädchen | das Mädchen | girl
 //                                     und | | and          (empty lemma = same as form)
-//   German sentence line
+//   Sentence line in the book's language
 //   = English translation
 //   (blank line = new paragraph)
 //
@@ -13,13 +13,64 @@
 // Words sharing a #group (separable verbs, reflexives, idioms) are highlighted together;
 // exactly one of them carries lemma|english, the others just [#group].
 
-const WORD_RE = /([\p{L}\p{M}\p{N}]+(?:[-'’][\p{L}\p{M}\p{N}]+)*)(\[[^\]\n]*\])?/gu;
+const WORD = '[\\p{L}\\p{M}\\p{N}]+';
+const ANNOTATION = '(\\[[^\\]\\n]*\\])?';
+const WORD_RE = new RegExp(`(${WORD}(?:[-'’]${WORD})*)${ANNOTATION}`, 'gu');
+// French words may also end in an elision apostrophe, so that "qu’[que|that]il" can be annotated.
+const WORD_RE_FR = new RegExp(`(${WORD}(?:[-'’]${WORD})*['’]?)${ANNOTATION}`, 'gu');
+
+// Apostrophes are compared in one form, so "l'" and "l’" find the same glossary entry.
+const normApos = (s) => s.replace(/'/g, '’');
+
+// --- French: elisions and pronouns joined by a hyphen become words of their own ---
+// "l’homme" → l’ + homme · "jusqu’à" → jusqu’ + à · "dit-il" → dit + il · "a-t-il" → a + il ·
+// "donne-le-moi" → donne + le + moi. Words like "aujourd’hui", "quelqu’un", "peut-être",
+// "celui-ci" and "sur-le-champ" stay whole.
+const FR_ELISION = /^(l|d|j|m|t|s|c|n|qu|jusqu|lorsqu|puisqu|quoiqu)['’]/i;
+const FR_CLITIC = /^(je|tu|il|elle|on|nous|vous|ils|elles|moi|toi|lui|leur|le|la|les|y|en|ce|là|ci|[mt]['’](en|y))$/i;
+const FR_DEMONSTRATIVE = /^(celui|celle|ceux|celles)$/i;
+
+function splitElision(word) {
+  const out = [];
+  let m;
+  while ((m = word.match(FR_ELISION)) && m[0].length < word.length) {
+    out.push(m[0]);
+    word = word.slice(m[0].length);
+  }
+  out.push(word);
+  return out;
+}
+
+// The pieces of one French token: words ({ text, w: true }) and the hyphens between them.
+function splitFrench(token) {
+  const segs = token.split('-');
+  let cut = segs.length; // segs[cut…] are pronouns joined to the word before them
+  while (cut > 1) {
+    const s = segs[cut - 1];
+    if (/^(là|ci)$/i.test(s) && FR_DEMONSTRATIVE.test(segs[cut - 2])) break; // celui-ci stays whole
+    if (FR_CLITIC.test(s) || (/^t$/i.test(s) && cut < segs.length)) cut--; // also the "t" of a-t-il
+    else break;
+  }
+  const out = [];
+  const addWord = (w) => splitElision(w).forEach((text) => out.push({ text, w: true }));
+  addWord(segs.slice(0, cut).join('-'));
+  for (let i = cut; i < segs.length; i++) {
+    if (/^t$/i.test(segs[i])) {
+      out.push({ text: `-${segs[i]}-` });
+      addWord(segs[++i]);
+    } else {
+      out.push({ text: '-' });
+      addWord(segs[i]);
+    }
+  }
+  return out;
+}
 
 const lines = (text) => text.replace(/^﻿/, '').replace(/\r\n?/g, '\n').split('\n');
 
-export function parseChapter(text) {
+export function parseChapter(text, lang = 'de') {
   const errors = [];
-  const chapter = { title: '', titleEn: '', paragraphs: [], wordCount: 0, sentenceCount: 0 };
+  const chapter = { title: '', titleEn: '', lang, paragraphs: [], wordCount: 0, sentenceCount: 0 };
   let para = null;
   let pending = null; // the line waiting for its "= translation"
 
@@ -39,12 +90,12 @@ export function parseChapter(text) {
       const en = line.slice(1).trim();
       if (pending?.isTitle) chapter.titleEn = en;
       else if (pending) pending.en = en;
-      else errors.push({ line: lineNo, msg: 'Translation line "=" has no German line directly above it' });
+      else errors.push({ line: lineNo, msg: 'Translation line "=" has no sentence line directly above it' });
       pending = null;
       return;
     }
 
-    const sentence = parseSentence(line, lineNo, errors);
+    const sentence = parseSentence(line, lineNo, errors, lang);
     if (!para) { para = { sentences: [] }; chapter.paragraphs.push(para); }
     para.sentences.push(sentence);
     chapter.sentenceCount++;
@@ -56,31 +107,34 @@ export function parseChapter(text) {
   return { chapter, errors };
 }
 
-function parseSentence(line, lineNo, errors) {
+function parseSentence(line, lineNo, errors, lang) {
+  const fr = lang === 'fr';
   const parts = [];
   let pos = 0;
-  for (const m of line.matchAll(WORD_RE)) {
+  for (const m of line.matchAll(fr ? WORD_RE_FR : WORD_RE)) {
     if (m.index > pos) parts.push({ text: line.slice(pos, m.index) });
-    const part = { text: m[1], w: true };
-    if (m[2]) Object.assign(part, parseAnnotation(m[2].slice(1, -1)));
-    parts.push(part);
+    const pieces = fr ? splitFrench(m[1]) : [{ text: m[1], w: true }];
+    // An annotation belongs to the last word of the token ("l’homme[…]" annotates "homme").
+    if (m[2]) Object.assign(pieces.findLast((p) => p.w), parseAnnotation(m[2].slice(1, -1)));
+    parts.push(...pieces);
     pos = m.index + m[0].length;
   }
   if (pos < line.length) parts.push({ text: line.slice(pos) });
 
   // Mark words that start a sentence (first on the line, or after . ! ? : or an opening quote).
+  const starter = fr ? /[.!?:«(—]/ : /[.!?:„‚»(]/;
   let start = true;
   for (const p of parts) {
     if (p.w) {
       p.start = start;
       start = false;
-    } else if (/[.!?:„‚»(]/.test(p.text)) {
+    } else if (starter.test(p.text)) {
       start = true;
     }
   }
 
-  const sentence = { de: parts.map((p) => p.text).join(''), en: '', parts, line: lineNo };
-  if (/[[\]]/.test(sentence.de)) {
+  const sentence = { text: parts.map((p) => p.text).join(''), en: '', parts, line: lineNo };
+  if (/[[\]]/.test(sentence.text)) {
     errors.push({ line: lineNo, msg: 'Stray "[" or "]": an annotation must follow a word directly, e.g. ging[gehen|to go]' });
   }
   linkGroups(sentence, errors);
@@ -148,20 +202,22 @@ export function parseGlossary(text) {
       errors.push({ line: i + 1, msg: `Expected "form | lemma | english | note", got: ${line}` });
       return;
     }
-    if (glossary.has(cols[0])) errors.push({ line: i + 1, msg: `Duplicate entry "${cols[0]}"` });
-    glossary.set(cols[0], { lemma: cols[1] || cols[0], en: cols[2], note: cols[3] || '' });
+    const key = normApos(cols[0]);
+    if (glossary.has(key)) errors.push({ line: i + 1, msg: `Duplicate entry "${cols[0]}"` });
+    glossary.set(key, { lemma: cols[1] || cols[0], en: cols[2], note: cols[3] || '' });
   });
   return { glossary, errors };
 }
 
-// Formal "you" (Sie, Ihnen, Ihr …) is written with a capital letter. In the middle of a sentence
-// the capital form means formal "you"; at the start of a sentence it is usually "she/they/her".
+// German formal "you" (Sie, Ihnen, Ihr …) is written with a capital letter. In the middle of a
+// sentence the capital form means formal "you"; at the start of a sentence it is usually "she/they/her".
 const FORMAL = new Set(['Sie', 'Ihnen', 'Ihr', 'Ihre', 'Ihrer', 'Ihrem', 'Ihren', 'Ihres']);
 
 // Exact form first, then lower-case (for capitalised words at the start of a sentence).
-export function lookupKey(glossary, form, sentenceStart = false) {
+export function lookupKey(glossary, form, sentenceStart = false, lang = 'de') {
+  form = normApos(form);
   const lower = form.toLowerCase();
-  if (sentenceStart && FORMAL.has(form) && glossary.has(lower)) return lower;
+  if (lang === 'de' && sentenceStart && FORMAL.has(form) && glossary.has(lower)) return lower;
   if (glossary.has(form)) return form;
   if (glossary.has(lower)) return lower;
   const lowerFirst = form[0].toLowerCase() + form.slice(1);
@@ -180,7 +236,7 @@ export function annotateChapter(chapter, glossary) {
         if (src) {
           p.gloss = { lemma: src.lemma || src.text, en: src.en, note: src.note || '' };
         } else {
-          const key = lookupKey(glossary, p.text, p.start);
+          const key = lookupKey(glossary, p.text, p.start, chapter.lang);
           p.glossKey = key;
           p.gloss = key ? glossary.get(key) : null;
         }
